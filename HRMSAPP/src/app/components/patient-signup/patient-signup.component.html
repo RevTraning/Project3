@@ -1,0 +1,59 @@
+
+<mat-card >
+    <div class="centerform">
+    <h1>Sign Up</h1>
+
+    <p>
+        <mat-form-field appearance="outline" class="input-size-my">
+            <label for="userInput">First Name</label>
+            <input type="txet" id="userInput" matInput placeholder="your first name" >
+            <mat-icon matSuffix> account_circle</mat-icon>
+          </mat-form-field>
+
+    </p>
+    <p>
+        <mat-form-field appearance="outline" class="input-size-my">
+            <label for="userInput"> Last Name</label>
+            <input type="txet" id="userInput" matInput placeholder="your first name" >
+            <mat-icon matSuffix> account_circle</mat-icon>
+          </mat-form-field>
+
+    </p><br>
+
+    <p>
+        <mat-form-field appearance="outline" class="input-size-my">
+            <label for="userInput">Email</label>
+            <input type="txet" id="userInput" matInput placeholder="exaple@capsul.net" >
+            <mat-icon matSuffix> email</mat-icon>
+          </mat-form-field>
+
+    </p><br>
+    
+    <p>
+        <mat-form-field appearance="outline" class="input-size-my">
+            <label for="passwordInput">Password</label>
+            <input matInput [type]="hide ? 'password' : 'text'" id="passwordInput"  placeholder="password" >
+            <button mat-icon-button matSuffix (click) ="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed] ="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </p><br>
+
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Favorite car</mat-label>
+            <select matNativeControl [(ngModel)]= "selectedCar" name="car">
+              <option value="" selected></option>
+              <option *ngFor="let car of cars" [value]="car.value">
+                {{car.viewValue}}
+              </option>
+            </select>
+          </mat-form-field>
+    </p><br>
+
+
+
+    <button  mat-button type="button" (click)="addPatient()">Sign Up</button>
+</div>
+
+</mat-card>
