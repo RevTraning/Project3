@@ -36,9 +36,10 @@ import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatTableModule} from '@angular/material/table';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -80,10 +81,13 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTableModule
     
   ],
-  providers: [CookieService, MatDatepickerModule,  MatNativeDateModule, DatepickerComponent, DatepickerApComponent],
+
+  providers: [CookieService, DatepickerApComponent, DatepickerComponent, MatDatepickerModule, MatNativeDateModule],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

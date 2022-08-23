@@ -11,5 +11,8 @@ export class ViewAppotemntsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  appotimentList :any []=[];
+
+  
 
 }

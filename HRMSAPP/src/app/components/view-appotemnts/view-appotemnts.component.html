@@ -1,1 +1,21 @@
 <p>view-appotemnts works!</p>
+
+<table>
+    <thead>
+        <th>
+            Date
+        </th>
+        <th>
+            Time
+        </th>
+        <tH>
+            Doctor
+        </tH>
+    </thead>
+
+    <tbody *ngFor="let row of appotimentList ">
+        <td>{{row.date}}</td>
+        <td>{{row.time}}</td>
+        <td>{{row.doctor}}</td>
+    </tbody>
+</table>
