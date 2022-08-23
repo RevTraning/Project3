@@ -33,7 +33,7 @@
   <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Fill out the following information</ng-template>
-      <!-- <mat-form-field ngDefaultControl appearance="outline" formControlName="ethnicity" ngDefaultControl>
+      <mat-form-field ngDefaultControl appearance="outline" formControlName="ethnicity" ngDefaultControl>
         <label for="ethnicityInput">Ethnicity</label>
         <select matNativeControl id="ethnicityInput"   required>
           <option *ngFor="let e of ethnicities" [value]="e.value" >{{e.viewValue}}</option>
@@ -43,9 +43,9 @@
       <mat-form-field ngDefaultControl appearance="outline"  formControlName="doctor" ngDefaultControl>
         <label for="doctorInput">How is your Doctor</label>
         <select matNativeControl id="doctorInput" required>
-          <option *ngFor="let g of doctors" [value]="g.value" >{{g.viewValue}}</option>
+          <option *ngFor="let d of doctors" [value]="d.value" >{{d.viewValue}}</option>
         </select>
-      </mat-form-field><br> -->
+      </mat-form-field><br>
 
       <mat-form-field appearance="outline" formControlName="medication" ngDefaultControl>
         <label for="medInput">Any Medication</label>

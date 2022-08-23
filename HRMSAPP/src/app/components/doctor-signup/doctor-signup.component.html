@@ -1,1 +1,67 @@
-<p>doctor-signup works!</p>
+<mat-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel >First Part</ng-template>
+        <mat-form-field appearance="outline" formControlName="name" ngDefaultControl>
+          <label for="courseNameInput">Name</label>
+          <input type="text" matInput id="courseNameInput" placeholder="name"  required>
+        </mat-form-field>
+  
+        
+        <mat-form-field appearance="outline" formControlName="email" class="input-space" ngDefaultControl>
+          <label for="emailInput">Email</label>
+          <input matInput id="emailInput" placeholder="exaple@capsul.net"   required>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field><br>
+  
+        
+        <mat-form-field appearance="outline" formControlName="password" ngDefaultControl>
+          <label for="passwordInput">Password</label>
+          <input matInput [type]="hide ? 'password' : 'text'" id="passwordInput"  placeholder="password"  required>
+          <button mat-icon-button matSuffix (click) ="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed] ="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" formControlName="license" ngDefaultControl>
+            <label for="licInput">License Number</label>
+            <input matInput id="licInput" placeholder="..."  required>
+          </mat-form-field><br>
+        
+        
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out the following information</ng-template>
+        <mat-form-field ngDefaultControl appearance="outline" formControlName="practice" ngDefaultControl>
+          <label for="praInput">Practice</label>
+          <select matNativeControl id="praInput"   required>
+            <option *ngFor="let p of practices" [value]="p.value" >{{p.viewValue}}</option>
+          </select>
+        </mat-form-field>
+
+        <app-datepicker></app-datepicker>
+  
+        
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="addDoctor()">Submite</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        
+      </div>
+    </mat-step>
+  </mat-stepper>
+  
