@@ -1,0 +1,28 @@
+
+
+
+#navigationButtons{
+   
+    list-style: none;
+    text-align: center;
+   
+    
+}
+
+li{
+   padding: 10px;
+    height: 45px;
+    text-align: center;
+   margin-bottom: 15px;
+   background-color: rgb(29, 231, 231);
+   cursor:pointer;
+    padding-right: 0%;
+    font-size: 30px;
+    box-shadow: 2px 2px 4px;
+    border-radius: 10px;
+    width: 400px;
+   
+}
+#navigationButtons li:hover{
+    background-color: aquamarine;
+}

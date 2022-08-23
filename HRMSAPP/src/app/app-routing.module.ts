@@ -5,6 +5,17 @@ import { LoginComponent } from './components/login/login.component';
 import { PatientSignupComponent } from './components/patient-signup/patient-signup.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { MessageProviderComponent } from './components/message-provider/message-provider.component';
+import { ViewAppotemntsComponent } from './components/view-appotemnts/view-appotemnts.component';
+import { BookAppotmentsComponent } from './components/book-appotments/book-appotments.component';
+import { LabFormComponent } from './components/lab-form/lab-form.component';
+import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-results.component';
+
+
+
+
+
+
 
 const routes: Routes = [
   {path: 'patient-signup', component: PatientSignupComponent},
@@ -12,6 +23,12 @@ const routes: Routes = [
   {path: 'signup', component: SignupComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'patient', component:PatientSignupComponent},
+  {path: 'message',component:MessageProviderComponent },
+  {path: 'schedual', component: ViewAppotemntsComponent},
+  {path: 'book', component:BookAppotmentsComponent},
+  {path: 'labForm', component:LabFormComponent},
+  {path: 'results',component: ViewLabResultsComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

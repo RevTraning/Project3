@@ -11,8 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //Components
-import { HeathcareLoginComponent } from './components/heathcare-login/heathcare-login.component';
-import { HeathcareSignupComponent } from './components/heathcare-signup/heathcare-signup.component';
+
 import { PatientSignupComponent } from './components/patient-signup/patient-signup.component';
 import { LoginComponent } from './components/login/login.component';
 
@@ -28,17 +27,29 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { SignupComponent } from './components/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PatientSplashPageComponent } from './components/patient-splash-page/patient-splash-page.component';
+import { MessageProviderComponent } from './components/message-provider/message-provider.component';
+import { ViewAppotemntsComponent } from './components/view-appotemnts/view-appotemnts.component';
+import { BookAppotmentsComponent } from './components/book-appotments/book-appotments.component';
+import { LabFormComponent } from './components/lab-form/lab-form.component';
+import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeathcareLoginComponent,
-    HeathcareSignupComponent,
+    // HeathcareLoginComponent,
+    // HeathcareSignupComponent,
     PatientSignupComponent,
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    PatientSplashPageComponent,
+    MessageProviderComponent,
+    ViewAppotemntsComponent,
+    BookAppotmentsComponent,
+    LabFormComponent,
+    ViewLabResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +65,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
