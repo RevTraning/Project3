@@ -1,59 +1,71 @@
 
-<mat-card >
-    <div class="centerform">
-    <h1>Sign Up</h1>
+<mat-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel >First Part</ng-template>
+      <mat-form-field appearance="outline" formControlName="name" ngDefaultControl>
+        <label for="courseNameInput">Name</label>
+        <input type="text" matInput id="courseNameInput" placeholder="name"  required>
+      </mat-form-field>
 
-    <p>
-        <mat-form-field appearance="outline" class="input-size-my">
-            <label for="userInput">First Name</label>
-            <input type="txet" id="userInput" matInput placeholder="your first name" >
-            <mat-icon matSuffix> account_circle</mat-icon>
-          </mat-form-field>
+      
+      <mat-form-field appearance="outline" formControlName="email" class="input-space" ngDefaultControl>
+        <label for="emailInput">Email</label>
+        <input matInput id="emailInput" placeholder="exaple@capsul.net"   required>
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field><br>
 
-    </p>
-    <p>
-        <mat-form-field appearance="outline" class="input-size-my">
-            <label for="userInput"> Last Name</label>
-            <input type="txet" id="userInput" matInput placeholder="your first name" >
-            <mat-icon matSuffix> account_circle</mat-icon>
-          </mat-form-field>
+      
+      <mat-form-field appearance="outline" formControlName="password" ngDefaultControl>
+        <label for="passwordInput">Password</label>
+        <input matInput [type]="hide ? 'password' : 'text'" id="passwordInput"  placeholder="password"  required>
+        <button mat-icon-button matSuffix (click) ="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed] ="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+      
+      
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out the following information</ng-template>
+      <!-- <mat-form-field ngDefaultControl appearance="outline" formControlName="ethnicity" ngDefaultControl>
+        <label for="ethnicityInput">Ethnicity</label>
+        <select matNativeControl id="ethnicityInput"   required>
+          <option *ngFor="let e of ethnicities" [value]="e.value" >{{e.viewValue}}</option>
+        </select>
+      </mat-form-field>
 
-    </p><br>
+      <mat-form-field ngDefaultControl appearance="outline"  formControlName="doctor" ngDefaultControl>
+        <label for="doctorInput">How is your Doctor</label>
+        <select matNativeControl id="doctorInput" required>
+          <option *ngFor="let g of doctors" [value]="g.value" >{{g.viewValue}}</option>
+        </select>
+      </mat-form-field><br> -->
 
-    <p>
-        <mat-form-field appearance="outline" class="input-size-my">
-            <label for="userInput">Email</label>
-            <input type="txet" id="userInput" matInput placeholder="exaple@capsul.net" >
-            <mat-icon matSuffix> email</mat-icon>
-          </mat-form-field>
-
-    </p><br>
-    
-    <p>
-        <mat-form-field appearance="outline" class="input-size-my">
-            <label for="passwordInput">Password</label>
-            <input matInput [type]="hide ? 'password' : 'text'" id="passwordInput"  placeholder="password" >
-            <button mat-icon-button matSuffix (click) ="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed] ="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-        </mat-form-field>
-    </p><br>
-
-    <p>
-        <mat-form-field appearance="outline">
-            <mat-label>Favorite car</mat-label>
-            <select matNativeControl [(ngModel)]= "selectedCar" name="car">
-              <option value="" selected></option>
-              <option *ngFor="let car of cars" [value]="car.value">
-                {{car.viewValue}}
-              </option>
-            </select>
-          </mat-form-field>
-    </p><br>
-
-
-
-    <button  mat-button type="button" (click)="addPatient()">Sign Up</button>
-</div>
-
-</mat-card>
+      <mat-form-field appearance="outline" formControlName="medication" ngDefaultControl>
+        <label for="medInput">Any Medication</label>
+        <input matInput id="medInput" placeholder="..."  required>
+      </mat-form-field>
+      
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="addPatient()">Submite</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      
+    </div>
+  </mat-step>
+</mat-stepper>

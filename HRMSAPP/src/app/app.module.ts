@@ -11,11 +11,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //Components
-import { HeathcareLoginComponent } from './components/heathcare-login/heathcare-login.component';
-import { HeathcareSignupComponent } from './components/heathcare-signup/heathcare-signup.component';
 import { PatientSignupComponent } from './components/patient-signup/patient-signup.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { DoctorSignupComponent } from './components/doctor-signup/doctor-signup.component';
 
 //materials
 import {MatStepperModule} from '@angular/material/stepper';
@@ -29,16 +27,16 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
-    HeathcareLoginComponent,
-    HeathcareSignupComponent,
     PatientSignupComponent,
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    DoctorSignupComponent
   ],
   imports: [
     BrowserModule,

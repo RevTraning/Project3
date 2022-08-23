@@ -1,18 +1,22 @@
 export class Patient{
     pId: number;
-    firstName: string;
-    lastName: string;
+    name: string;
     email: string;
     password: string;
-    hId: number;
+    dateOfBirth: number;
+    ethnicity: string;
+    medications: string;
+    dId: number;
 
-    constructor(email: string ="", password: string ="", firstName?: string, lastName?: string, hId?: number, pId?: number){
+    constructor(email: string ="", password: string ="", name?: string, dateOfBirth?: number, ethnicity?: string, medications?: string, dId?: number, pId?: number){
         this.pId = pId;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
         this.email = email;
         this.password = password;
-        this.hId  = hId;
+        this.dateOfBirth = dateOfBirth;
+        this.ethnicity = ethnicity;
+        this.medications = medications;
+        this.dId  = dId;
     }
 
 }
