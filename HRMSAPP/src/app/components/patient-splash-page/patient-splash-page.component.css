@@ -5,11 +5,32 @@
    
     list-style: none;
     text-align: center;
+    justify-content:center ;
+    
    
+
+}
+
+.NavMen{
+    display: flex;
+    justify-content: center;
+     align-items: center;
+     width: 200px;
     
 }
 
+button{
+    margin-left: 25px;
+    
+}
+
+
+
 li{
+
+
+    width: 15 px;
+   
    padding: 10px;
     height: 45px;
     text-align: center;
@@ -17,10 +38,11 @@ li{
    background-color: rgb(29, 231, 231);
    cursor:pointer;
     padding-right: 0%;
-    font-size: 30px;
+    font-size: 10px;
     box-shadow: 2px 2px 4px;
     border-radius: 10px;
-    width: 400px;
+    margin-right: 35px;
+    
    
 }
 #navigationButtons li:hover{
