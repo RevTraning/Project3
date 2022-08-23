@@ -39,6 +39,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DatepickerApComponent } from './components/datepicker-ap/datepicker-ap.component';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,7 @@ import {MatTableModule} from '@angular/material/table';
     MatMenuModule,
     MatTableModule
   ],
-  providers: [CookieService, DatepickerApComponent, DatepickerComponent],
+  providers: [CookieService, DatepickerApComponent, DatepickerComponent, MatDatepickerModule, MatNativeDateModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
