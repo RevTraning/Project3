@@ -11,13 +11,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //Components
-<<<<<<< HEAD
 
-=======
->>>>>>> fbcbf4a2d73576655e51107e33c4dd332091b459
 import { PatientSignupComponent } from './components/patient-signup/patient-signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { DoctorSignupComponent } from './components/doctor-signup/doctor-signup.component';
+
 
 //materials
 import {MatStepperModule} from '@angular/material/stepper';
@@ -41,26 +39,24 @@ import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
-    // HeathcareLoginComponent,
-    // HeathcareSignupComponent,
-=======
->>>>>>> fbcbf4a2d73576655e51107e33c4dd332091b459
+
+    
+
     PatientSignupComponent,
     LoginComponent,
     SignupComponent,
     HomeComponent,
     ProfileComponent,
-<<<<<<< HEAD
+
     PatientSplashPageComponent,
     MessageProviderComponent,
     ViewAppotemntsComponent,
     BookAppotmentsComponent,
     LabFormComponent,
-    ViewLabResultsComponent
-=======
+    ViewLabResultsComponent,
+
     DoctorSignupComponent
->>>>>>> fbcbf4a2d73576655e51107e33c4dd332091b459
+
   ],
   imports: [
     BrowserModule,
