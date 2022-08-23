@@ -37,6 +37,7 @@ import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-
 import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { DatepickerApComponent } from './components/datepicker-ap/datepicker-ap.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -77,9 +78,10 @@ import { DatepickerApComponent } from './components/datepicker-ap/datepicker-ap.
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatMenuModule
   ],
-  providers: [CookieService],
+  providers: [CookieService, DatepickerApComponent, DatepickerComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

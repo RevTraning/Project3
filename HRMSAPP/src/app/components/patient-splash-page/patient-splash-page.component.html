@@ -1,7 +1,10 @@
 <p>patient-splash-page works!</p>
 
-<div>
-<ul id="navigationButtons">
+
+
+<button mat-button [matMenuTriggerFor]="menu">Nav Menu</button>
+<mat-menu #menu="matMenu" class="NavMen">
+  <ul id="navigationButtons">
    <li routerLink="message">Messeage Providers</li>
     <li routerLink="schedual">View Appotments</li>
     <li routerLink="book"> book Appotments</li>
@@ -9,4 +12,4 @@
     <li routerLink="results">Veiw Lab Result</li>
 
 </ul>
-</div>
+</mat-menu>
