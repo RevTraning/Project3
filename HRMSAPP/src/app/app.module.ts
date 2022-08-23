@@ -81,6 +81,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     ReactiveFormsModule,
     MatDialogModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     MatMenuModule,
     MatTableModule
   ],
