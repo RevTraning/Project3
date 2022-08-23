@@ -4,11 +4,11 @@ export class Doctor{
     email: string;
     password: string;
     dateOfBirth: number;
-    licenseN: string;
+    licenseN: number;
     practice: string;
    
 
-    constructor(email: string ="", password: string ="", name?: string, dateOfBirth?: number, licenseN?: string, practice?: string, dId?: number){
+    constructor(email: string ="", password: string ="", name?: string, dateOfBirth?: number, licenseN?: number, practice?: string, dId?: number){
         this.dId = dId;
         this.name = name;
         this.email = email;

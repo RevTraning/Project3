@@ -3,14 +3,16 @@ import { CookieService } from 'ngx-cookie-service';
 import { Patient } from 'src/app/models/patient';
 import {FormBuilder, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { DatepickerComponent } from '../datepicker/datepicker.component';
+import { PatientHttpService } from 'src/app/services/patient-http.service';
 
 
-interface ethnicities {
+interface ethnicitie {
   value: string;
   viewValue: string;
 }
 
-interface doctors {
+interface doctor {
   value: string;
   viewValue: string;
 }
@@ -28,22 +30,22 @@ interface doctors {
 export class PatientSignupComponent implements OnInit {
   hide = true;
 
-  coursesT: ethnicities[] = [
-    {value: 'University Courses', viewValue: 'University Courses'},
-    {value: 'Seminars', viewValue: 'Seminars'},
-    {value: 'Certification Preparation Classes', viewValue: 'Certification Preparation Classes'},
-    {value: 'Certification', viewValue: 'Certification'},
-    {value: 'Technical Training', viewValue: 'Technical Training'},
-    {value: 'Other', viewValue: 'Other'},
+  ethnicities: ethnicitie[] = [
+    {value: 'American Indian or Alaska Native', viewValue: 'American Indian or Alaska Native'},
+    {value: 'Asian', viewValue: 'Asian'},
+    {value: 'Black or African American', viewValue: 'Black or African American'},
+    {value: 'Native Hawaiian or Other Pacific Islander', viewValue: 'Native Hawaiian or Other Pacific Islander'},
+    {value: 'White', viewValue: 'White'},
+    {value: 'Hispanic or Latino', viewValue: 'Hispanic or Latino'},
   ];
 
-  grades: doctors[] = [
-    {value: 'letter', viewValue: 'Letter'},
-    {value: '5.0-0.0', viewValue: '5.0-0.0'},
-    {value: '4.0-0.0', viewValue: '4.0-0.0'},
-    {value: '10-0', viewValue: '10-0'},
-    {value: '100-0', viewValue: '100-0'},
-    {value: 'pass-fail', viewValue: 'pass-fail'},
+  doctors: doctor[] = [
+    {value: '1', viewValue: '1'},
+    {value: '2', viewValue: '2'},
+    {value: '3', viewValue: '3'},
+    {value: '4', viewValue: '4'},
+    {value: '5', viewValue: '5'},
+    {value: '6', viewValue: '6'},
   ];
 
 
@@ -61,26 +63,20 @@ export class PatientSignupComponent implements OnInit {
   });
 
 
-  constructor(private formBuilder: FormBuilder, private cookie: CookieService ) { }
+  constructor(private patHttp: PatientHttpService, private formBuilder: FormBuilder, private cookie: CookieService, private date: DatepickerComponent ) { }
 
   ngOnInit(): void {
   }
-  // name: string;
-  // email: string;
-  // password: string;
-  // dateOfBirth: number;
-  // ethnicity: string;
-  // medications: string;
+  DOB: number ;//= this.date.getTime();
 
+
+  newPatient: Patient;
   addPatient(){
-    // let newPat: Patient = new Patient(this.email, this.password, this.name, this.dateOfBirth, this.ethnicity, this.medications);
-    console.log("hi")
+    let newPat: Patient = new Patient(this.firstFormGroup.controls.email.value, this.firstFormGroup.controls.password.value, this.firstFormGroup.controls.name.value, this.DOB, this.secondFormGroup.controls.ethnicity.value, this.secondFormGroup.controls.medication.value);
+    console.log(newPat);
+    this.patHttp.addPatient(newPat).subscribe(returnP => this.newPatient = returnP);
 
   }
-
-
-  selectedValue: string;
-  selectedCar: string;
 
 
 }

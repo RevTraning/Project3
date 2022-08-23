@@ -34,7 +34,9 @@ import { ViewAppotemntsComponent } from './components/view-appotemnts/view-appot
 import { BookAppotmentsComponent } from './components/book-appotments/book-appotments.component';
 import { LabFormComponent } from './components/lab-form/lab-form.component';
 import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-results.component';
-
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { DatepickerApComponent } from './components/datepicker-ap/datepicker-ap.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-
     LabFormComponent,
     ViewLabResultsComponent,
 
-    DoctorSignupComponent
+    DoctorSignupComponent,
+     DatepickerComponent,
+     DatepickerApComponent
 
   ],
   imports: [
@@ -73,6 +77,7 @@ import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-
     FormsModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatDatepickerModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
