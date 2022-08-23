@@ -7,17 +7,18 @@ export class ApptForm{
     patientName: string;
     patientAge: number;
     patientEthnicity: string;
+    patientSex: string;
     patientMedications: string;
 
     dateAppointment: number;
     patientHeight: number;
     patientWeight: number;
-    patientHabits: number;
+    patientHabits: string;
     patientChiefComplaint: string;
 
     doctorInitialComments: string;
     doctorExaminationData: string;
-    labExaminationResults: string; //big changes incoming, depends on API
+    labResultsID: number; //big changes incoming, depends on API
 
     doctorAssessment: string;
     doctorTreatment: string;
@@ -31,19 +32,20 @@ export class ApptForm{
     patientName: string = "", 
     patientAge: number = 0, 
     patientEthnicity: string = "", 
+    patientSex: string = "",
     patientMedications: string = "", 
     
     dateAppointment: number = 0, 
     patientHeight: number = 0, 
     patientWeight: number = 0, 
-    patientHabits: number = 0, 
+    patientHabits: string = "", 
     patientChiefComplaint: string = "", 
 
     formID?: number,
 
     doctorInitialComments?: string, 
     doctorExaminationData?: string, 
-    labExaminationResults?: string, //get from JSON from lab API
+    labResultsID?: number, //get from JSON from lab API
     doctorAssessment?: string, 
     doctorTreatment?: string, 
     doctorPrescription?: string,
@@ -55,6 +57,7 @@ export class ApptForm{
     this.patientName = patientName;
     this.patientAge = patientAge;
     this.patientEthnicity = patientEthnicity;
+    this.patientSex = patientSex;
     this.patientMedications = patientMedications;
     this.dateAppointment = dateAppointment;
     this.patientHeight = patientHeight;
@@ -63,7 +66,7 @@ export class ApptForm{
     this.patientChiefComplaint = patientChiefComplaint;
     this.doctorInitialComments = doctorInitialComments;
     this.doctorExaminationData = doctorExaminationData;
-    this.labExaminationResults = labExaminationResults;
+    this.labResultsID = labResultsID;
     this.doctorAssessment = doctorAssessment;
     this.doctorTreatment = doctorTreatment;
     this.doctorPrescription = doctorPrescription;

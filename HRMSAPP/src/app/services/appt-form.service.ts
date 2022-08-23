@@ -7,7 +7,7 @@ import { ApptForm } from '../models/apptForm';
 @Injectable({
   providedIn: 'root'
 })
-export class ApptFormHttpService {
+export class ApptFormService {
   url: string = 'http://localhost:8081/';
   constructor(private http: HttpClient, private router: Router) { }
 
