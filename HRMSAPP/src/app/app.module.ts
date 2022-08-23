@@ -15,7 +15,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PatientSignupComponent } from './components/patient-signup/patient-signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { DoctorSignupComponent } from './components/doctor-signup/doctor-signup.component';
-
+import { DatepickerComponent } from './components/datepicker/datepicker.component';
+import { ViewAppotemntsComponent } from './components/view-appotemnts/view-appotemnts.component';
+import { BookAppotmentsComponent } from './components/book-appotments/book-appotments.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { PatientSplashPageComponent } from './components/patient-splash-page/patient-splash-page.component';
+import { MessageProviderComponent } from './components/message-provider/message-provider.component';
+import { LabFormComponent } from './components/lab-form/lab-form.component';
+import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-results.component';
+import { DatepickerApComponent } from './components/datepicker-ap/datepicker-ap.component';
 
 //materials
 import {MatStepperModule} from '@angular/material/stepper';
@@ -25,18 +35,8 @@ import {MatCardModule} from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
-import { SignupComponent } from './components/signup/signup.component';
-import { HomeComponent } from './components/home/home.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { PatientSplashPageComponent } from './components/patient-splash-page/patient-splash-page.component';
-import { MessageProviderComponent } from './components/message-provider/message-provider.component';
-import { ViewAppotemntsComponent } from './components/view-appotemnts/view-appotemnts.component';
-import { BookAppotmentsComponent } from './components/book-appotments/book-appotments.component';
-import { LabFormComponent } from './components/lab-form/lab-form.component';
-import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-results.component';
-import { DatepickerComponent } from './components/datepicker/datepicker.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { DatepickerApComponent } from './components/datepicker-ap/datepicker-ap.component';
+import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -44,8 +44,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 @NgModule({
   declarations: [
     AppComponent,
-
-    
 
     PatientSignupComponent,
     LoginComponent,
@@ -61,8 +59,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     ViewLabResultsComponent,
 
     DoctorSignupComponent,
-     DatepickerComponent,
-     DatepickerApComponent
+    DatepickerComponent,
+    DatepickerApComponent
 
   ],
   imports: [
@@ -82,10 +80,17 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
+<<<<<<< HEAD
+=======
+    MatButtonModule,
+>>>>>>> 0b3e67c2d63e41d4c05a80a4a0350e79de06aafd
     MatMenuModule,
     MatTableModule
+    
   ],
+
   providers: [CookieService, DatepickerApComponent, DatepickerComponent, MatDatepickerModule, MatNativeDateModule],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

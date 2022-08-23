@@ -1,0 +1,30 @@
+.button-color{
+    background: rgba(23, 130, 158, 1);
+    color: rgb(253, 250, 250);
+    
+}
+
+
+.example-card {
+    max-width: 400px;
+}
+  
+.example-header-image {
+   
+    background-size: cover;
+}
+
+
+.container-center-thing{
+    /* text-align: center;
+    justify-items: center; */
+
+    margin-left: 500px;
+    margin-top: 150px;
+
+}
+
+.input-size-my{
+    width: 300px;
+    
+}
