@@ -3,6 +3,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { Patient } from 'src/app/models/patient';
 import {FormBuilder, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import { DatepickerComponent } from '../datepicker/datepicker.component';
+import { PatientHttpService } from 'src/app/services/patient-http.service';
 
 
 interface ethnicitie {
@@ -61,26 +63,20 @@ export class PatientSignupComponent implements OnInit {
   });
 
 
-  constructor(private formBuilder: FormBuilder, private cookie: CookieService ) { }
+  constructor(private patHttp: PatientHttpService, private formBuilder: FormBuilder, private cookie: CookieService, private date: DatepickerComponent ) { }
 
   ngOnInit(): void {
   }
-  // name: string;
-  // email: string;
-  // password: string;
-  // dateOfBirth: number;
-  // ethnicity: string;
-  // medications: string;
+  DOB: number ;//= this.date.getTime();
 
+
+  newPatient: Patient;
   addPatient(){
-    // let newPat: Patient = new Patient(this.email, this.password, this.name, this.dateOfBirth, this.ethnicity, this.medications);
-    console.log("hi")
+    let newPat: Patient = new Patient(this.firstFormGroup.controls.email.value, this.firstFormGroup.controls.password.value, this.firstFormGroup.controls.name.value, this.DOB, this.secondFormGroup.controls.ethnicity.value, this.secondFormGroup.controls.medication.value);
+    console.log(newPat);
+    this.patHttp.addPatient(newPat).subscribe(returnP => this.newPatient = returnP);
 
   }
-
-
-  selectedValue: string;
-  selectedCar: string;
 
 
 }

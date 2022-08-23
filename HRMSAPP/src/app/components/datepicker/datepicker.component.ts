@@ -7,10 +7,7 @@ import {FormGroup, FormControl} from '@angular/forms';
   styleUrls: ['./datepicker.component.css']
 })
 export class DatepickerComponent implements OnInit {
-  range = new FormGroup({
-    start: new FormControl<Date | null>(null),
-    end: new FormControl<Date | null>(null),
-  });
+  
   constructor() { }
 
   ngOnInit(): void {
