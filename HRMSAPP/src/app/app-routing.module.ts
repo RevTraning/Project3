@@ -10,6 +10,7 @@ import { ViewAppotemntsComponent } from './components/view-appotemnts/view-appot
 import { BookAppotmentsComponent } from './components/book-appotments/book-appotments.component';
 import { LabFormComponent } from './components/lab-form/lab-form.component';
 import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-results.component';
+import { DoctorSignupComponent } from './components/doctor-signup/doctor-signup.component';
 
 
 
@@ -18,7 +19,8 @@ import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-
 
 
 const routes: Routes = [
-  {path: 'patient-signup', component: PatientSignupComponent},
+  {path: 'signup/patientsignup', component: PatientSignupComponent},
+  {path: 'signup/doctorsignup', component: DoctorSignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'profile', component: ProfileComponent},
