@@ -5,14 +5,6 @@ export class ApptForm{
     patientID: number;
     docID: number;
 
-    //extracted from model 'Patient'
-    patientName: string;
-    patientEmail: string;
-    patientAge: number;
-    patientEthnicity: string;
-    patientSex: string;
-    patientMedications: string;
-
     dateAppointment: number;
     patientHeight: number;
     patientWeight: number;
@@ -21,7 +13,7 @@ export class ApptForm{
 
     doctorInitialComments: string;
     doctorExaminationData: string;
-    labResultsID: number; //big changes incoming, depends on API
+    labResultsID: number; 
 
     doctorAssessment: string;
     doctorTreatment: string;
@@ -32,11 +24,6 @@ export class ApptForm{
     dateCreated: number = 0, 
     patientID: number = 0, 
     docID: number = 0, 
-    patientName: string = "", 
-    patientAge: number = 0, 
-    patientEthnicity: string = "", 
-    patientSex: string = "",
-    patientMedications: string = "", 
     
     dateAppointment: number = 0, 
     patientHeight: number = 0, 
@@ -48,7 +35,7 @@ export class ApptForm{
 
     doctorInitialComments?: string, 
     doctorExaminationData?: string, 
-    labResultsID?: number, //get from JSON from lab API
+    labResultsID?: number, 
     doctorAssessment?: string, 
     doctorTreatment?: string, 
     doctorPrescription?: string,
@@ -57,16 +44,13 @@ export class ApptForm{
     this.dateCreated = dateCreated;
     this.patientID = patientID;
     this.docID = docID;
-    this.patientName = patientName;
-    this.patientAge = patientAge;
-    this.patientEthnicity = patientEthnicity;
-    this.patientSex = patientSex;
-    this.patientMedications = patientMedications;
+
     this.dateAppointment = dateAppointment;
     this.patientHeight = patientHeight;
     this.patientWeight = patientWeight;
     this.patientHabits = patientHabits;
     this.patientChiefComplaint = patientChiefComplaint;
+
     this.doctorInitialComments = doctorInitialComments;
     this.doctorExaminationData = doctorExaminationData;
     this.labResultsID = labResultsID;
