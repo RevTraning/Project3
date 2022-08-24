@@ -1,10 +1,13 @@
 export class ApptForm{
+
     formID: number;
     dateCreated: number;
     patientID: number;
     docID: number;
 
+    //extracted from model 'Patient'
     patientName: string;
+    patientEmail: string;
     patientAge: number;
     patientEthnicity: string;
     patientSex: string;
