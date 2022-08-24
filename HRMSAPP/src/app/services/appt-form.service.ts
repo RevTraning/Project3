@@ -22,5 +22,11 @@ export class ApptFormHttpService {
     return this.http.get<ApptForm>(`${this.url}apptForm`,{params:queryParams})
   }
 
+  getAllForms( PatientId:number): Observable<ApptForm> {
+    
+    return this.http.get<ApptForm>(`${this.url}apptForm/${PatientId}`)
+    
+  }
+
 
 }

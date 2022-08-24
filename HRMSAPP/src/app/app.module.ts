@@ -80,10 +80,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-<<<<<<< HEAD
-=======
     MatButtonModule,
->>>>>>> 0b3e67c2d63e41d4c05a80a4a0350e79de06aafd
     MatMenuModule,
     MatTableModule
     
