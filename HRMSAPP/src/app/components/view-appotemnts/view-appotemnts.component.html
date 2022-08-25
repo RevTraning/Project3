@@ -1,21 +1,22 @@
 <p>view-appotemnts works!</p>
 
-<table>
-    <thead>
-        <th>
-            Date
-        </th>
-        <th>
-            Time
-        </th>
-        <tH>
-            Doctor
-        </tH>
-    </thead>
-
-    <tbody *ngFor="let row of appotimentList ">
-        <td>{{row.date}}</td>
-        <td>{{row.time}}</td>
-        <td>{{row.doctor}}</td>
-    </tbody>
+<table mat-table [dataSource]="appotimentList" class="mat-elevation-z8 demo-table">
+    <!-- date Column -->
+    <ng-container matColumnDef="demo-position">
+      <th mat-header-cell *matHeaderCellDef> Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+    </ng-container>
+  
+    <!-- time Column -->
+    <ng-container matColumnDef="demo-name">
+      <th mat-header-cell *matHeaderCellDef> Time </th>
+      <td mat-cell *matCellDef="let element"> {{element.Time}} </td>
+    </ng-container>
+  
+    <!-- doctor Name Column -->
+    <ng-container matColumnDef="demo-weight">
+      <th mat-header-cell *matHeaderCellDef> Doctor </th>
+      <td mat-cell *matCellDef="let element"> {{element.doctorName}} </td>
+    </ng-container>
+  
 </table>
