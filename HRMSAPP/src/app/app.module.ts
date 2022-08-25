@@ -40,6 +40,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatToolbarModule} from '@angular/material/toolbar';
+
 
 @NgModule({
   declarations: [
@@ -82,7 +84,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatNativeDateModule,
     MatButtonModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatToolbarModule
     
   ],
 
