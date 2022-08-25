@@ -29,12 +29,11 @@ export class DoctorSignupComponent implements OnInit {
   hide = true;
 
   practices: practice[] = [
-    {value: 'American Indian or Alaska Native', viewValue: 'American Indian or Alaska Native'},
-    {value: 'Asian', viewValue: 'Asian'},
-    {value: 'Black or African American', viewValue: 'Black or African American'},
-    {value: 'Native Hawaiian or Other Pacific Islander', viewValue: 'Native Hawaiian or Other Pacific Islander'},
-    {value: 'White', viewValue: 'White'},
-    {value: 'Hispanic or Latino', viewValue: 'Hispanic or Latino'},
+    {value: 'Default', viewValue: 'Choose Field'},
+    {value: 'General Medicine', viewValue: 'General Medicine'},
+    {value: 'Orthology', viewValue: 'Orthology'},
+    {value: 'Dermitology', viewValue: 'Dermitology'},
+    {value: 'OB/GYN', viewValue: 'OB/GYN'}
   ];
 
  
@@ -57,9 +56,9 @@ export class DoctorSignupComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  DOB: Date;
+  DOB: Date ;
 
-  UTCDateOfBirth: number;
+  UTCDateOfBirth: number = Date.now();
   newDoctor: Doctor;
   addDoctor(){
     let newDoc: Doctor = new Doctor(this.firstFormGroup.controls.email.value, this.firstFormGroup.controls.password.value, this.firstFormGroup.controls.name.value, this.UTCDateOfBirth, Number(this.firstFormGroup.controls.license.value), this.secondFormGroup.controls.practice.value);

@@ -44,16 +44,16 @@
         </select>
       </mat-form-field>
 
-      <mat-form-field ngDefaultControl appearance="outline"  formControlName="doctor" ngDefaultControl>
-        <label for="doctorInput">How is your Doctor</label>
-        <select matNativeControl id="doctorInput" required>
-          <option *ngFor="let d of doctors" [value]="d.value" >{{d.viewValue}}</option>
+      <mat-form-field ngDefaultControl appearance="outline"  formControlName="gender" ngDefaultControl>
+        <label for="patSInput">Gender</label>
+        <select matNativeControl id="patSInput" required>
+          <option *ngFor="let d of gender" [value]="d.value" >{{d.viewValue}}</option>
         </select>
       </mat-form-field><br>
 
       <mat-form-field appearance="outline" formControlName="medication" ngDefaultControl>
         <label for="medInput">Any Medication</label>
-        <input matInput id="medInput" placeholder="..."  required>
+        <textarea type="textarea" matInput id="medInput" placeholder="..."  required></textarea>
       </mat-form-field>
       
       <div>
@@ -67,7 +67,7 @@
     <p>You are now done.</p>
     <div>
       <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="addPatient()">Submite</button>
+      <button mat-button (click)="addPatient()">Submit</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
       
     </div>
