@@ -42,14 +42,14 @@ public class LabResultService {
 
         return labResultRepo.findById(id)
                 .map(labResult-> {
-                    labResult.setLabResultsId(lres.getLabResultsId());
+                    labResult.setLabResultId(lres.getLabResultId());
                     labResult.setpId(lres.getpId());
                     labResult.setdId(lres.getdId());
                     labResult.setFormId(lres.getFormId());
                     return labResultRepo.save(labResult);
                 })
                 .orElseGet(() -> {
-                    lres.setLabResultsId(id);
+                    lres.setLabResultId(id);
                     return labResultRepo.save(lres);
                 });
     }

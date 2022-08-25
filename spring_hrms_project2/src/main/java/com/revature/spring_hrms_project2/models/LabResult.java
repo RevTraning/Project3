@@ -10,17 +10,17 @@ import javax.persistence.*;
 
 
     @Entity
-    @Table(name = "LabResult")
+    @Table(name = "labResult")
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "labResultsId")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "labResultId")
     public class LabResult {
 
         @Id
         @Column(name = "labResultsId")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int labResultsId;
+        private int labResultId;
 
         @ManyToOne
         @JoinColumn(name = "formId")
@@ -39,12 +39,12 @@ import javax.persistence.*;
         //Getters/Setters
 
 
-        public int getLabResultsId() {
-            return labResultsId;
+        public int getLabResultId() {
+            return labResultId;
         }
 
-        public void setLabResultsId(int labResultsId) {
-            this.labResultsId = labResultsId;
+        public void setLabResultId(int labResultsId) {
+            this.labResultId = labResultsId;
         }
 
         public ApptForm getFormId() {

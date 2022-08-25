@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
+
 public class LabResultDTO {
 
     //Not sure exactly what needs to be included here, dId was not present in DoctorDTO

@@ -33,7 +33,7 @@ import javax.validation.constraints.Pattern;
         private String email;
 
 
-        private int dateOfBirth;
+        private long dateOfBirth;
 
         @Length(min = 2)
         private String licenseN;
@@ -73,7 +73,7 @@ import javax.validation.constraints.Pattern;
             this.email = email;
         }
 
-        public int getDateOfBirth() {
+        public long getDateOfBirth() {
             return dateOfBirth;
         }
 
