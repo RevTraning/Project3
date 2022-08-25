@@ -1,15 +1,27 @@
-<p>patient-splash-page works!</p>
+<mat-toolbar color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="menu"  class="example-icon" aria-label="Example icon-button with menu icon"><mat-icon>menu</mat-icon></button>
+  <mat-menu #menu="matMenu" class="NavMen">
+      <ul id="navigationButtons">
+          <li routerLink="message">Messeage Providers</li>
+          <li routerLink="schedual">View Appotments</li>
+          <li routerLink="book"> book Appotments</li>
+          <li routerLink="labForm">Send info for lab test</li>
+          <li routerLink="results">Veiw Lab Result</li>
+      </ul>
+  </mat-menu>
+  <span>My App</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
 
 
 
-<button mat-button [matMenuTriggerFor]="menu">Nav Menu</button>
-<mat-menu #menu="matMenu" class="NavMen">
-  <ul id="navigationButtons">
-   <li routerLink="message">Messeage Providers</li>
-    <li routerLink="schedual">View Appotments</li>
-    <li routerLink="book"> book Appotments</li>
-    <li routerLink="labForm">Send info for lab test</li>
-    <li routerLink="results">Veiw Lab Result</li>
 
-</ul>
-</mat-menu>
+
+
+
