@@ -7,7 +7,7 @@ import { ApptForm } from '../models/apptForm';
 @Injectable({
   providedIn: 'root'
 })
-export class ApptFormHttpService {
+export class ApptFormService {
   url: string = 'http://localhost:8081/';
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -20,6 +20,12 @@ export class ApptFormHttpService {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("formID",formID);
     return this.http.get<ApptForm>(`${this.url}apptForm`,{params:queryParams})
+  }
+
+  getAllForms( PatientId:number): Observable<ApptForm> {
+    
+    return this.http.get<ApptForm>(`${this.url}apptForm/${PatientId}`)
+    
   }
 
 
