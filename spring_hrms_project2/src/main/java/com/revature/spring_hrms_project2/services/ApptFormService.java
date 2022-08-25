@@ -62,15 +62,16 @@ public class ApptFormService {
     public List<ApptForm>findByDate(long dateMin,long dateMax){
         return apptFormRepo.findByDate(dateMin,dateMax);
     }
+
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ApptForm add(ApptForm d){
         return apptFormRepo.save(d);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public ApptForm update(ApptForm d, int id){
+    public ApptForm update(ApptForm d, int formId){
 
-        return apptFormRepo.findById(id)
+        return apptFormRepo.findById(formId)
                 .map(apptForm-> {
                     apptForm.setDoctorAssessment(d.getDoctorAssessment());
                     apptForm.setDoctorExaminationData(d.getDoctorExaminationData());
@@ -80,7 +81,7 @@ public class ApptFormService {
                     return apptFormRepo.save(apptForm);
                 })
                 .orElseGet(() -> {
-                    d.setFormId(id);
+                    d.setFormId(formId);
                     return apptFormRepo.save(d);
                 });
     }

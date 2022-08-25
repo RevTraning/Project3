@@ -1,8 +1,6 @@
 package com.revature.spring_hrms_project2.repositories;
 
 import com.revature.spring_hrms_project2.models.ApptForm;
-import com.revature.spring_hrms_project2.models.Doctor;
-import jdk.nashorn.internal.ir.annotations.Reference;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

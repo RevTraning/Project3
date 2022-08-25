@@ -41,9 +41,9 @@ import javax.persistence.*;
 
         @Column(unique = true)
         private long dateAppointment;
-        @Length(min = 2)
+
         private double patientHeight;
-        @Length(min = 2)
+
         private double patientWeight;
         @Length(min = 2)
         private String patientHabits;
@@ -65,6 +65,7 @@ import javax.persistence.*;
         private String doctorTreatment;
         @Length(min = 2)
         private String doctorPrescription;
+
 
     public int getFormId() {
         return formId;
@@ -177,4 +178,5 @@ import javax.persistence.*;
     public void setDoctorPrescription(String doctorPrescription) {
         this.doctorPrescription = doctorPrescription;
     }
+
 }
