@@ -42,6 +42,10 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
+
 
 
 @NgModule({
@@ -87,7 +91,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatMenuModule,
     MatTableModule,
     MatToolbarModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatTabsModule,
+    MatSidenavModule
     
   ],
 
