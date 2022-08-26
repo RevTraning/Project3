@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApptFormHttpService } from 'src/app/services/appt-form.service';
+import { ApptFormService } from 'src/app/services/appt-form.service';
 
 @Component({
   selector: 'app-view-appotemnts',
@@ -8,7 +8,7 @@ import { ApptFormHttpService } from 'src/app/services/appt-form.service';
 })
 export class ViewAppotemntsComponent implements OnInit {
 
-  constructor(private formService: ApptFormHttpService) { }
+  constructor(private formService: ApptFormService) { }
 
   ngOnInit(): void {
   }
