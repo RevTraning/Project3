@@ -4,12 +4,13 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
 @Entity
 @Table(name = "patient")
@@ -37,6 +38,9 @@ public class Patient {
     private String ethnicity;
     @Length(min = 2)
     private String medications;
+
+    @OneToMany
+    private List<ApptForm> apptFormList;
 
     public int getpId() {
         return pId;
@@ -102,4 +106,11 @@ public class Patient {
         this.medications = medications;
     }
 
+    public List<ApptForm> getApptFormList() {
+        return apptFormList;
+    }
+
+    public void setApptFormList(List<ApptForm> apptFormList) {
+        this.apptFormList = apptFormList;
+    }
 }

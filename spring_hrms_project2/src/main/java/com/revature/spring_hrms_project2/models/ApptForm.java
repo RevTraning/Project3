@@ -28,7 +28,7 @@ import javax.persistence.*;
         @ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
         @JoinColumn(name = "pId")
         Patient pId;
-        @ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+       @ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
         @JoinColumn(name = "dId")
         Doctor dId;
 

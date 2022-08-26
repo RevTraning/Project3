@@ -11,6 +11,8 @@ import { BookAppotmentsComponent } from './components/book-appotments/book-appot
 import { LabFormComponent } from './components/lab-form/lab-form.component';
 import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-results.component';
 import { DoctorSignupComponent } from './components/doctor-signup/doctor-signup.component';
+import { combineLatest } from 'rxjs';
+import { AppointmentStartComponent } from './components/appointment-start/appointment-start.component';
 
 
 
@@ -31,6 +33,7 @@ const routes: Routes = [
   {path: 'book', component:BookAppotmentsComponent},
   {path: 'labForm', component:LabFormComponent},
   {path: 'results',component: ViewLabResultsComponent},
+  {path: "apptStart", component: AppointmentStartComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

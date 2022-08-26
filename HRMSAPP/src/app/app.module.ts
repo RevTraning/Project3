@@ -28,6 +28,7 @@ import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-
 import { DatepickerApComponent } from './components/datepicker-ap/datepicker-ap.component';
 
 //materials
+import {MatSidenavModule, } from '@angular/material/sidenav';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatIconModule} from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -43,7 +44,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 
 
@@ -93,11 +95,20 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatToolbarModule,
     MatSlideToggleModule,
     MatTabsModule,
-    MatSidenavModule
+    MatSidenavModule,
+    NgbModule,
+    MatProgressSpinnerModule
+  
+    
+    
     
   ],
 
-  providers: [CookieService, DatepickerApComponent, DatepickerComponent, MatDatepickerModule, MatNativeDateModule],
+  exports:[
+    MatSidenavModule
+  ],
+
+  providers: [CookieService, DatepickerApComponent, DatepickerComponent, MatDatepickerModule, MatNativeDateModule, MatSidenavModule],
 
   bootstrap: [AppComponent]
 })

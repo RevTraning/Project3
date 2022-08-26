@@ -11,8 +11,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.List;
 
-    @Entity
+@Entity
     @Table(name = "doctor")
     @Data
     @AllArgsConstructor
@@ -42,6 +43,9 @@ import javax.validation.constraints.Pattern;
 
         @Length(min = 2)
         private String practice;
+
+        @OneToMany
+        private List<ApptForm> apptFormList;
 
         //getters and setters
 

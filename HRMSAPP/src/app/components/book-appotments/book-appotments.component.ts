@@ -28,10 +28,10 @@ export class BookAppotmentsComponent implements OnInit {
 
   docs: docId[] = [
     {value: 'Default', viewValue: 'Choose Field'},
-    {value: 'General Medicine', viewValue: 'General Medicine'},
-    {value: 'Orthology', viewValue: 'Orthology'},
-    {value: 'Dermitology', viewValue: 'Dermitology'},
-    {value: 'OB/GYN', viewValue: 'OB/GYN'}
+    {value: '1', viewValue: 'General Medicine'},
+    {value: '2', viewValue: 'Orthology'},
+    {value: '3', viewValue: 'Dermitology'},
+    {value: '4', viewValue: 'OB/GYN'}
   ];
 
  
