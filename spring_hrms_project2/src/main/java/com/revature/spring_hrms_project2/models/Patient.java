@@ -21,10 +21,12 @@ public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(name = "pId")
     private int pId;
     @Length(min = 2)
     private String name;
     @Email
+    @Column(unique=true)
     private String email;
     @NotBlank
     private String password;

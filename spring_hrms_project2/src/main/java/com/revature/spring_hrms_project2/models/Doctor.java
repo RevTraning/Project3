@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -30,6 +31,7 @@ import javax.validation.constraints.Pattern;
         private String password;
 
         @Email
+        @Column(unique=true)
         private String email;
 
 
@@ -40,6 +42,8 @@ import javax.validation.constraints.Pattern;
 
         @Length(min = 2)
         private String practice;
+
+        //getters and setters
 
         public int getdId() {
             return dId;
@@ -77,7 +81,7 @@ import javax.validation.constraints.Pattern;
             return dateOfBirth;
         }
 
-        public void setDateOfBirth(int dateOfBirth) {
+        public void setDateOfBirth(long dateOfBirth) {
             this.dateOfBirth = dateOfBirth;
         }
 

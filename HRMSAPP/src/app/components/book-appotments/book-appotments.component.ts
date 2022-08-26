@@ -57,6 +57,8 @@ export class BookAppotmentsComponent implements OnInit {
   pid: number = 1;// have to change once we establish a login
   UTCDateOfAppontment: number = Date.now();
   newAppt: ApptForm;
+
+
   addApptForm(){
     let newApptForm: ApptForm = new ApptForm(
       this.dateCreated,
@@ -67,6 +69,7 @@ export class BookAppotmentsComponent implements OnInit {
       Number(this.firstFormGroup.controls.patientWeight.value), 
       this.firstFormGroup.controls.patientHabits.value,
       this.secondFormGroup.controls.patientChiefComplaint.value,);
+    console.log("first log: "); //debug statements
     console.log(newApptForm);
     this.apptFormHttp.addApptForm(newApptForm).subscribe(returnA => this.newAppt = returnA);
 

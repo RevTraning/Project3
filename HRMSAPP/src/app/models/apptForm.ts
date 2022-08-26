@@ -1,3 +1,4 @@
+//<><> 14 fields
 export class ApptForm{
 
     formID: number;
@@ -13,8 +14,6 @@ export class ApptForm{
 
     doctorInitialComments: string;
     doctorExaminationData: string;
-    labResultsID: number; 
-
     doctorAssessment: string;
     doctorTreatment: string;
     doctorPrescription: string;
@@ -35,7 +34,6 @@ export class ApptForm{
 
     doctorInitialComments?: string, 
     doctorExaminationData?: string, 
-    labResultsID?: number, 
     doctorAssessment?: string, 
     doctorTreatment?: string, 
     doctorPrescription?: string,
@@ -53,7 +51,6 @@ export class ApptForm{
 
     this.doctorInitialComments = doctorInitialComments;
     this.doctorExaminationData = doctorExaminationData;
-    this.labResultsID = labResultsID;
     this.doctorAssessment = doctorAssessment;
     this.doctorTreatment = doctorTreatment;
     this.doctorPrescription = doctorPrescription;

@@ -17,8 +17,8 @@ public class ApptFormDTO {
 
     private long dateCreated;
 
-    private int pId;
-    private int dId;
+    private Patient pId;
+    private Doctor dId;
 
     private long dateAppointment;
 
@@ -26,6 +26,8 @@ public class ApptFormDTO {
     private double patientWeight;
     private String patientHabits;
     private String patientChiefComplaint;
+
+    //getters and setters
 
     public long getDateCreated() {
         return dateCreated;
@@ -35,19 +37,19 @@ public class ApptFormDTO {
         this.dateCreated = dateCreated;
     }
 
-    public int getpId() {
+    public Patient getpId() {
         return pId;
     }
 
-    public void setpId(int pId) {
+    public void setpId(Patient pId) {
         this.pId = pId;
     }
 
-    public int getdId() {
+    public Doctor getdId() {
         return dId;
     }
 
-    public void setdId(int dId) {
+    public void setdId(Doctor dId) {
         this.dId = dId;
     }
 

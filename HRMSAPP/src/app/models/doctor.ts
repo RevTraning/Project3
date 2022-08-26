@@ -8,7 +8,16 @@ export class Doctor{
     practice: string;
    
 
-    constructor(email: string ="", password: string ="", name?: string, dateOfBirth?: number, licenseN?: number, practice?: string, dId?: number){
+    constructor(
+        email: string ="", 
+        password: string ="", 
+        name?: string, 
+        dateOfBirth?: number, 
+        licenseN?: number, 
+        practice?: string, 
+        dId?: number
+        )
+        {
         this.dId = dId;
         this.name = name;
         this.email = email;

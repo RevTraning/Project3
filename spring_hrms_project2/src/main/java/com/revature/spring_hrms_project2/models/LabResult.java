@@ -22,15 +22,15 @@ import javax.persistence.*;
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int labResultId;
 
-        @ManyToOne
+        @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
         @JoinColumn(name = "formId")
         ApptForm formId;
 
-        @ManyToOne
+        @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
         @JoinColumn(name = "patId")
         Patient pId;
 
-        @ManyToOne
+        @ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
         @JoinColumn(name = "docId")
         Doctor dId;
 

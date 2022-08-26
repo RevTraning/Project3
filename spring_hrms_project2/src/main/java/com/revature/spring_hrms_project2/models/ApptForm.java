@@ -24,12 +24,16 @@ import javax.persistence.*;
         private int formId;
 
         private long dateCreated;
-        @ManyToOne
+        //@OneToMany(mappedBy="pId", fetch=FetchType.LAZY)
+        @ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
         @JoinColumn(name = "pId")
         Patient pId;
-        @ManyToOne
+        @ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
         @JoinColumn(name = "dId")
         Doctor dId;
+
+
+
 
 /*
         private Patient patientName;
