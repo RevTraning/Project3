@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApptForm } from '../models/apptForm';
 
@@ -8,12 +8,27 @@ import { ApptForm } from '../models/apptForm';
   providedIn: 'root'
 })
 export class ApptFormService {
-  url: string = 'http://localhost:8081/';
+  url: string = 'http://localhost:5000/api/';
+
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type' : 'application/json'})
+  }
   constructor(private http: HttpClient, private router: Router) { }
 
   addApptForm(apptForm: ApptForm): Observable<ApptForm>{
-    let body: any = JSON.stringify(apptForm);
-    return this.http.post<ApptForm>(`${this.url}apptForm`,body);
+    let bodyE: any = 
+    
+    {
+      "patientChiefComplaint":apptForm.patientChiefComplaint,
+      "patientHabits":apptForm.patientHabits,
+      "patientHeight":apptForm.patientHeight,
+      "patientWeight":apptForm.patientWeight,
+      "pId":apptForm.patientID,
+      "dId":apptForm.docID,
+    }
+
+    let body: any = JSON.stringify(bodyE);
+    return this.http.post<ApptForm>(`${this.url}apptForm`,body, this.httpOptions);
   }
 
   getApptForm(formID: number): Observable<ApptForm>{

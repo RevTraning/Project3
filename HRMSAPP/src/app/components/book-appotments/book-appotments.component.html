@@ -1,1 +1,69 @@
-<p>book-appotments works!</p>
+<mat-stepper #stepper>
+    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel >First Part</ng-template>
+
+        <mat-form-field ngDefaultControl appearance="outline" formControlName="dId" ngDefaultControl>
+          <label for="dIdInput">Who is your Doctor</label>
+          <select matNativeControl id="dIdInput"   required>
+            <option *ngFor="let p of docs" [value]="p.value" >{{p.viewValue}}</option>
+          </select>
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" formControlName="patientHeight" ngDefaultControl>
+          <label for="patientHeightInput">Patient Height</label>
+          <input type="text" matInput id="patientHeightInput" placeholder="name"  required>
+        </mat-form-field>
+  
+        
+        <mat-form-field appearance="outline" formControlName="patientWeight" class="input-space" ngDefaultControl>
+          <label for="patientWeightInput">Patient Weight</label>
+          <input matInput id="patientWeightInput" placeholder="exaple@capsul.net"   required>
+          <mat-icon matSuffix>email</mat-icon>
+        </mat-form-field><br>
+
+        <mat-form-field appearance="outline" formControlName="patientHabits" class="input-space" ngDefaultControl>
+            <label for="patientHabitsInput">Patient Habits</label>
+            <input matInput id="patientHabitsInput" placeholder="..."  required>
+        </mat-form-field><br>
+        
+        
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" errorMessage="missing required fields.">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out the following information</ng-template>
+
+        <mat-form-field appearance="outline" formControlName="patientChiefComplaint" ngDefaultControl>
+          <label for="patientChiefComplaintInput">Patient Chief Complaint</label>
+          <textarea type="textarea" matInput id="patientChiefComplaintInput" placeholder="..."  required></textarea>
+        </mat-form-field>
+
+        
+
+        <app-datepicker-ap>
+        </app-datepicker-ap>
+  
+        
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="addApptForm()">Submite</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        
+      </div>
+    </mat-step>
+  </mat-stepper>
