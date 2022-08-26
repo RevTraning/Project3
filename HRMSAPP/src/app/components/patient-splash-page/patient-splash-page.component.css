@@ -1,8 +1,9 @@
 
 
 
+
 #navigationButtons{
-   
+
     list-style: none;
     text-align: center;
     justify-content:center ;
@@ -47,8 +48,12 @@ li{
 }
 #navigationButtons li:hover{
     background-color: aquamarine;
-}
+
+} 
+
+
 
 .example-spacer {
     flex: 1 1 auto;
 }
+

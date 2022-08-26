@@ -12,7 +12,7 @@ interface ethnicitie {
   viewValue: string;
 }
 
-interface doctor {
+interface gender {
   value: string;
   viewValue: string;
 }
@@ -31,6 +31,7 @@ export class PatientSignupComponent implements OnInit {
   hide = true;
 
   ethnicities: ethnicitie[] = [
+    {value: 'Other', viewValue: 'Choose'},
     {value: 'American Indian or Alaska Native', viewValue: 'American Indian or Alaska Native'},
     {value: 'Asian', viewValue: 'Asian'},
     {value: 'Black or African American', viewValue: 'Black or African American'},
@@ -39,13 +40,11 @@ export class PatientSignupComponent implements OnInit {
     {value: 'Hispanic or Latino', viewValue: 'Hispanic or Latino'},
   ];
 
-  doctors: doctor[] = [
-    {value: '1', viewValue: '1'},
-    {value: '2', viewValue: '2'},
-    {value: '3', viewValue: '3'},
-    {value: '4', viewValue: '4'},
-    {value: '5', viewValue: '5'},
-    {value: '6', viewValue: '6'},
+  gender: gender[] = [
+    {value: 'Other', viewValue: 'Choose'},
+    {value: 'Male', viewValue: 'Male'},
+    {value: 'Female', viewValue: 'Female'},
+    {value: 'Other', viewValue: 'Other'}
   ];
 
 
@@ -57,7 +56,7 @@ export class PatientSignupComponent implements OnInit {
     
   });
   secondFormGroup = this.formBuilder.group({
-   doctor: ['doctor', Validators.required],
+   gender: ['gender', Validators.required],
    ethnicity: ['ethnicity', Validators.required],
    medication: ['medication', Validators.required]
   });
@@ -67,15 +66,22 @@ export class PatientSignupComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  DOB: number ;//= this.date.getTime();
+  DOB: number = Date.now() ;//= this.date.getTime();
 
 
   newPatient: Patient;
   addPatient(){
-    let newPat: Patient = new Patient(this.firstFormGroup.controls.email.value, this.firstFormGroup.controls.password.value, this.firstFormGroup.controls.name.value, this.DOB, this.secondFormGroup.controls.ethnicity.value, this.secondFormGroup.controls.medication.value);
+    let newPat: Patient = new Patient(
+      this.firstFormGroup.controls.email.value, 
+      this.firstFormGroup.controls.password.value, 
+      this.firstFormGroup.controls.name.value, 
+      this.DOB, 
+      this.secondFormGroup.controls.ethnicity.value, 
+      this.secondFormGroup.controls.gender.value,
+      this.secondFormGroup.controls.medication.value
+      );
     console.log(newPat);
     this.patHttp.addPatient(newPat).subscribe(returnP => this.newPatient = returnP);
-
   }
 
 

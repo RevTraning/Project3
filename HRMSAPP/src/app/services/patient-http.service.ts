@@ -1,22 +1,46 @@
 import { Injectable } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Patient } from '../models/patient';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientHttpService {
-  url: string = 'http://localhost:8081/';
+  url: string = 'http://localhost:5000/api/';
+
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type' : 'application/json'})
+  }
 
   constructor(private http: HttpClient, private router: Router) { }
 
   addPatient(patient: Patient): Observable<Patient>{
     
-    let body: any = JSON.stringify(patient);
-    return this.http.post<Patient>(`${this.url}patient`,body);
+    let bodyE: any = 
+    
+    {
+      "dateOfBirth":patient.dateOfBirth,
+      "email":patient.email,
+      "ethnicity":patient.ethnicity,
+      "gender":patient.gender,
+      "medications":patient.medications,
+      "name":patient.name,
+      "password":patient.password
+    }
+    
+    
+
+    let jsonBody = JSON.stringify(bodyE);
+
+    console.log(bodyE); //debug block
+    console.log(jsonBody);
+
+    return this.http.post<Patient>(`${this.url}patient/add`,jsonBody,this.httpOptions);
+    
 
   }
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Doctor } from '../models/doctor';
 
@@ -8,13 +8,33 @@ import { Doctor } from '../models/doctor';
   providedIn: 'root'
 })
 export class DoctorHttpService {
-  url: string = 'http://localhost:8081/';
+  url: string = 'http://localhost:5000/api/';
+
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type' : 'application/json'})
+  }
+
   constructor(private http: HttpClient, private router: Router) { }
 
-  addDoctor(patient: Doctor): Observable<Doctor>{
+  addDoctor(doctor: Doctor): Observable<Doctor>{
     
-    let body: any = JSON.stringify(patient);
-    return this.http.post<Doctor>(`${this.url}doctor`,body);
+    let bodyD: any = 
+    
+    {
+      "dateOfBirth":1, //update back-end to use long instead of int
+      "email":doctor.email,
+      "licenseN":doctor.licenseN,
+      "practice":doctor.practice,
+      "name":doctor.name,
+      "password":doctor.password
+    }
+    
+    let jsonBody = JSON.stringify(bodyD);
+    
+    console.log(bodyD); //debug block
+    console.log(jsonBody);
+
+    return this.http.post<Doctor>(`${this.url}doctor/add`,jsonBody,this.httpOptions);
 
   }
 

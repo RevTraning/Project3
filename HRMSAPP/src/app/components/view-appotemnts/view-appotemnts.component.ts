@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApptFormService } from 'src/app/services/appt-form.service';
+import {  ApptFormService } from 'src/app/services/appt-form.service';
 
 @Component({
   selector: 'app-view-appotemnts',
@@ -12,10 +12,21 @@ export class ViewAppotemntsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  appotimentList :any []=[];
+  appotimentList :any;
 
   getAppotiments(id :number){
-    let res=this.formService.getAllForms(id)
+    this.formService.getAllForms(id).subscribe(
+      {
+        next:data=>{
+          console.log(data)
+          this.appotimentList=data;
+      },
+      error: data=>{
+        console.log(data)
+      }
+
+    
+  })
     
   }
 
