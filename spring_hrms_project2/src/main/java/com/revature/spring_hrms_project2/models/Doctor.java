@@ -22,6 +22,8 @@ import java.util.List;
     public class Doctor {
 
         @Id
+//        @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "incrementby")
+//        @SequenceGenerator(name="incrementby", sequenceName="incrementby")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int dId;
 
@@ -47,7 +49,18 @@ import java.util.List;
         @OneToMany
         private List<ApptForm> apptFormList;
 
-        //getters and setters
+        //Constructor
+
+//    public Doctor(int dId, String name, String password, String email, long dateOfBirth, String licenseN, String practice) {
+//        this.dId = dId + 100;
+//        this.name = name;
+//        this.password = password;
+//        this.email = email;
+//        this.dateOfBirth = dateOfBirth;
+//        this.licenseN = licenseN;
+//        this.practice = practice;
+//    }
+//getters and setters
 
         public int getdId() {
             return dId;

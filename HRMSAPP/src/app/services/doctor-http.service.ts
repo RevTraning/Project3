@@ -45,5 +45,10 @@ export class DoctorHttpService {
     return this.http.get<Doctor>(`${this.url}doctor`,{params:queryParams})
   }
 
+  getDoctorById(docId:number): Observable<Doctor>{
+    let queryParams = new HttpParams();
+    return this.http.get<Doctor>(`${this.url}patient/${docId}`)
+  }
+
 
 }

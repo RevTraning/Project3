@@ -20,6 +20,7 @@ export class LoginService {
         (response) => {
           console.log(response);
           this.cookie.set('user',`${response}`);
+          window.localStorage.setItem("userFlag", '0');
           // this.movieList = [];
           // response.forEach(movie => {
           //   this.movieList.push(movie);
@@ -39,6 +40,7 @@ export class LoginService {
         (response) => {
           console.log(response);
           this.cookie.set('user',`${response}`);
+          window.localStorage.setItem("userFlag", '1');
           // this.movieList = [];
           // response.forEach(movie => {
           //   this.movieList.push(movie);
@@ -57,5 +59,6 @@ export class LoginService {
 
     this.cookie.deleteAll();
     this.router.navigate(['home']);
+    window.localStorage.clear();
   }
 }

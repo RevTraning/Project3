@@ -28,7 +28,7 @@ import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-
 import { DatepickerApComponent } from './components/datepicker-ap/datepicker-ap.component';
 
 //materials
-import {MatSidenavModule } from '@angular/material/sidenav';
+import {MatSidenavModule, } from '@angular/material/sidenav';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatIconModule} from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -45,6 +45,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AppointmentInProgressComponent } from './components/appointment-in-progress/appointment-in-progress.component';
 
 
 
@@ -69,7 +70,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
     DoctorSignupComponent,
     DatepickerComponent,
-    DatepickerApComponent
+    DatepickerApComponent,
+    AppointmentInProgressComponent
 
   ],
   imports: [

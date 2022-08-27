@@ -24,13 +24,10 @@ export class LoginComponent implements OnInit {
   email: string;
   password: string;
   login(){
-    if(this.isChecked) {this.loginDoctor();
-    } else {
-      let newPat: Patient = new Patient(this.email, this.password)
-      this.logserv.login(newPat);
-      if(!this.logserv.validLogin){
-        window.alert("Invalid Login");
-      }
+    if(this.isChecked) {
+      this.loginDoctor();
+    } else { 
+      this.loginPatient(); 
     }
   }
 
@@ -38,8 +35,16 @@ export class LoginComponent implements OnInit {
     let newDoc: Doctor = new Doctor(this.email, this.password)
     this.logserv.loginDoc(newDoc);
     if(!this.logserv.validLogin){
-      window.alert("Invalid Login");
+      window.alert("Invalid Login");  
     }
+  }
+
+  loginPatient(){
+    let newPat: Patient = new Patient(this.email, this.password)
+      this.logserv.login(newPat);
+      if(!this.logserv.validLogin){
+        window.alert("Invalid Login");
+      }
   }
 
   updateCheckbox(){

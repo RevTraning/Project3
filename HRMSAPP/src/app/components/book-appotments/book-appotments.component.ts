@@ -3,7 +3,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { CookieService } from 'ngx-cookie-service';
 import { ApptForm } from 'src/app/models/apptForm';
-import { ApptFormService } from 'src/app/services/appt-form.service';
+import { ApptFormHttpService } from 'src/app/services/appt-form.service';
 
 
 interface docId{
@@ -48,7 +48,7 @@ export class BookAppotmentsComponent implements OnInit {
   });
 
 
-  constructor(private apptFormHttp: ApptFormService, private formBuilder: FormBuilder, private cookie: CookieService ) { }
+  constructor(private apptFormHttp: ApptFormHttpService, private formBuilder: FormBuilder, private cookie: CookieService ) { }
 
   ngOnInit(): void {
   }

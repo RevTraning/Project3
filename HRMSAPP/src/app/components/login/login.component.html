@@ -4,7 +4,7 @@
         <p>
             <mat-form-field appearance="outline" class="input-size-my">
                 <label for="userInput">Email</label>
-                <input type="txet" id="userInput" matInput  [(ngModel)] ="email">
+                <input type="txet" id="userInput" matInput placeholder="exaple@capsul.net" [(ngModel)] ="email">
                 <mat-icon matSuffix> email</mat-icon>
               </mat-form-field>
     
@@ -13,7 +13,7 @@
         <p>
             <mat-form-field appearance="outline" class="input-size-my">
                 <label for="passwordInput">Password</label>
-                <input matInput [type]="hide ? 'password' : 'text'" id="passwordInput"  [(ngModel)] ="password">
+                <input matInput [type]="hide ? 'password' : 'text'" id="passwordInput"  placeholder="password" [(ngModel)] ="password">
                 <button mat-icon-button matSuffix (click) ="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed] ="hide">
                   <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>

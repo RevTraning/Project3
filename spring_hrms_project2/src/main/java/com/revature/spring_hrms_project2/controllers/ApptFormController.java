@@ -31,8 +31,8 @@ public class ApptFormController {
     @GetMapping
     public ResponseEntity<?> getApptForm(@RequestParam(required=false, name = "dateMin") final Long dateMin
                                         ,@RequestParam(required=false, name = "dateMax") final Long dateMax
-                                        ,@RequestParam(required=false, name = "pid") final Integer pid
-                                        ,@RequestParam(required=false, name = "did") final Integer did){
+                                        ,@RequestParam(required=false, name = "pId") final Integer pid
+                                        ,@RequestParam(required=false, name = "dId") final Integer did){
 
         if (dateMin != null && dateMax != null) {
 

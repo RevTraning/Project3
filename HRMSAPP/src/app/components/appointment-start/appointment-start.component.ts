@@ -3,7 +3,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { CookieService } from 'ngx-cookie-service';
 import { ApptForm } from 'src/app/models/apptForm';
-import { ApptFormService } from 'src/app/services/appt-form.service';
+import { ApptFormHttpService } from 'src/app/services/appt-form.service';
 import { debounce } from 'rxjs';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
@@ -17,12 +17,10 @@ export class AppointmentStartComponent implements OnInit {
 active=1;
 ngbNavOutlet;
 
-  constructor(private ApptService: ApptFormService, private formBuilder: FormBuilder, private cookie: CookieService ) { }
+  constructor(private ApptService: ApptFormHttpService, private formBuilder: FormBuilder, private cookie: CookieService ) { }
 
   ngOnInit(): void {
   }
-  name :string="patient"
-  email: string="email@email.com"
 
  
   }

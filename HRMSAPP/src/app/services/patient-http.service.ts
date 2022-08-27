@@ -50,4 +50,9 @@ export class PatientHttpService {
     queryParams = queryParams.append("password",pass);
     return this.http.get<Patient>(`${this.url}patient`,{params:queryParams})
   }
+
+  getPatientById(patId:number): Observable<Patient>{
+    let queryParams = new HttpParams();
+    return this.http.get<Patient>(`${this.url}patient/${patId}`)
+  }
 }

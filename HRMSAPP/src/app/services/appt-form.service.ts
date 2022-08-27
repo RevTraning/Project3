@@ -5,11 +5,14 @@ import { Observable } from 'rxjs';
 import { ApptForm } from '../models/apptForm';
 import { Patient } from '../models/patient';
 import { Doctor } from '../models/doctor';
+import { query } from '@angular/animations';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ApptFormService {
+export class ApptFormHttpService {
   url: string = 'http://localhost:5000/api/';
 
   httpOptions = {
@@ -67,9 +70,22 @@ export class ApptFormService {
   }
 
 
-  getAllForms( PatientId:number): Observable<ApptForm> {
+  getAllFormsforPatient( patId:number): Observable<ApptForm[]> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("pId", patId)
+    return this.http.get<ApptForm[]>(`${this.url}apptForm`)
     
-    return this.http.get<ApptForm>(`${this.url}apptForm/${PatientId}`)
+  }
+
+  getAllFormsforDoctor( docId:number): Observable<ApptForm[]> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("dId", docId)
+    return this.http.get<ApptForm[]>(`${this.url}apptForm`)
+  }
+
+  getAllForms(): Observable<ApptForm[]> {
+    
+    return this.http.get<ApptForm[]>(`${this.url}apptForm/`)
     
   }
 
