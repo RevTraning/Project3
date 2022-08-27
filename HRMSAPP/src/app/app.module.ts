@@ -28,7 +28,7 @@ import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-
 import { DatepickerApComponent } from './components/datepicker-ap/datepicker-ap.component';
 
 //materials
-import {MatSidenavModule, } from '@angular/material/sidenav';
+import {MatSidenavModule } from '@angular/material/sidenav';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatIconModule} from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';

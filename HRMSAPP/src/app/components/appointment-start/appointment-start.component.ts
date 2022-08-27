@@ -21,6 +21,8 @@ ngbNavOutlet;
 
   ngOnInit(): void {
   }
+  name :string="patient"
+  email: string="email@email.com"
 
  
   }
