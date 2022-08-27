@@ -19,12 +19,20 @@
     /* text-align: center;
     justify-items: center; */
 
-    margin-left: 500px;
-    margin-top: 150px;
-
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 75px;
+    align-self: center;
+    align-items: center;
 }
 
 .input-size-my{
     width: 300px;
     
+}
+.text-center{
+    text-align: center;
+    align-content: center;
 }

@@ -1,3 +1,13 @@
 .mat-tab-group {
     margin-bottom: 48px;
 }
+
+.card{
+    width: 400px;
+    height: 400px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 75px;
+    align-self: center;
+
+}
