@@ -13,13 +13,15 @@ export class LoginService {
 
   constructor(private patHttp: PatientHttpService, private docHttp: DoctorHttpService, private router: Router, private cookie: CookieService) { }
   validLogin: Boolean;
-
+ 
   login(patient: Patient){
     if(patient.email && patient.password){
       this.patHttp.getPatient(patient.email, patient.password).subscribe(
         (response) => {
-          console.log(response);
+          // console.log(response);
           this.cookie.set('user',`${response}`);
+          window.localStorage.setItem("userName", response.name);
+          window.localStorage.setItem("userEmail", response.email);
           window.localStorage.setItem("userFlag", '0');
           // this.movieList = [];
           // response.forEach(movie => {
@@ -38,7 +40,7 @@ export class LoginService {
     if(doctor.email && doctor.password){
       this.docHttp.getDoctor(doctor.email, doctor.password).subscribe(
         (response) => {
-          console.log(response);
+          // console.log(response);
           this.cookie.set('user',`${response}`);
           window.localStorage.setItem("userFlag", '1');
           // this.movieList = [];

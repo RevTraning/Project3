@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'signup/doctorsignup', component: DoctorSignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'profile', component: ProfileComponent},
+  {path: 'pr', component: ProfileComponent},
   {path: 'home', component: HomeComponent},
   {path: 'patient', component:PatientSignupComponent},
   {path: 'message',component:MessageProviderComponent },
@@ -33,7 +33,7 @@ const routes: Routes = [
   {path: 'book', component:BookAppotmentsComponent},
   {path: 'labForm', component:LabFormComponent},
   {path: 'results',component: ViewLabResultsComponent},
-  {path: "apptStart", component: AppointmentStartComponent},
+  {path: "profile", component: AppointmentStartComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

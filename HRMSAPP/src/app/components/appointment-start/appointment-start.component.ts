@@ -14,16 +14,31 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
   styleUrls: ['./appointment-start.component.css']
 })
 export class AppointmentStartComponent implements OnInit {
-active=1;
-ngbNavOutlet;
-
+// active=1;
+// ngbNavOutlet;
+  // nameBe: any = JSON.parse(this.cookie.get('user')); 
   constructor(private ApptService: ApptFormHttpService, private formBuilder: FormBuilder, private cookie: CookieService ) { }
 
   ngOnInit(): void {
+    console.log(this.cookie.get('user')); 
+    let currentN =window.localStorage.getItem('userName');
+    let currentE =window.localStorage.getItem('userEmail');
+    this.name = "Name: "+ currentN;
+    this.email = "Email: " + currentE;
   }
-  name :string="patient"
-  email: string="email@email.com"
+  
+  name: string;
+  email: string;
+  
+  
 
+
+  // wrightToHtml(){
+  //   console.log('nameBe:');
+  //   console.log(this.nameBe);
+  //   this.name="Name: "+ this.nameBe.name;
+  //   this.email="Email: "+ this.nameBe.email;
+  // }
  
   }
 
