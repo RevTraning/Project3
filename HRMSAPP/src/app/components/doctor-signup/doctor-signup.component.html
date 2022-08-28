@@ -1,4 +1,4 @@
-<mat-stepper #stepper>
+<mat-stepper #stepper class="signUPForm">
     <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel >First Part</ng-template>
@@ -55,10 +55,12 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
-      <div>
+     
+      <div class="submit">
+
+         <p>You are now ready to sumbit your form.</p>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="addDoctor()">Submite</button>
+        <button mat-button (click)="addDoctor()">Submit</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
         
       </div>
