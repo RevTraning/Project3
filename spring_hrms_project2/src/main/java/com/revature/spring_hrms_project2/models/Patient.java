@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,7 +28,7 @@ public class Patient {
     @Length(min = 2)
     private String name;
     @Email
-    @Column(unique=true)
+    @Column(unique = true)
     private String email;
     @NotBlank
     private String password;
@@ -39,8 +40,8 @@ public class Patient {
     @Length(min = 2)
     private String medications;
 
-    @OneToMany
-    private List<ApptForm> apptFormList;
+    @OneToMany(mappedBy = "pId",fetch = FetchType.LAZY)
+    private List<ApptForm> apptFormList= new ArrayList<>();
 
     public int getpId() {
         return pId;
@@ -105,12 +106,13 @@ public class Patient {
     public void setMedications(String medications) {
         this.medications = medications;
     }
-
-    public List<ApptForm> getApptFormList() {
-        return apptFormList;
-    }
-
-    public void setApptFormList(List<ApptForm> apptFormList) {
-        this.apptFormList = apptFormList;
-    }
 }
+
+//    public List<ApptForm> getApptFormList() {
+//        return apptFormList;
+//    }
+//
+//    public void setApptFormList(List<ApptForm> apptFormList) {
+//        this.apptFormList = apptFormList;
+//    }
+//}

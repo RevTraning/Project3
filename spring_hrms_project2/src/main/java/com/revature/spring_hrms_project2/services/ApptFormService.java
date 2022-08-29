@@ -4,6 +4,8 @@ package com.revature.spring_hrms_project2.services;
 import com.revature.spring_hrms_project2.exceptions.UserNotFoundException;
 import com.revature.spring_hrms_project2.models.ApptForm;
 import com.revature.spring_hrms_project2.repositories.ApptFormRepo;
+import com.revature.spring_hrms_project2.repositories.DoctorRepo;
+import com.revature.spring_hrms_project2.repositories.PatientRepo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,15 @@ public class ApptFormService {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
     private ApptFormRepo apptFormRepo;
+    private DoctorRepo dr;
+    private PatientRepo pr;
 
     @Autowired
-    public ApptFormService(ApptFormRepo apptFormRepo) {
+    public ApptFormService(ApptFormRepo apptFormRepo, DoctorRepo dr, PatientRepo pr) {
         super();
         this.apptFormRepo = apptFormRepo;
+        this.dr=dr;
+        this.pr=pr;
     }
 
     @Transactional(readOnly = true)
@@ -65,6 +71,11 @@ public class ApptFormService {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ApptForm add(ApptForm d){
+        if(d.getdId() !=null && d.getpId()!=null){
+            pr.save(d.getpId());
+            dr.save(d.getdId());
+        }
+
         return apptFormRepo.save(d);
     }
 

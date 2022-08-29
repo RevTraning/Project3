@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -46,8 +47,8 @@ import java.util.List;
         @Length(min = 2)
         private String practice;
 
-        @OneToMany
-        private List<ApptForm> apptFormList;
+        @OneToMany(mappedBy = "dId")
+        private List<ApptForm> apptFormList= new ArrayList<>();
 
         //Constructor
 
