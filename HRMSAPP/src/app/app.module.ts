@@ -8,8 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Bootstrap
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgbDateNativeUTCAdapter,NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbDatepicker} from '@ng-bootstrap/ng-bootstrap';
 //Components
 
 import { PatientSignupComponent } from './components/patient-signup/patient-signup.component';
@@ -110,7 +110,7 @@ import { AppointmentInProgressComponent } from './components/appointment-in-prog
     MatSidenavModule
   ],
 
-  providers: [CookieService, DatepickerApComponent, DatepickerComponent, MatDatepickerModule, MatNativeDateModule, MatSidenavModule],
+  providers: [CookieService, DatepickerApComponent, DatepickerComponent, MatDatepickerModule, MatNativeDateModule, MatSidenavModule,  NgbDateNativeUTCAdapter, NgbDatepicker],
 
   bootstrap: [AppComponent]
 })

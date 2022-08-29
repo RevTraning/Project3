@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button [matMenuTriggerFor]="menu"  class="example-icon" aria-label="Example icon-button with menu icon"><mat-icon>menu</mat-icon></button>
+  <button mat-icon-button *ngIf="logser.validLogin == true" [matMenuTriggerFor]="menu"  class="example-icon" aria-label="Example icon-button with menu icon"><mat-icon>menu</mat-icon></button>
   <mat-menu #menu="matMenu" class="NavMen">
       <ul id="navigationButtons">
           <li routerLink="message">Messeage Providers</li>
@@ -11,9 +11,9 @@
   </mat-menu>
   <span>My App</span>
   <span class="example-spacer"></span>
-  <button routerLink="signup" mat-raised-button class="button-color">Sign up <mat-icon>assignment</mat-icon></button>
-  <button routerLink="login" mat-raised-button class="button-color">Login <mat-icon>assignment</mat-icon></button>
-  <button routerLink="home" mat-raised-button class="button-color">Logout <mat-icon>assignment</mat-icon></button>
+  <button routerLink="signup" *ngIf="logser.validLogin == false" mat-raised-button class="button-color">Sign up <mat-icon>assignment</mat-icon></button>
+  <button routerLink="login" *ngIf="logser.validLogin == false" mat-raised-button class="button-color">Login <mat-icon>assignment</mat-icon></button>
+  <button routerLink="home"  *ngIf="logser.validLogin == true" mat-raised-button class="button-color">Logout <mat-icon>assignment</mat-icon></button>
 
 
 

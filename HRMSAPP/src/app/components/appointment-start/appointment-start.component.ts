@@ -7,6 +7,7 @@ import { ApptFormHttpService } from 'src/app/services/appt-form.service';
 import { debounce } from 'rxjs';
 import { MatSidenav } from '@angular/material/sidenav';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-appointment-start',
@@ -17,14 +18,14 @@ export class AppointmentStartComponent implements OnInit {
 // active=1;
 // ngbNavOutlet;
   // nameBe: any = JSON.parse(this.cookie.get('user')); 
-  constructor(private ApptService: ApptFormHttpService, private formBuilder: FormBuilder, private cookie: CookieService ) { }
+  constructor(private ApptService: ApptFormHttpService, private formBuilder: FormBuilder, private cookie: CookieService, public logser: LoginService ) { }
 
   ngOnInit(): void {
-    console.log(this.cookie.get('user')); 
-    let currentN =window.localStorage.getItem('userName');
-    let currentE =window.localStorage.getItem('userEmail');
-    this.name = "Name: "+ currentN;
-    this.email = "Email: " + currentE;
+    // console.log(this.cookie.get('user')); 
+    // let currentN =window.localStorage.getItem('userName');
+    // let currentE =window.localStorage.getItem('userEmail');
+    this.name = "Name: "+ this.logser.currentUserName;
+    this.email = "Email: " + this.logser.currentUserEmail;
   }
   
   name: string;

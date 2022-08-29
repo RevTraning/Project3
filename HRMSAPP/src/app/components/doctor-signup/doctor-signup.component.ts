@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Doctor } from 'src/app/models/doctor';
 import { DoctorHttpService } from 'src/app/services/doctor-http.service';
 import { debounce } from 'rxjs';
+import { DatepickerComponent } from '../datepicker/datepicker.component';
 
 interface practice{
   value: string;
@@ -51,14 +52,14 @@ export class DoctorSignupComponent implements OnInit {
   });
 
 
-  constructor(private docHttp: DoctorHttpService, private formBuilder: FormBuilder, private cookie: CookieService ) { }
+  constructor(private docHttp: DoctorHttpService, private formBuilder: FormBuilder, private cookie: CookieService , private date: DatepickerComponent) { }
 
   ngOnInit(): void {
   }
   
   DOB: Date ;
 
-  UTCDateOfBirth: number = Date.now();
+  UTCDateOfBirth: number = this.date.utcDate.getTime();
   newDoctor: Doctor;
   addDoctor(){
     let newDoc: Doctor = new Doctor(this.firstFormGroup.controls.email.value, this.firstFormGroup.controls.password.value, this.firstFormGroup.controls.name.value, this.UTCDateOfBirth, Number(this.firstFormGroup.controls.license.value), this.secondFormGroup.controls.practice.value);

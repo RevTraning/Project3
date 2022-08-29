@@ -1,4 +1,4 @@
-<mat-form-field appearance="outline" class="example-form-field">
+<!-- <mat-form-field appearance="outline" class="example-form-field">
     <mat-label>Date of Birth</mat-label>
     <input matInput [matDatepicker]="datepicker">
     <mat-hint>MM/DD/YYYY</mat-hint>
@@ -9,6 +9,28 @@
         <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
       </mat-datepicker-actions>
     </mat-datepicker>
-</mat-form-field>
+</mat-form-field> -->
+
+
+<h4>What is your Birth Day</h4>
+<ngb-datepicker ngDefaultControl #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+</ngb-datepicker>
+        
+<ng-template #t let-date let-focused="focused">
+    <span class="custom-day"
+        [class.focused]="focused"
+        [class.range]="isRange(date)"
+        [class.faded]="isHovered(date) || isInside(date)"
+        (mouseenter)="hoveredDate = date"
+        (mouseleave)="hoveredDate = null">
+    {{ date.day }}
+    </span>
+</ng-template>
+        
+<hr> 
+        
+<!-- <pre>From: {{ fromDate | json }} </pre>
+<pre>To: {{ toDate | json }} </pre> -->
+
   
 

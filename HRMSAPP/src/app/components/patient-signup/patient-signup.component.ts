@@ -71,7 +71,7 @@ export class PatientSignupComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  DOB: number = Date.now() ;//= this.date.getTime();
+  DOB: number = this.date.utcDate.getTime();//= this.date.getTime();
 
 
   newPatient: Patient;

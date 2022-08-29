@@ -4,6 +4,7 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { CookieService } from 'ngx-cookie-service';
 import { ApptForm } from 'src/app/models/apptForm';
 import { ApptFormHttpService } from 'src/app/services/appt-form.service';
+import { DatepickerApComponent } from '../datepicker-ap/datepicker-ap.component';
 
 
 interface docId{
@@ -48,14 +49,14 @@ export class BookAppotmentsComponent implements OnInit {
   });
 
 
-  constructor(private apptFormHttp: ApptFormHttpService, private formBuilder: FormBuilder, private cookie: CookieService ) { }
+  constructor(private apptFormHttp: ApptFormHttpService, private formBuilder: FormBuilder, private cookie: CookieService , private date: DatepickerApComponent) { }
 
   ngOnInit(): void {
   }
   
   dateCreated: number = Date.now();
   pid: number = 1;// have to change once we establish a login
-  UTCDateOfAppontment: number = Date.now();
+  UTCDateOfAppontment: number = this.date.utcDate.getTime();
   newAppt: ApptForm;
 
 

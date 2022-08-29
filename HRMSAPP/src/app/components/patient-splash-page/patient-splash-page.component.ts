@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login.service';
 
 
 
@@ -10,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PatientSplashPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public logser: LoginService) { }
 
   ngOnInit(): void {
   }
