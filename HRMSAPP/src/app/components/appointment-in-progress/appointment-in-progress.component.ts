@@ -13,10 +13,12 @@ import { debounce } from 'rxjs';
 import { Doctor } from 'src/app/models/doctor';
 
 
-interface Symptoms {
+interface apptFormSelector {
   value: number;
   viewValue: string;
 }
+
+ 
 
 
 @Component({
@@ -35,28 +37,84 @@ export class AppointmentInProgressComponent implements OnInit {
 
   //Display patient object information plus ApptForm Initialized Fields
 
+  patName: string;
+  patEmail: string;
+  patDOB: number;
+  patEthnicity: string;
+  patGender: string;
+  patMedications: string;
+
+  formApptDate: number;
+  patHeight: number;
+  patWeight: number;
+  patHabits: string;
+  patComplaint: string;
+
+  availApptForms:ApptForm[] = [];
+  currApptForm:ApptForm;
+  currPat: Patient;
+  currDoc: Doctor = JSON.parse(this.cookie.get(("user")));
+  docID = this.currDoc.dId;
+
+  apptformList: ApptForm[] = [];
+  
+  
+
+  displayAllDocForms() {
+    //This function will need to call our HTTP Service for returning all movies.
+    let currentDoctor:Doctor = JSON.parse(this.cookie.get(("user")))
+    let docID = currentDoctor.dId;
+    this.apptFormHttp.getAllFormsforDoctor(docID).subscribe(
+      (response) => {
+        console.log(response);
+        this.apptformList = response;
+      }
+    );
+    //this.populateApptTable(this.apptformList);    
+  }
+
+  populateApptForm(){
+    for(let i of this.availApptForms) {
+      this.apptForms.push({value: i.formID, viewValue: String(i.dateAppointment)})
+    }
+
+  }
+
+
+  
+
+  apptForms: apptFormSelector[] = [
+    {value: -1, viewValue: "Choose"},
+  ];
+
   firstFormGroup = this.formBuilder.group({
-    name: ['patName', Validators.required],
-    email: ['patEmail', Validators.required], 
-    dateOfBirth: ['patDOB', Validators.required], 
-    ethnicity: ['patEthnicity', Validators.required], 
-    gender: ['patGender', Validators.required], 
-    medications: ['patMedications', Validators.required], 
 
-    dateAppointment: ['formApptDate', Validators.required],
-    patientHeight: ['patHeight', Validators.required],
-    patientWeight: ['patWeight', Validators.required],
-    patientHabits: ['patHabits', Validators.required],
-    patientChiefComplaint: ['patComplaint', Validators.required],
+    apptSelect: ['apptSelect', Validators.required],
 
-    doctorInitialComments: ['docInitComments', Validators.required]
+    // patName: ['patName', Validators.required],
+    // patEmail: ['patEmail', Validators.required], 
+    // patDOB: ['patDOB', Validators.required], 
+    // patEthnicity: ['patEthnicity', Validators.required], 
+    // patGender: ['patGender', Validators.required], 
+    // patMedications: ['patMedications', Validators.required], 
+
+    // formApptDate: ['formApptDate', Validators.required],
+    // patHeight: ['patHeight', Validators.required],
+    // patWeight: ['patWeight', Validators.required],
+    // patHabits: ['patHabits', Validators.required],
+    // patComplaint: ['patComplaint', Validators.required],
+
+    docInitComments: ['docInitComments', Validators.required]
   });
 
   
+
+
+  
   secondFormGroup = this.formBuilder.group({
-    doctorExaminationData: ['docExam', Validators.required],
+    docExam: ['docExam', Validators.required],
     //API Data
-    symptoms: ['APIsymptoms', Validators.required],
+    APIsymptoms: ['APIsymptoms', Validators.required],
     //DOB get from patient
     //Gender get from patient
     // Name: ['APIname', Validators.required],
@@ -67,9 +125,9 @@ export class AppointmentInProgressComponent implements OnInit {
   });
 
   thirdFormGroup = this.formBuilder.group({
-    doctorAssessment: ['docAssessment', Validators.required],
-    doctorTreatment: ['docTreatment', Validators.required],
-    doctorPrescription: ['docPrescription', Validators.required]
+    docAssessment: ['docAssessment', Validators.required],
+    docTreatment: ['docTreatment', Validators.required],
+    docPrescription: ['docPrescription', Validators.required]
   });
 
 
@@ -84,30 +142,6 @@ export class AppointmentInProgressComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // availApptForms:ApptForm[];
-  // currApptForm:ApptForm;
-  // currPat: Patient;
-  // currDoc: Doctor = JSON.parse(this.cookie.get(("user")));
-  // docID = this.currDoc.dId;
-
-
-
-  // localGetAllApptForm(){
-  //   this.apptFormHttp.getAllFormsforDoctor(this.docID).subscribe(
-  //     (response) => {
-  //       console.log(response);
-  //       this.availApptForms = response;
-  //     })
-  // }
-
-  // localGetPatient(){
-  //   //this.currApptForm = selection.value
-  //   this.patHttp.getPatientById(this.currApptForm.patientID).subscribe(
-  //     (response) => {
-  //       console.log(response);
-  //       this.currPat = response;
-  //     }
-  //   )
-  // }
+  
 
 }

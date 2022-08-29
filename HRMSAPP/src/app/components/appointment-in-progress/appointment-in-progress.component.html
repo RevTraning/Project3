@@ -4,76 +4,18 @@
 <!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
 <h1>Showing page</h1>
 <mat-stepper #stepper>
+  
   <mat-step [stepControl]="firstFormGroup" errorMessage="Initial Comments Required">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel >Subjective</ng-template>
 
       <!--<><><><><><><><><><>--Populate from Patient--<><><><><><><><><><>-->
-      <mat-form-field appearance="outline" formControlName="patName" ngDefaultControl>
-        <label for="patName1">Name</label>
-        <input type="text" matInput id="patName1" placeholder="name"  required>
-      </mat-form-field><br>
 
-      <mat-form-field appearance="outline" formControlName="patEmail" class="input-space" ngDefaultControl>
-        <label for="patEmail1">Email</label>
-        <input matInput id="patEmail1" placeholder="exaple@capsul.net"   required>
-        <mat-icon matSuffix>email</mat-icon>
-      </mat-form-field><br>
-
-      <mat-form-field appearance="outline" formControlName="patDOB" class="input-space" ngDefaultControl>
-        <label for="patDOB1">DOB</label>
-        <input matInput id="patDOB1" placeholder="exaple@capsul.net"   required>
-        <mat-icon matSuffix>DOB</mat-icon>
-      </mat-form-field><br>
-
-      <mat-form-field appearance="outline" formControlName="patEthnicity" class="input-space" ngDefaultControl>
-        <label for="patEthnicity1">Ethnicity</label>
-        <input matInput id="patEthnicity1" placeholder="exaple@capsul.net"   required>
-        <mat-icon matSuffix>Ethnicity</mat-icon>
-      </mat-form-field><br>
-
-      <mat-form-field appearance="outline" formControlName="patGender" class="input-space" ngDefaultControl>
-        <label for="patGender1">Gender</label>
-        <input matInput id="patGender1" placeholder="exaple@capsul.net"   required>
-        <mat-icon matSuffix>Gender</mat-icon>
-      </mat-form-field><br>
-
-      <mat-form-field appearance="outline" formControlName="patMedications" class="input-space" ngDefaultControl>
-        <label for="patMedications1">Medications</label>
-        <input matInput id="patMedications1" placeholder="exaple@capsul.net"   required>
-        <mat-icon matSuffix>Medications</mat-icon>
-      </mat-form-field><br>
-
-      <!--<><><><><><><><><><>--Populate from ApptForm--<><><><><><><><><><>-->
-
-      <mat-form-field appearance="outline" formControlName="formApptDate" class="input-space" ngDefaultControl>
-        <label for="formApptDate1">Appointment Date</label>
-        <input matInput id="formApptDate1" placeholder="exaple@capsul.net"   required>
-        <mat-icon matSuffix>Appointment Date</mat-icon>
-      </mat-form-field><br>
-
-      <mat-form-field appearance="outline" formControlName="patHeight" class="input-space" ngDefaultControl>
-        <label for="patHeight1">Patient Height</label>
-        <input matInput id="patHeight1" placeholder="exaple@capsul.net"   required>
-        <mat-icon matSuffix>Patient Height</mat-icon>
-      </mat-form-field><br>
-
-      <mat-form-field appearance="outline" formControlName="patWeight" class="input-space" ngDefaultControl>
-        <label for="patWeight1">Patient Weight</label>
-        <input matInput id="patWeight1" placeholder="exaple@capsul.net"   required>
-        <mat-icon matSuffix>Patient Weight</mat-icon>
-      </mat-form-field><br>
-
-      <mat-form-field appearance="outline" formControlName="patHabits" class="input-space" ngDefaultControl>
-        <label for="patHabits1">Patient Habits</label>
-        <input matInput id="patHabits1" placeholder="exaple@capsul.net"   required>
-        <mat-icon matSuffix>Patient Habits</mat-icon>
-      </mat-form-field><br>
-
-      <mat-form-field appearance="outline" formControlName="patComplaint" class="input-space" ngDefaultControl>
-        <label for="patComplaint1">Patient Chief Complaint</label>
-        <input matInput id="patComplaint1" placeholder="exaple@capsul.net"   required>
-        <mat-icon matSuffix>Patient Chief Complaint</mat-icon>
+      <mat-form-field ngDefaultControl appearance="outline"  formControlName="apptSelect" ngDefaultControl>
+        <label for="aSInput">Select Form</label>
+        <select matNativeControl id="aSInput" required>
+          <option *ngFor="let d of apptForms" [value]="d.value" >{{d.viewValue}}</option>
+        </select>
       </mat-form-field><br>
 
       <!--<><><><><><><><><><>--Doc Initial Comments--<><><><><><><><><><>-->
