@@ -1,0 +1,55 @@
+.centerform{
+    justify-content: center;
+    align-items: center;
+    /* padding-top: 15px;
+    padding-bottom: 15px; */
+    text-align: center;
+}
+
+.mat-stepper-horizontal {
+    margin-top: 8px;
+}
+  
+.mat-form-field {
+    margin-top: 16px;
+}
+
+
+.input-space{
+    margin: 0px 5px;
+}
+
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-form-field {
+    margin-top: 16px;
+  }
+
+
+  .input-space{
+    margin: 0px 5px;
+  }
+
+  form{
+    margin-top: 50px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .submit{
+    margin: 0 auto;
+    text-align: center;
+
+  }
+
+  .submit p{
+    margin-top: 25px;
+    margin-bottom: 50px;
+    font-size: 50px;
+  }
+  
+  .submit button{
+    border:2px solid black;
+    margin-left: 10px;
+  }

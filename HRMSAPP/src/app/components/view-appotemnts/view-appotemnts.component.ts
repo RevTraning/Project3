@@ -7,6 +7,7 @@ import { Patient } from 'src/app/models/patient';
 import { PatientHttpService } from 'src/app/services/patient-http.service';
 import { CookieService } from 'ngx-cookie-service';
 
+
 /*
 We could make this one page for both docs and patients
 essential information is appt time, doc name, pat name
@@ -27,12 +28,17 @@ export class ViewAppotemntsComponent implements OnInit {
     private cookie: CookieService, 
     private patService: PatientHttpService, 
     private docService:DoctorHttpService
+  
     ) { }
 
   ngOnInit(): void {
     let localVar = (window.localStorage.getItem("userFlag"));
     if(localVar == "1") { this.displayAllDocForms}
     else if (localVar == "0") { this.displayAllPatForms}
+    //this.dataSource = this.pushTable;
+
+    
+    
   }
 
   apptformList: ApptForm[] = []; 
@@ -110,8 +116,9 @@ export class ViewAppotemntsComponent implements OnInit {
 
 
   
-  displayedColumns: string[] = ['apptDate', 'docName', 'patName'];
-  dataSource = this.pushTable;
+  displayedColumns: string[] = ['date', 'Time', 'doctorName'];
+  
+  dataSource =[{date:25, Time:251, doctorName: "flex"}];
 
 
 

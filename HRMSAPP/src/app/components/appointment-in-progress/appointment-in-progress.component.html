@@ -1,107 +1,108 @@
-<p>appointment-in-progress works!</p>
-<!--
+
+<!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
+<!--<><><><><><><><><><>--Subjective Portion--<><><><><><><><><><><><>-->
+<!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
+<h1>Showing page</h1>
 <mat-stepper #stepper>
+  
+  <mat-step [stepControl]="firstFormGroup" errorMessage="Initial Comments Required">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel >Subjective</ng-template>
 
-    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
-        <form [formGroup]="firstFormGroup">
-          <ng-template matStepLabel >Pick a Patient</ng-template>
-          
-          
-          <mat-form-field appearance="outline" formControlName="name" ngDefaultControl>
-            <label for="courseNameInput">Name</label>
-            <input type="text" matInput id="courseNameInput" placeholder="name"  required>
-          </mat-form-field>
-    
-          
-          <mat-form-field appearance="outline" formControlName="email" class="input-space" ngDefaultControl>
-            <label for="emailInput">Email</label>
-            <input matInput id="emailInput" placeholder="exaple@capsul.net"   required>
-            <mat-icon matSuffix>email</mat-icon>
-          </mat-form-field><br>
-    
-          
-          <mat-form-field appearance="outline" formControlName="password" ngDefaultControl>
-            <label for="passwordInput">Password</label>
-            <input matInput [type]="hide ? 'password' : 'text'" id="passwordInput"  placeholder="password"  required>
-            <button mat-icon-button matSuffix (click) ="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed] ="hide">
-              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-          </mat-form-field>
+      <!--<><><><><><><><><><>--Populate from Patient--<><><><><><><><><><>-->
 
+      <mat-form-field ngDefaultControl appearance="outline"  formControlName="apptSelect" ngDefaultControl>
+        <label for="aSInput">Select Form</label>
+        <select matNativeControl id="aSInput" required>
+          <option *ngFor="let d of apptForms" [value]="d.value" >{{d.viewValue}}</option>
+        </select>
+      </mat-form-field><br>
 
+      <!--<><><><><><><><><><>--Doc Initial Comments--<><><><><><><><><><>-->
+      <mat-form-field appearance="outline" formControlName="docInitComments" class="input-space" ngDefaultControl>
+        <label for="docInitComments1">Initial Comments</label>
+        <input matInput id="docInitComments1" placeholder="exaple@capsul.net"   required>
+        <mat-icon matSuffix>Initial Comments</mat-icon>
+      </mat-form-field><br>
 
-    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel >Subjective</ng-template>
-        <mat-form-field appearance="outline" formControlName="name" ngDefaultControl>
-          <label for="courseNameInput">Name</label>
-          <input type="text" matInput id="courseNameInput" placeholder="name"  required>
-        </mat-form-field>
-  
-        
-        <mat-form-field appearance="outline" formControlName="email" class="input-space" ngDefaultControl>
-          <label for="emailInput">Email</label>
-          <input matInput id="emailInput" placeholder="exaple@capsul.net"   required>
-          <mat-icon matSuffix>email</mat-icon>
-        </mat-form-field><br>
-  
-        
-        <mat-form-field appearance="outline" formControlName="password" ngDefaultControl>
-          <label for="passwordInput">Password</label>
-          <input matInput [type]="hide ? 'password' : 'text'" id="passwordInput"  placeholder="password"  required>
-          <button mat-icon-button matSuffix (click) ="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed] ="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
-  
-       <app-datepicker></app-datepicker>
-  
-  
-        
-        
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    
-    <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out the following information</ng-template>
-        <mat-form-field ngDefaultControl appearance="outline" formControlName="ethnicity" ngDefaultControl>
-          <label for="ethnicityInput">Ethnicity</label>
-          <select matNativeControl id="ethnicityInput"   required>
-            <option *ngFor="let e of ethnicities" [value]="e.value" >{{e.viewValue}}</option>
-          </select>
-        </mat-form-field>
-  
-        <mat-form-field ngDefaultControl appearance="outline"  formControlName="gender" ngDefaultControl>
-          <label for="patSInput">Gender</label>
-          <select matNativeControl id="patSInput" required>
-            <option *ngFor="let d of gender" [value]="d.value" >{{d.viewValue}}</option>
-          </select>
-        </mat-form-field><br>
-  
-        <mat-form-field appearance="outline" formControlName="medication" ngDefaultControl>
-          <label for="medInput">Any Medication</label>
-          <textarea type="textarea" matInput id="medInput" placeholder="..."  required></textarea>
-        </mat-form-field>
-        
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="finishAppointment()">Submit</button>
-        <button mat-button (click)="stepper.reset()">Reset</button>
-        
+        <button mat-button matStepperNext>Next</button>
       </div>
-    </mat-step>
+    </form>
+  </mat-step>
+
+
+<!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
+<!--<><><><><><><><><><>--Objective Portion--<><><><><><><><><><><><>-->
+<!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
+  <mat-step>
+    <mat-step [stepControl]="secondFormGroup" errorMessage="Exam notes required."></mat-step>
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel >Objective</ng-template>
+
+    <mat-form-field appearance="outline" formControlName="docExam" class="input-space" ngDefaultControl>
+      <label for="docExam1">Examination Data</label>
+      <input matInput id="docExam1" placeholder="exaple@capsul.net"   required>
+      <mat-icon matSuffix>Examination Data</mat-icon>
+    </mat-form-field><br>
+
+  <!--<><><><><><><><><><>--API Integration (Symptom Checker)--<><><><><><><><><><>-->
+    <mat-form-field appearance="outline" formControlName="APIsymptoms" class="input-space" ngDefaultControl>
+      <label for="APIsymptoms1">API Doot Scoot Boogie</label>
+      <input matInput id="APIsymptoms1" placeholder="exaple@capsul.net"   required>
+      <mat-icon matSuffix>API Doot Scoot Boogie</mat-icon>
+    </mat-form-field><br>
+
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+    </form>
+  </mat-step>
+
+  <!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
+  <!--<><><><><><><><><><>--Assessment / Plan--<><><><><><><><><><><><>-->
+  <!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
+
+  <mat-step>
+    <mat-step [stepControl]="thirdFormGroup" errorMessage="Assessment/Treatment Required"></mat-step>
+    <form [formGroup]="thirdFormGroup">
+    <ng-template matStepLabel>Assessment & Plan</ng-template>
+
+    <mat-form-field appearance="outline" formControlName="docAssessment" class="input-space" ngDefaultControl>
+      <label for="docAssessment1">Assessment / Diagnosis</label>
+      <input matInput id="docAssessment1" placeholder="exaple@capsul.net"   required>
+      <mat-icon matSuffix>Assessment / Diagnosis</mat-icon>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="outline" formControlName="docTreatment" class="input-space" ngDefaultControl>
+      <label for="docTreatment1">Treatment Plan</label>
+      <input matInput id="docTreatment1" placeholder="exaple@capsul.net"   required>
+      <mat-icon matSuffix>Treatment Plan</mat-icon>
+    </mat-form-field><br>
+
+    <mat-form-field appearance="outline" formControlName="docPrescription" class="input-space" ngDefaultControl>
+      <label for="docPrescription1">Prescription</label>
+      <input matInput id="docPrescription1" placeholder="exaple@capsul.net"   required>
+      <mat-icon matSuffix>Prescription</mat-icon>
+    </mat-form-field><br>
+
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step>
+    <ng-template matStepLabel>Submit Completed Form</ng-template>
+   
+    <div class="submit">
+       <p>Appointment Complete</p>
+      <button mat-button matStepperPrevious>Back</button>
+      <!-- <button mat-button (click)="addPatient()">Submit</button>
+      <button mat-button (click)="stepper.reset()">Reset</button> -->
+    </div>
+  </mat-step>
 </mat-stepper>
--->
+
+

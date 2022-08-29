@@ -37,7 +37,7 @@
   <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Fill out the following information</ng-template>
-      <mat-form-field ngDefaultControl appearance="outline" formControlName="ethnicity" ngDefaultControl>
+      <mat-form-field ngDefaultControl appearance="outline" formControlName="ethnicity" ngDefaultControl class="Ethnictiy-selectBox">
         <label for="ethnicityInput">Ethnicity</label>
         <select matNativeControl id="ethnicityInput"   required>
           <option *ngFor="let e of ethnicities" [value]="e.value" >{{e.viewValue}}</option>

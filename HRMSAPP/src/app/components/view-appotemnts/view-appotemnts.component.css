@@ -1,10 +1,23 @@
-th{
-    margin-right: 40px;;
-    width: 50px;
+th {
+   
+    
     border-bottom: 2px solid black;
+    margin: 0 auto;
+    
+
 }
+
 
 table td{
     border-bottom: 2px solid black;
     
 }
+table{
+   
+    width: 300px;
+    margin: 0 auto;
+    
+
+}
+
+
