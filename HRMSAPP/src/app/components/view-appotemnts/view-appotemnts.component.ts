@@ -60,9 +60,8 @@ export class ViewAppotemntsComponent implements OnInit {
     let docID = currentDoctor.dId;
     this.formService.getAllFormsforDoctor(docID).subscribe(
       (response) => {
-        console.log(response);
-        this.apptformList = response;
-        this.populateApptTable(this.apptformList);    
+       
+        this.populateApptTable(response);    
       }
     );
     
@@ -103,26 +102,19 @@ export class ViewAppotemntsComponent implements OnInit {
     this.populateApptTable
   }
 
-  populateApptTable(apptformList){
+  populateApptTable(apptformList: ApptForm[]){
     let count=0;
-    console.log("this is step 3")
-    console.log(apptformList)
     for(let i of apptformList) {
       console.log("the value of i is")
       console.log(i)
       let patID = i.patientID
-      this.localGetPatient(patID);
+      let patName1=this.localGetPatient(patID);
       let docID = i.docID
-      this.localGetDoctor(docID);
-      this.apptTable.apptDate = i.dateAppointment;
-      this.apptTable.docName = this.docName;
-      this.apptTable.patName = this.patName;
-      
-      this.pushTable[count]={dateAppointment: i.dateAppointment, Time: i.dateCreated, doctorName:i.patientHeight};
+      let docName1=this.localGetDoctor(docID);
+      this.pushTable[count]={dateAppointment: i.dateAppointment, Time: i.dateCreated, doctorName:docName1,
+      patName: patName1};
       console.log("the thing being added to the array is ${this.pushTable}")
       console.log(this.pushTable)
-    
-
       count+=1;
     }
     console.log(`the array for the table is`)
@@ -135,7 +127,7 @@ export class ViewAppotemntsComponent implements OnInit {
       (response) => {
         console.log(response);
         
-        this.patName = response.name;
+        return this.patName = response.name;
       }
     );
   }
@@ -145,7 +137,7 @@ export class ViewAppotemntsComponent implements OnInit {
       (response) => {
         console.log(response);
         
-        this.docName = response.name;
+        return this.docName = response.name;
       }
     );
   }
@@ -153,7 +145,7 @@ export class ViewAppotemntsComponent implements OnInit {
 
 
   
-  displayedColumns: string[] = ['date', 'Time', 'doctorName'];
+  displayedColumns: string[] = ['date', 'doctorName','patName'];
   
   dataSource =[{date:25, Time:251, doctorName: "flex"}];
 

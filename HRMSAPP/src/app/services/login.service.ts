@@ -20,7 +20,7 @@ export class LoginService {
     if(patient.email && patient.password){
       this.patHttp.getPatient(patient.email, patient.password).subscribe(
         (response) => {
-          // console.log(response);
+           console.log(`the response for the log in service is j${response}`);
           this.cookie.set('user',`${response}`);
           this.currentUserEmail = response.email;
           this.currentUserName = response.name;
