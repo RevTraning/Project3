@@ -1,1 +1,18 @@
 <p>lab-form works!</p>
+
+
+<section class="example-section" [formGroup]="toppings">
+    <h4>Select your toppings:</h4>
+    <p><mat-checkbox formControlName="pepperoni">Pepperoni</mat-checkbox></p>
+    <p><mat-checkbox formControlName="extracheese">Extra Cheese</mat-checkbox></p>
+    <p><mat-checkbox formControlName="mushroom">Mushroom</mat-checkbox></p>
+</section>
+
+
+
+<mat-form-field appearance="fill">
+    <mat-label>Toppings</mat-label>
+    <mat-select [formControl]="top" multiple>
+      <mat-option *ngFor="let sym of symtoms" [value]="sym">{{sym}}</mat-option>
+    </mat-select>
+</mat-form-field>

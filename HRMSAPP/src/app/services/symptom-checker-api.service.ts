@@ -9,12 +9,14 @@ import { LabResults } from '../models/labResults';
 export class SymptomCheckerAPIService {
 
   constructor(private http:HttpClient) { }
-
+  httpOptions = {
+	headers: new HttpHeaders({'Content-Type' : 'application/json'})
+  }
 
 getSymptoms() {
     let queryParams = new HttpParams();
     const http = require("https");
-
+	
     const options = {
 	    "method": "GET",
 	    "hostname": "priaid-symptom-checker-v1.p.rapidapi.com",
