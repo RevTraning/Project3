@@ -17,6 +17,8 @@ export class LoginService {
   currentUserName: string = "";
   currentUserId: number=0;
   currentUserBd: number = 0;
+  currentTime: number = Date.now();
+  currentUserBy: number = 0;
   currentUserG: string = "";
   login(patient: Patient){
     if(patient.email && patient.password){
@@ -28,6 +30,7 @@ export class LoginService {
           this.currentUserName = response.name;
           this.currentUserId=response.pId;
           this.currentUserBd = response.dateOfBirth;
+          this.currentUserBy =  1980; 
           this.currentUserG = response.gender;
           window.localStorage.setItem("userFlag", '0');
           // this.movieList = [];
