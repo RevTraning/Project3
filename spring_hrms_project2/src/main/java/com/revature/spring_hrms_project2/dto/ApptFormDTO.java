@@ -18,7 +18,9 @@ public class ApptFormDTO {
     private long dateCreated;
 
     private int pId;
+    private String patName;
     private int dId;
+    private String docName;
 
     private long dateAppointment;
 
@@ -29,6 +31,22 @@ public class ApptFormDTO {
 
     //getters and setters
 
+
+    public String getPatName() {
+        return patName;
+    }
+
+    public void setPatName(String patName) {
+        this.patName = patName;
+    }
+
+    public String getDocName() {
+        return docName;
+    }
+
+    public void setDocName(String docName) {
+        this.docName = docName;
+    }
 
     public long getDateCreated() {
         return dateCreated;

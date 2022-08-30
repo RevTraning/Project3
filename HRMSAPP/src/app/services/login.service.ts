@@ -16,8 +16,6 @@ export class LoginService {
   currentUserEmail: string = "";
   currentUserName: string = "";
   currentUserId: number=0;
-  currentUserBD: number = 0;
-  currentUserG: string = "";
   login(patient: Patient){
     if(patient.email && patient.password){
       this.patHttp.getPatient(patient.email, patient.password).subscribe(
@@ -27,8 +25,6 @@ export class LoginService {
           this.currentUserEmail = response.email;
           this.currentUserName = response.name;
           this.currentUserId=response.pId;
-          this.currentUserBD= response.dateOfBirth;
-          this.currentUserG = response.gender;
           // window.localStorage.setItem("userName", response.name);
           // window.localStorage.setItem("userEmail", response.email);
           window.localStorage.setItem("userFlag", '0');
@@ -76,8 +72,6 @@ export class LoginService {
     this.currentUserEmail = "";
     this.currentUserName = "";
     this.currentUserId = 0;
-    this.currentUserBD = 0;
-    this.currentUserG = "";
     this.cookie.deleteAll();
     this.router.navigate(['home']);
     window.localStorage.clear();

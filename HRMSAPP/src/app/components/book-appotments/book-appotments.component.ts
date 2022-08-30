@@ -68,7 +68,9 @@ export class BookAppotmentsComponent implements OnInit {
     let newApptForm: ApptForm = new ApptForm(
       this.dateCreated,
       this.pid,// this will change when login is functinal
+      this.logINServ.currentUserName,
       Number(this.firstFormGroup.controls.dId.value),
+      "docName",//todo
       this.UTCDateOfAppontment,
       Number(this.firstFormGroup.controls.patientHeight.value), 
       Number(this.firstFormGroup.controls.patientWeight.value), 
