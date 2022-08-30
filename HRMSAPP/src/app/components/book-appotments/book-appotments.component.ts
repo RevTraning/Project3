@@ -6,6 +6,9 @@ import { ApptForm } from 'src/app/models/apptForm';
 import { ApptFormHttpService } from 'src/app/services/appt-form.service';
 import { DatepickerApComponent } from '../datepicker-ap/datepicker-ap.component';
 import { LoginService } from 'src/app/services/login.service';
+import { DoctorHttpService } from 'src/app/services/doctor-http.service';
+import { getLocaleFirstDayOfWeek } from '@angular/common';
+import { Doctor } from 'src/app/models/doctor';
 
 
 interface docId{
@@ -35,7 +38,7 @@ export class BookAppotmentsComponent implements OnInit {
     {value: '3', viewValue: 'Dermitology'},
     {value: '4', viewValue: 'OB/GYN'}
   ];
-
+  docId:string;
  
 
 
@@ -46,14 +49,22 @@ export class BookAppotmentsComponent implements OnInit {
     patientHabits: ['patientHabits', Validators.required]
   });
   secondFormGroup = this.formBuilder.group({
-    patientChiefComplaint: ['patientChiefComplaint', Validators.required]
+    patientChiefComplaint: ['patientChiefComplaint', Validators.required],
+    apptDate:['apptDate', Validators.required]
   });
 
 
-  constructor(private apptFormHttp: ApptFormHttpService, private formBuilder: FormBuilder, private cookie: CookieService , private date: DatepickerApComponent, private logINServ :LoginService) { }
+  constructor(private apptFormHttp: ApptFormHttpService, 
+    private formBuilder: FormBuilder, 
+    private cookie: CookieService , 
+    private date: DatepickerApComponent, 
+    private logINServ :LoginService,
+    private docServ:DoctorHttpService) { }
 
   ngOnInit(): void {
+    this.getAllDoctors()
   }
+  dateAppointment: string;
   
   dateCreated: number = this.date.fromDateC();
   pid =this.logINServ.currentUserId;// have to change once we establish a login
@@ -77,11 +88,17 @@ export class BookAppotmentsComponent implements OnInit {
       this.firstFormGroup.controls.patientHabits.value,
       this.secondFormGroup.controls.patientChiefComplaint.value,);
 
+     this.docId=this.firstFormGroup.controls.dId.value;
 
-      newApptForm.dateAppointment=new Date().getTime()
+      let dateString=this.secondFormGroup.controls.apptDate.value
+      newApptForm.patientName=this.logINServ.currentUserName
+      newApptForm.dateAppointment=Date.parse(dateString)
       newApptForm.dateCreated=new Date().getTime();
       newApptForm.patientID=this.pid
       newApptForm.docID=Number(this.firstFormGroup.controls.dId.value);
+      let foundValue=this.docs.findIndex((doc)=> doc.value== this.docId)
+      newApptForm.docName=this.docs[foundValue].viewValue
+
       newApptForm.patientChiefComplaint=this.secondFormGroup.controls.patientChiefComplaint.value
       newApptForm.patientHabits=this.firstFormGroup.controls.patientHabits.value
       newApptForm.patientHeight=Number(this.firstFormGroup.controls.patientHeight.value)
@@ -94,4 +111,31 @@ export class BookAppotmentsComponent implements OnInit {
 
   }
 
+  getAllDoctors(){
+    this.docServ.getAlldoctors().subscribe((res)=>{
+      this.fillList(res)
+
+    })
+
+  }
+
+  fillList(list :Doctor[]){
+    let temp :any []=[]
+    temp[0]={value: 'Default', viewValue: 'Choose Field'}
+    let count=1
+    for(let i of list){
+      temp[count]={
+        value: i.dId,
+        viewValue:i.name
+      }
+      count++
+
+    }
+    this.docs=temp
+
+
+  }
+
 }
+
+

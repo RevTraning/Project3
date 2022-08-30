@@ -38,6 +38,10 @@ export class DoctorHttpService {
 
   }
 
+  getAlldoctors():Observable<Doctor[]>{
+    return this.http.get<Doctor[]>(`${this.url}doctor`)
+  }
+
   getDoctor(email: string, pass: string): Observable<Doctor>{
     let queryParams = new HttpParams();
     queryParams = queryParams.append("email",email);
