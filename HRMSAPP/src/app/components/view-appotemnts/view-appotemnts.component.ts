@@ -56,8 +56,8 @@ export class ViewAppotemntsComponent implements OnInit {
   apptformList: ApptForm[] = []; 
   displayAllDocForms() {
     //This function will need to call our HTTP Service for returning all movies.
-    let currentDoctor:Doctor = JSON.parse(this.cookie.get(("user")))
-    let docID = currentDoctor.dId;
+   
+    let docID = this.loginS.currentUserId;
     this.formService.getAllFormsforDoctor(docID).subscribe(
       (response) => {
        
@@ -102,16 +102,15 @@ export class ViewAppotemntsComponent implements OnInit {
     this.populateApptTable
   }
 
-  populateApptTable(apptformList: any[]){
+  async populateApptTable(apptformList: any[]){
     let count=0;
     for(let i of apptformList) {
       console.log("the value of i is")
       console.log(i)
       let patID = i.pId
-      let patName1=this.localGetPatient(patID);
+      let patName1=  this.localGetPatient(patID);
       console.log("patName1 is ")
-
-
+      console.log(patName1)
       let docID = i.dId
       let docName1=this.localGetDoctor(docID);
       this.pushTable[count]={dateAppointment: i.dateAppointment, Time: i.dateCreated, doctorName:docName1,
@@ -123,22 +122,20 @@ export class ViewAppotemntsComponent implements OnInit {
     this.dataSource=this.pushTable
   }
 
-  localGetPatient(patID){
-    let name1:string
+  localGetPatient(patID) {
+    let nam1:string
     this.patService.getPatientById(patID).subscribe(
       (response) => {
         console.log(response);
         console.log("the name is ")
         console.log(response.name)
         
-        name1=response.name
-
-        console.log("the name in name1 is")
-        console.log(name1)
-         return name1
+        nam1= response.name
+      console.log("returning name")
+       return nam1
+      
       }
     );
-    
    
   }
 

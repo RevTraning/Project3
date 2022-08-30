@@ -62,7 +62,13 @@ export class DoctorSignupComponent implements OnInit {
   UTCDateOfBirth: number = this.date.utcDate.getTime();
   newDoctor: Doctor;
   addDoctor(){
-    let newDoc: Doctor = new Doctor(this.firstFormGroup.controls.email.value, this.firstFormGroup.controls.password.value, this.firstFormGroup.controls.name.value, this.UTCDateOfBirth, Number(this.firstFormGroup.controls.license.value), this.secondFormGroup.controls.practice.value);
+    let newDoc: Doctor = new Doctor(
+      this.firstFormGroup.controls.email.value, 
+      this.firstFormGroup.controls.password.value, 
+      this.firstFormGroup.controls.name.value, 
+      this.UTCDateOfBirth, 
+      Number(this.firstFormGroup.controls.license.value), 
+      this.secondFormGroup.controls.practice.value);
     console.log(newDoc);
     this.docHttp.addDoctor(newDoc).subscribe(returnD => this.newDoctor = returnD);
 
