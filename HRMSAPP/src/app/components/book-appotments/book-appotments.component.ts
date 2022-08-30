@@ -5,6 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ApptForm } from 'src/app/models/apptForm';
 import { ApptFormHttpService } from 'src/app/services/appt-form.service';
 import { DatepickerApComponent } from '../datepicker-ap/datepicker-ap.component';
+import { LoginService } from 'src/app/services/login.service';
 
 
 interface docId{
@@ -49,19 +50,21 @@ export class BookAppotmentsComponent implements OnInit {
   });
 
 
-  constructor(private apptFormHttp: ApptFormHttpService, private formBuilder: FormBuilder, private cookie: CookieService , private date: DatepickerApComponent) { }
+  constructor(private apptFormHttp: ApptFormHttpService, private formBuilder: FormBuilder, private cookie: CookieService , private date: DatepickerApComponent, private logINServ :LoginService) { }
 
   ngOnInit(): void {
   }
   
-  dateCreated: number = Date.now();
-  pid: number = 1;// have to change once we establish a login
+  dateCreated: number = this.date.fromDateC();
+  pid =this.logINServ.currentUserId;// have to change once we establish a login
   // UTCDateOfAppontment: number = this.date.utcDate.getTime();
   UTCDateOfAppontment: number = Date.now();
   newAppt: ApptForm;
 
 
   addApptForm(){
+    this.UTCDateOfAppontment=this.date.fromDateC()
+    this.pid =this.logINServ.currentUserId;
     let newApptForm: ApptForm = new ApptForm(
       this.dateCreated,
       this.pid,// this will change when login is functinal
@@ -71,6 +74,18 @@ export class BookAppotmentsComponent implements OnInit {
       Number(this.firstFormGroup.controls.patientWeight.value), 
       this.firstFormGroup.controls.patientHabits.value,
       this.secondFormGroup.controls.patientChiefComplaint.value,);
+
+
+      newApptForm.dateAppointment=new Date().getTime()
+      newApptForm.dateCreated=new Date().getTime();
+      newApptForm.patientID=this.pid
+      newApptForm.docID=Number(this.firstFormGroup.controls.dId.value);
+      newApptForm.patientChiefComplaint=this.secondFormGroup.controls.patientChiefComplaint.value
+      newApptForm.patientHabits=this.firstFormGroup.controls.patientHabits.value
+      newApptForm.patientHeight=Number(this.firstFormGroup.controls.patientHeight.value)
+      newApptForm.patientWeight= Number(this.firstFormGroup.controls.patientWeight.value)
+      
+
     console.log("first log: "); //debug statements
     console.log(newApptForm);
     this.apptFormHttp.addApptForm(newApptForm).subscribe(returnA => this.newAppt = returnA);

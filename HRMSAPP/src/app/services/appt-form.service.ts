@@ -50,8 +50,8 @@ export class ApptFormHttpService {
       "patientWeight":apptForm.patientWeight,
       "pId":1,
       "dId":1,
-      "dateCreated": 1661385258,
-      "dateAppointment": 1661385400
+      "dateCreated": apptForm.dateCreated,
+      "dateAppointment": apptForm.dateAppointment
     }
 
     let body: any = JSON.stringify(bodyE);
@@ -91,23 +91,27 @@ export class ApptFormHttpService {
 
   updateApptForm(apptForm: ApptForm): Observable<ApptForm>{
 
+
+    console.log("in the sending request function the date is")
+    console.log(apptForm.dateAppointment)
+
     let bodyE: any = 
     //Order of operation for constructor?
     {
-      "formID": apptForm.formID,
-      "dateCreated": apptForm.dateCreated,
-      "patientChiefComplaint":apptForm.patientChiefComplaint,
-      "patientHabits":apptForm.patientHabits,
-      "patientHeight":apptForm.patientHeight,
-      "patientWeight":apptForm.patientWeight,
-      "dateAppointment":apptForm.dateAppointment,
-      "pId":apptForm.patientID,
-      "dId":apptForm.docID,
-      "doctorInitialComments":apptForm.doctorInitialComments, 
-      "doctorExaminationData":apptForm.doctorExaminationData, 
-      "doctorAssessment": apptForm.doctorAssessment, 
-      "doctorTreatment": apptForm.doctorTreatment, 
-      "doctorPrescription": apptForm.doctorPrescription      
+      formID: apptForm.formID,
+      dateCreated: apptForm.dateCreated,
+      patientChiefComplaint:apptForm.patientChiefComplaint,
+      patientHabits:apptForm.patientHabits,
+      patientHeight:apptForm.patientHeight,
+      patientWeight:apptForm.patientWeight,
+      dateAppointment:apptForm.dateAppointment,
+      pId:apptForm.patientID,
+      dId:apptForm.docID,
+      doctorInitialComments:apptForm.doctorInitialComments, 
+      doctorExaminationData:apptForm.doctorExaminationData, 
+      doctorAssessment: apptForm.doctorAssessment, 
+      doctorTreatment: apptForm.doctorTreatment, 
+      doctorPrescription: apptForm.doctorPrescription      
     }
     let body: any = JSON.stringify(bodyE); 
     

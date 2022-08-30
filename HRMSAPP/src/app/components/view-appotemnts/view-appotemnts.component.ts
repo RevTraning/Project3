@@ -102,19 +102,20 @@ export class ViewAppotemntsComponent implements OnInit {
     this.populateApptTable
   }
 
-  populateApptTable(apptformList: ApptForm[]){
+  populateApptTable(apptformList: any[]){
     let count=0;
     for(let i of apptformList) {
       console.log("the value of i is")
       console.log(i)
-      let patID = i.patientID
+      let patID = i.pId
       let patName1=this.localGetPatient(patID);
-      let docID = i.docID
+      console.log("patName1 is ")
+
+
+      let docID = i.dId
       let docName1=this.localGetDoctor(docID);
       this.pushTable[count]={dateAppointment: i.dateAppointment, Time: i.dateCreated, doctorName:docName1,
       patName: patName1};
-      console.log("the thing being added to the array is ${this.pushTable}")
-      console.log(this.pushTable)
       count+=1;
     }
     console.log(`the array for the table is`)
@@ -123,23 +124,34 @@ export class ViewAppotemntsComponent implements OnInit {
   }
 
   localGetPatient(patID){
+    let name1:string
     this.patService.getPatientById(patID).subscribe(
       (response) => {
         console.log(response);
+        console.log("the name is ")
+        console.log(response.name)
         
-        return this.patName = response.name;
+        name1=response.name
+
+        console.log("the name in name1 is")
+        console.log(name1)
+         return name1
       }
     );
+    
+   
   }
 
   localGetDoctor(docID){
+    let name1:string
     this.docService.getDoctorById(docID).subscribe(
       (response) => {
         console.log(response);
         
-        return this.docName = response.name;
+         name1=response.name;
       }
     );
+    return name1
   }
 
 
