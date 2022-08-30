@@ -30,15 +30,7 @@ import static org.mockito.Mockito.verify;
 
 import java.util.Optional;
 
-/**
- * This is a Test Suite - a grouping of unit tests for the methods
- * within one class.
- *
- * The @ExtendWith annotation is used to load a JUnit 5 extension.
- * JUnit defines an extension API, which allows a third-party vendor
- * like Mockito to hook into the life cycle of running test classes and
- * add additional functionality.
- */
+
 @ExtendWith(MockitoExtension.class)
 class ApptFormControllerTest {
 
@@ -55,7 +47,6 @@ class ApptFormControllerTest {
     Doctor testDoc;
     ApptForm testUpdateForm;
     ApptFormDTO testFormTO;
-    Credentials testCreds;
 
     @BeforeEach
     void setUp() throws Exception {
@@ -71,25 +62,31 @@ class ApptFormControllerTest {
         //Clean up after the form
         this.testForm = null;
         this.testUpdateForm = null;
-        this.testCreds = null;
+        this.testFormTO = null;
+        this.testPat = null;
+        this.testDoc = null;
 //        this.hSerLet = null;
     }
 
 
 
 
-    @Test
-    void getApptForm() {
-        try {
-
-
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
-    }
+//    @Test
+//    void getApptForm() {
+//        try {
+//            long dateMin = 651618200;
+//            long dateMax = 651619000;
+//            formCon.getApptForm(dateMin, dateMax);
+//        } catch (Exception e)  {
+//            assertEquals(UserNotFoundException.class, e.getClass());
+//        }
+//    }
 
     @Test
     void addApptFormSUCCESS() {
+        //this.formCon.addApptForm(testFormTO);
+
+
         try {
             this.formCon.addApptForm(testFormTO);
         } catch (Exception e)  {

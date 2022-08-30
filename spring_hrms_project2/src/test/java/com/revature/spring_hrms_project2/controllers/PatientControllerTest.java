@@ -28,15 +28,7 @@ import static org.mockito.Mockito.verify;
 
 import java.util.Optional;
 
-/**
- * This is a Test Suite - a grouping of unit tests for the methods
- * within one class.
- *
- * The @ExtendWith annotation is used to load a JUnit 5 extension.
- * JUnit defines an extension API, which allows a third-party vendor
- * like Mockito to hook into the life cycle of running test classes and
- * add additional functionality.
- */
+
 @ExtendWith(MockitoExtension.class)
 class PatientControllerTest {
 
