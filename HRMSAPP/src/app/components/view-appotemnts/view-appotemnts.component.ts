@@ -6,6 +6,7 @@ import { DoctorHttpService } from 'src/app/services/doctor-http.service';
 import { Patient } from 'src/app/models/patient';
 import { PatientHttpService } from 'src/app/services/patient-http.service';
 import { CookieService } from 'ngx-cookie-service';
+import { LoginService } from 'src/app/services/login.service';
 
 
 /*
@@ -21,25 +22,36 @@ Question being how do we differentiate patients from doctors
   templateUrl: './view-appotemnts.component.html',
   styleUrls: ['./view-appotemnts.component.css']
 })
+
+
+
 export class ViewAppotemntsComponent implements OnInit {
 
   constructor(
     private formService: ApptFormHttpService, 
     private cookie: CookieService, 
     private patService: PatientHttpService, 
-    private docService:DoctorHttpService
+    private docService:DoctorHttpService,
+    private loginS:LoginService
   
     ) { }
 
   ngOnInit(): void {
     let localVar = (window.localStorage.getItem("userFlag"));
-    if(localVar == "1") { this.displayAllDocForms}
-    else if (localVar == "0") { this.displayAllPatForms}
+    if(localVar == "1") { this.displayAllDocForms()}
+    else if (localVar == '0') { 
+      console.log("this is step 1")
+      this.displayAllPatForms()
+    }
+
+    console.log(`this is the array for the table in inint ${this.pushTable}`)
     //this.dataSource = this.pushTable;
 
     
     
   }
+
+  
 
   apptformList: ApptForm[] = []; 
   displayAllDocForms() {
@@ -48,28 +60,38 @@ export class ViewAppotemntsComponent implements OnInit {
     let docID = currentDoctor.dId;
     this.formService.getAllFormsforDoctor(docID).subscribe(
       (response) => {
-        console.log(response);
-        this.apptformList = response;
+       
+        this.populateApptTable(response);    
       }
     );
-    this.populateApptTable(this.apptformList);    
+    
   }
 
-  displayAllPatForms() {
+  async displayAllPatForms() {
     //This function will need to call our HTTP Service for returning all movies.
-    let currentPatient:Patient = JSON.parse(this.cookie.get(("user")))
-    let patientID = currentPatient.pId;
-    this.formService.getAllFormsforPatient(patientID).subscribe(
+    console.log("start of step 2")
+    console.log("in the getting patient forms ")
+    console.log(` the cookie has the value of ${this.cookie.get("user")}`)
+   
+    let patientID = this.loginS.currentUserId;
+    console.log(`the type of for patient id is ${typeof(patientID)} and the value is ${patientID}`)
+      this.formService.getAllFormsforPatient(patientID).subscribe(
       (response) => {
+        console.log("this is the response")
         console.log(response);
         
-        this.apptformList = response;
+        
+        console.log(`the list for step 3 is ${this.apptformList}`)
+        console.log("the end of step 2")
+        this.populateApptTable(response);    
+
       }
     );
-    this.populateApptTable(this.apptformList);    
+
+    
   }
 
-  apptTable: any;
+  apptTable: any={};
   pushTable: any[] = [];
   
   patName: string;
@@ -80,17 +102,24 @@ export class ViewAppotemntsComponent implements OnInit {
     this.populateApptTable
   }
 
-  populateApptTable(apptformList){
+  populateApptTable(apptformList: ApptForm[]){
+    let count=0;
     for(let i of apptformList) {
+      console.log("the value of i is")
+      console.log(i)
       let patID = i.patientID
-      this.localGetPatient(patID);
+      let patName1=this.localGetPatient(patID);
       let docID = i.docID
-      this.localGetDoctor(docID);
-      this.apptTable.apptDate = i.dateAppointment;
-      this.apptTable.docName = this.docName;
-      this.apptTable.patName = this.patName;
-      this.pushTable.push(this.apptTable);
+      let docName1=this.localGetDoctor(docID);
+      this.pushTable[count]={dateAppointment: i.dateAppointment, Time: i.dateCreated, doctorName:docName1,
+      patName: patName1};
+      console.log("the thing being added to the array is ${this.pushTable}")
+      console.log(this.pushTable)
+      count+=1;
     }
+    console.log(`the array for the table is`)
+    console.log(this.pushTable)
+    this.dataSource=this.pushTable
   }
 
   localGetPatient(patID){
@@ -98,7 +127,7 @@ export class ViewAppotemntsComponent implements OnInit {
       (response) => {
         console.log(response);
         
-        this.patName = response.name;
+        return this.patName = response.name;
       }
     );
   }
@@ -108,7 +137,7 @@ export class ViewAppotemntsComponent implements OnInit {
       (response) => {
         console.log(response);
         
-        this.docName = response.name;
+        return this.docName = response.name;
       }
     );
   }
@@ -116,7 +145,7 @@ export class ViewAppotemntsComponent implements OnInit {
 
 
   
-  displayedColumns: string[] = ['date', 'Time', 'doctorName'];
+  displayedColumns: string[] = ['date', 'doctorName','patName'];
   
   dataSource =[{date:25, Time:251, doctorName: "flex"}];
 

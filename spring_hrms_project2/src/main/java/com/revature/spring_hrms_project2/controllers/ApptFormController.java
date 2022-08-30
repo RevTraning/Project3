@@ -81,4 +81,7 @@ public class ApptFormController {
     public void removeApptForm(@PathVariable("id") int id) {
         as.remove(id);
     }
+
+    //JUNIT Testing
+
 }

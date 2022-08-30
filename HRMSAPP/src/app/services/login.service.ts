@@ -15,16 +15,16 @@ export class LoginService {
   validLogin: Boolean = false;
   currentUserEmail: string = "";
   currentUserName: string = "";
-  currentUserId: number = 0;
+  currentUserId: number=0;
   login(patient: Patient){
     if(patient.email && patient.password){
       this.patHttp.getPatient(patient.email, patient.password).subscribe(
         (response) => {
-          // console.log(response);
+           console.log(`the response for the log in service is j${response}`);
           this.cookie.set('user',`${response}`);
           this.currentUserEmail = response.email;
           this.currentUserName = response.name;
-          this.currentUserId = response.pId;
+          this.currentUserId=response.pId;
           // window.localStorage.setItem("userName", response.name);
           // window.localStorage.setItem("userEmail", response.email);
           window.localStorage.setItem("userFlag", '0');
@@ -49,7 +49,7 @@ export class LoginService {
           this.cookie.set('user',`${response}`);
           this.currentUserEmail = response.email;
           this.currentUserName = response.name;
-          this.currentUserId = response.dId;
+          this.currentUserId=response.dId;
           // window.localStorage.setItem("userName", response.name);
           // window.localStorage.setItem("userEmail", response.email);
           window.localStorage.setItem("userFlag", '1');

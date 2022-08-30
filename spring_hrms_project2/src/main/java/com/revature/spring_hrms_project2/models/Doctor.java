@@ -46,21 +46,8 @@ import java.util.List;
         @Length(min = 2)
         private String practice;
 
-        @OneToMany
-        private List<ApptForm> apptFormList;
 
-        //Constructor
-
-//    public Doctor(int dId, String name, String password, String email, long dateOfBirth, String licenseN, String practice) {
-//        this.dId = dId + 100;
-//        this.name = name;
-//        this.password = password;
-//        this.email = email;
-//        this.dateOfBirth = dateOfBirth;
-//        this.licenseN = licenseN;
-//        this.practice = practice;
-//    }
-//getters and setters
+        //Getters and Setters
 
         public int getdId() {
             return dId;

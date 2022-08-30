@@ -39,9 +39,6 @@ public class Patient {
     @Length(min = 2)
     private String medications;
 
-    @OneToMany
-    private List<ApptForm> apptFormList;
-
     public int getpId() {
         return pId;
     }
@@ -106,11 +103,4 @@ public class Patient {
         this.medications = medications;
     }
 
-    public List<ApptForm> getApptFormList() {
-        return apptFormList;
-    }
-
-    public void setApptFormList(List<ApptForm> apptFormList) {
-        this.apptFormList = apptFormList;
-    }
 }

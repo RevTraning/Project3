@@ -11,14 +11,14 @@ import javax.persistence.ManyToOne;
 
 @Data
 //@RequiredArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 public class ApptFormDTO {
 
     private long dateCreated;
 
-    private Patient pId;
-    private Doctor dId;
+    private int pId;
+    private int dId;
 
     private long dateAppointment;
 
@@ -38,21 +38,13 @@ public class ApptFormDTO {
         this.dateCreated = dateCreated;
     }
 
-    public Patient getpId() {
-        return pId;
-    }
+    public int getpId() {return pId;}
 
-    public void setpId(Patient pId) {
-        this.pId = pId;
-    }
+    public void setpId(int pId) {this.pId = pId;}
 
-    public Doctor getdId() {
-        return dId;
-    }
+    public int getdId() {return dId;}
 
-    public void setdId(Doctor dId) {
-        this.dId = dId;
-    }
+    public void setdId(int dId) {this.dId = dId;}
 
     public long getDateAppointment() {
         return dateAppointment;
