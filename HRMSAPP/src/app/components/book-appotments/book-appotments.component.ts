@@ -56,7 +56,8 @@ export class BookAppotmentsComponent implements OnInit {
   
   dateCreated: number = Date.now();
   pid: number = 1;// have to change once we establish a login
-  UTCDateOfAppontment: number = this.date.utcDate.getTime();
+  // UTCDateOfAppontment: number = this.date.utcDate.getTime();
+  UTCDateOfAppontment: number = Date.now();
   newAppt: ApptForm;
 
 
