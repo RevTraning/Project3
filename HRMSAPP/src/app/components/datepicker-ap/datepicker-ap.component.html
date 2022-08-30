@@ -11,22 +11,26 @@
     </mat-datepicker>
 </mat-form-field> -->
 <h4>When do you want to book</h4>
-<ngb-datepicker ngDefaultControl #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
-</ngb-datepicker>
-        
-<ng-template #t let-date let-focused="focused">
-    <span class="custom-day"
-        [class.focused]="focused"
-        [class.range]="isRange(date)"
-        [class.faded]="isHovered(date) || isInside(date)"
-        (mouseenter)="hoveredDate = date"
-        (mouseleave)="hoveredDate = null">
-    {{ date.day }}
-    </span>
-</ng-template>
-        
-<hr> 
-        
+
+<ngb-datepicker #dp [(ngModel)]="fromDate" (navigate)="date = $event.next"></ngb-datepicker>
+
+
+<!-- <p>hi : {{this.utcDate}}</p> -->
+
+<pre>Month: {{ date.month }}.{{ date.year }}</pre>
+<pre>Date: {{ fromDate | json }}</pre>
+
+  
+  
 <!-- <pre>From: {{ fromDate | json }} </pre>
 <pre>To: {{ toDate | json }} </pre> -->
 
+
+<ngb-datepicker #d1 [(ngModel)]="model1" #c1="ngModel"></ngb-datepicker>
+
+    <hr/>
+    <button class="btn btn-sm btn-outline-primary" (click)="model1 = today">Select Today</button>
+    <hr/>
+
+    <pre>Model: {{ model1 | json }}</pre>
+    <pre>State: {{ c1.status }}</pre>
