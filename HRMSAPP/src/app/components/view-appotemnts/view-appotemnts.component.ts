@@ -23,8 +23,6 @@ Question being how do we differentiate patients from doctors
   styleUrls: ['./view-appotemnts.component.css']
 })
 
-
-
 export class ViewAppotemntsComponent implements OnInit {
 
   constructor(
@@ -39,127 +37,59 @@ export class ViewAppotemntsComponent implements OnInit {
   ngOnInit(): void {
     let localVar = (window.localStorage.getItem("userFlag"));
     if(localVar == "1") { this.displayAllDocForms()}
-    else if (localVar == '0') { 
-      console.log("this is step 1")
-      this.displayAllPatForms()
-    }
-
-    console.log(`this is the array for the table in inint ${this.pushTable}`)
-    //this.dataSource = this.pushTable;
-
-    
-    
+    else if (localVar == '0') { this.displayAllPatForms() }
   }
-
-  
 
   apptformList: ApptForm[] = []; 
   displayAllDocForms() {
-    //This function will need to call our HTTP Service for returning all movies.
-   
     let docID = this.loginS.currentUserId;
-    this.formService.getAllFormsforDoctor(docID).subscribe(
-      (response) => {
-       
-        this.populateApptTable(response);    
+      this.formService.getAllFormsforDoctor(docID).subscribe(
+        (response) => {       
+          this.populateApptTable(response);    
       }
     );
-    
   }
 
-  async displayAllPatForms() {
-    //This function will need to call our HTTP Service for returning all movies.
-    console.log("start of step 2")
-    console.log("in the getting patient forms ")
-    console.log(` the cookie has the value of ${this.cookie.get("user")}`)
-   
+  displayAllPatForms() {   
     let patientID = this.loginS.currentUserId;
-    console.log(`the type of for patient id is ${typeof(patientID)} and the value is ${patientID}`)
       this.formService.getAllFormsforPatient(patientID).subscribe(
       (response) => {
-        console.log("this is the response")
-        console.log(response);
-        
-        
-        console.log(`the list for step 3 is ${this.apptformList}`)
-        console.log("the end of step 2")
-        this.populateApptTable(response);    
-
+        console.log(response); //debug
+        this.populateApptTable(response);
       }
     );
-
-    
   }
 
   apptTable: any={};
-  pushTable: any[] = [];
-  
+  pushTable: any[] = [{date:25, Time:251, doctorName: "flex"}];
   patName: string;
   docName: string;
+  locDoc: Doctor;
+  locPat: Patient; 
+
   
-  //button (click) = 
-  refreshTables(){
+  refreshTables() {
+    //On (click)
     this.populateApptTable
   }
 
   async populateApptTable(apptformList: any[]){
     let count=0;
     for(let i of apptformList) {
-      console.log("the value of i is")
-      console.log(i)
-      let patID = i.pId
-      let patName1=  this.localGetPatient(patID);
-      console.log("patName1 is ")
-      console.log(patName1)
-      let docID = i.dId
-      let docName1=this.localGetDoctor(docID);
-      this.pushTable[count]={dateAppointment: i.dateAppointment, Time: i.dateCreated, doctorName:docName1,
-      patName: patName1};
-      count+=1;
+      this.pushTable[count]={
+        dateAppointment: i.dateAppointment, 
+        Time: i.dateCreated, 
+        docName: i.docName,
+        patName: i.patName
+      };
+      count++;
+
+      //Debug Block
     }
-    console.log(`the array for the table is`)
-    console.log(this.pushTable)
     this.dataSource=this.pushTable
   }
-
-  localGetPatient(patID) {
-    let nam1:string
-    this.patService.getPatientById(patID).subscribe(
-      (response) => {
-        console.log(response);
-        console.log("the name is ")
-        console.log(response.name)
-        
-        nam1= response.name
-      console.log("returning name")
-       return nam1
-      
-      }
-    );
-   
-  }
-
-  localGetDoctor(docID){
-    let name1:string
-    this.docService.getDoctorById(docID).subscribe(
-      (response) => {
-        console.log(response);
-        
-         name1=response.name;
-      }
-    );
-    return name1
-  }
-
-
-
   
-  displayedColumns: string[] = ['date', 'doctorName','patName'];
+  displayedColumns: string[] = ['date', 'docName','patName'];
   
-  dataSource =[{date:25, Time:251, doctorName: "flex"}];
-
-
-
-  
-
+  dataSource = [];
 }

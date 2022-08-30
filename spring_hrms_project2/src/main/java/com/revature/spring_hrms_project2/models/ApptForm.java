@@ -24,7 +24,11 @@ import javax.persistence.*;
         private int formId;
         private long dateCreated;
         int pId;
+        @Length(min = 2)
+        String patName;
         int dId;
+        @Length(min = 2)
+        String docName;
         @Column(unique = true)
         private long dateAppointment;
         private double patientHeight;
@@ -44,6 +48,24 @@ import javax.persistence.*;
         @Length(min = 2)
         private String doctorPrescription;
 
+
+        //getters and setters
+
+    public String getPatName() {
+        return patName;
+    }
+
+    public void setPatName(String patName) {
+        this.patName = patName;
+    }
+
+    public String getDocName() {
+        return docName;
+    }
+
+    public void setDocName(String docName) {
+        this.docName = docName;
+    }
 
     public int getFormId() {
         return formId;

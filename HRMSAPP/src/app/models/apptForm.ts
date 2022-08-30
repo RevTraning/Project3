@@ -4,7 +4,9 @@ export class ApptForm{
     formID: number;
     dateCreated: number;
     patientID: number;
+    patientName: string;
     docID: number;
+    docName: string;
 
     dateAppointment: number;
     patientHeight: number;
@@ -21,8 +23,10 @@ export class ApptForm{
 
   constructor(
     dateCreated: number = 0, 
-    patientID: number = 0, 
+    patientID: number = 0,
+    patientName: string = "", 
     docID: number = 0, 
+    docName: string = "",
     
     dateAppointment: number = 0, 
     patientHeight: number = 0, 
@@ -41,7 +45,9 @@ export class ApptForm{
     this.formID = formID;
     this.dateCreated = dateCreated;
     this.patientID = patientID;
+    this.patientName = patientName;
     this.docID = docID;
+    this.docName = docName;
 
     this.dateAppointment = dateAppointment;
     this.patientHeight = patientHeight;

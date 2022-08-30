@@ -57,10 +57,10 @@ class ApptFormServiceTest {
     void setUp() throws Exception {
         this.testPat = new Patient(1, "patName", "patEmail@mail.org", "patPassword", 15111551, "patGender", "patEthnicity", "patMedications");
         this.testDoc = new Doctor(1, "docName", "docPassword", "docEmail@mail.org", 120312851, "12345", "docPractice" );
-        this.testForm = new ApptForm(1, 65845165, 1, 1, 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint", "formDocComments", "formDocExam", "formDocAssess", "formDocTreat", "formDocPresc");
-        this.testUpdateForm = new ApptForm(1, 65845165, 1, 1, 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint", "formDocComments", "formDocExam", "formDocAssess", "formDocTreat", "formDocPresc" );
-        this.testFormReq = new ApptForm(0, 651618188, 1, 1, 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint", null, null, null, null, null);
-        this.testFormTO = new ApptFormDTO(651618188, 1, 1, 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint" );
+        this.testForm = new ApptForm(1, 65845165, 1,"somePatient", 1, "someDoc", 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint", "formDocComments", "formDocExam", "formDocAssess", "formDocTreat", "formDocPresc");
+        this.testUpdateForm = new ApptForm(1, 65845165, 1,"somePatient", 1, "someDoc", 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint", "formDocComments", "formDocExam", "formDocAssess", "formDocTreat", "formDocPresc");
+        this.testFormReq = new ApptForm(0, 651618188, 1,"somePat", 1,"someDoc", 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint", null, null, null, null, null);
+        this.testFormTO = new ApptFormDTO(651618188, 1,"somePat", 1,"someDoc", 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint" );
 
     }
 
