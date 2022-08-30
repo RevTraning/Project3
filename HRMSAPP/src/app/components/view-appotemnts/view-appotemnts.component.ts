@@ -73,7 +73,7 @@ export class ViewAppotemntsComponent implements OnInit {
     console.log("in the getting patient forms ")
     console.log(` the cookie has the value of ${this.cookie.get("user")}`)
    
-    let patientID = this.loginS.curretnUserId;
+    let patientID = this.loginS.currentUserId;
     console.log(`the type of for patient id is ${typeof(patientID)} and the value is ${patientID}`)
       this.formService.getAllFormsforPatient(patientID).subscribe(
       (response) => {

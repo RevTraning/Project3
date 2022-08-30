@@ -15,7 +15,7 @@ export class LoginService {
   validLogin: Boolean = false;
   currentUserEmail: string = "";
   currentUserName: string = "";
-  curretnUserId: number=0;
+  currentUserId: number=0;
   login(patient: Patient){
     if(patient.email && patient.password){
       this.patHttp.getPatient(patient.email, patient.password).subscribe(
@@ -24,7 +24,7 @@ export class LoginService {
           this.cookie.set('user',`${response}`);
           this.currentUserEmail = response.email;
           this.currentUserName = response.name;
-          this.curretnUserId=response.pId;
+          this.currentUserId=response.pId;
           // window.localStorage.setItem("userName", response.name);
           // window.localStorage.setItem("userEmail", response.email);
           window.localStorage.setItem("userFlag", '0');
@@ -49,7 +49,7 @@ export class LoginService {
           this.cookie.set('user',`${response}`);
           this.currentUserEmail = response.email;
           this.currentUserName = response.name;
-          this.curretnUserId=response.dId;
+          this.currentUserId=response.dId;
           // window.localStorage.setItem("userName", response.name);
           // window.localStorage.setItem("userEmail", response.email);
           window.localStorage.setItem("userFlag", '1');
@@ -68,12 +68,13 @@ export class LoginService {
   }
 
   logout(){
-
-    this.cookie.deleteAll();
-    this.router.navigate(['home']);
-    window.localStorage.clear();
     this.validLogin = false;
     this.currentUserEmail = "";
     this.currentUserName = "";
+    this.currentUserId = 0;
+    this.cookie.deleteAll();
+    this.router.navigate(['home']);
+    window.localStorage.clear();
+    
   }
 }

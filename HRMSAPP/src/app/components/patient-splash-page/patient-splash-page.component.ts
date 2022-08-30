@@ -15,5 +15,5 @@ export class PatientSplashPageComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  isDoc: number = Number(window.localStorage.getItem("userFlag"));
 }

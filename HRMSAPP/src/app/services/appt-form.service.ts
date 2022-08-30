@@ -43,16 +43,15 @@ export class ApptFormHttpService {
     ); 
 
 
-    let bodyE: any = 
-    
-    
-    {
+    let bodyE: any = {
       "patientChiefComplaint":apptForm.patientChiefComplaint,
       "patientHabits":apptForm.patientHabits,
       "patientHeight":apptForm.patientHeight,
       "patientWeight":apptForm.patientWeight,
-      "pId":patient,
-      "dId":doctor
+      "pId":1,
+      "dId":1,
+      "dateCreated": 1661385258,
+      "dateAppointment": 1661385400
     }
 
     let body: any = JSON.stringify(bodyE);

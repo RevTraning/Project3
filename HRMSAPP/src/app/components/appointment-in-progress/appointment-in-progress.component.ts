@@ -7,10 +7,8 @@ import { ApptFormHttpService } from 'src/app/services/appt-form.service';
 import { Patient } from 'src/app/models/patient';
 import { PatientHttpService } from 'src/app/services/patient-http.service';
 import { Router } from '@angular/router';
-
-
-import { debounce } from 'rxjs';
 import { Doctor } from 'src/app/models/doctor';
+import { LoginService } from 'src/app/services/login.service';
 
 
 interface apptFormSelector {
@@ -54,7 +52,7 @@ export class AppointmentInProgressComponent implements OnInit {
   currApptForm:ApptForm;
   currPat: Patient;
   currDoc: Doctor = JSON.parse(this.cookie.get(("user")));
-  docID = this.currDoc.dId;
+  docID = this.logser.currentUserId;
 
   apptformList: ApptForm[] = [];
   
@@ -62,9 +60,8 @@ export class AppointmentInProgressComponent implements OnInit {
 
   displayAllDocForms() {
     //This function will need to call our HTTP Service for returning all movies.
-    let currentDoctor:Doctor = JSON.parse(this.cookie.get(("user")))
-    let docID = currentDoctor.dId;
-    this.apptFormHttp.getAllFormsforDoctor(docID).subscribe(
+
+    this.apptFormHttp.getAllFormsforDoctor(this.logser.currentUserId).subscribe(
       (response) => {
         console.log(response);
         this.apptformList = response;
@@ -136,7 +133,8 @@ export class AppointmentInProgressComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private cookie: CookieService, 
     private router: Router,
-    private apptFormHttp: ApptFormHttpService
+    private apptFormHttp: ApptFormHttpService,
+    public  logser: LoginService
     ) { }
 
   ngOnInit(): void {

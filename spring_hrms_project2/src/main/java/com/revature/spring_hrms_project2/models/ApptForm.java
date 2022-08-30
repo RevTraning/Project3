@@ -44,6 +44,9 @@ import javax.persistence.*;
         @Length(min = 2)
         private String doctorPrescription;
 
+        private  String labResults;
+
+    // getter & Setters
 
     public int getFormId() {
         return formId;
@@ -61,13 +64,21 @@ import javax.persistence.*;
         this.dateCreated = dateCreated;
     }
 
-    public int getpId() {return pId;}
+    public int getpId() {
+        return pId;
+    }
 
-    public void setpId(int pId) {this.pId = pId;}
+    public void setpId(int pId) {
+        this.pId = pId;
+    }
 
-    public int getdId() {return dId;}
+    public int getdId() {
+        return dId;
+    }
 
-    public void setdId(int dId) {this.dId = dId;}
+    public void setdId(int dId) {
+        this.dId = dId;
+    }
 
     public long getDateAppointment() {
         return dateAppointment;
@@ -149,4 +160,11 @@ import javax.persistence.*;
         this.doctorPrescription = doctorPrescription;
     }
 
+    public String getLabResults() {
+        return labResults;
+    }
+
+    public void setLabResults(String labResults) {
+        this.labResults = labResults;
+    }
 }

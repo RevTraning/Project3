@@ -13,6 +13,7 @@ import { ViewLabResultsComponent } from './components/view-lab-results/view-lab-
 import { DoctorSignupComponent } from './components/doctor-signup/doctor-signup.component';
 import { combineLatest } from 'rxjs';
 import { AppointmentStartComponent } from './components/appointment-start/appointment-start.component';
+import { AppointmentInProgressComponent } from './components/appointment-in-progress/appointment-in-progress.component';
 
 
 
@@ -34,6 +35,7 @@ const routes: Routes = [
   {path: 'labForm', component:LabFormComponent},
   {path: 'results',component: ViewLabResultsComponent},
   {path: "profile", component: AppointmentStartComponent},
+  {path: "apptUpdate", component: AppointmentInProgressComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' }
 ];
 

@@ -1,13 +1,32 @@
 <p>lab-form works!</p>
 
-
-<section class="example-section" [formGroup]="toppings">
-    <h4>Select your toppings:</h4>
-    <p><mat-checkbox formControlName="pepperoni">Pepperoni</mat-checkbox></p>
-    <p><mat-checkbox formControlName="extracheese">Extra Cheese</mat-checkbox></p>
-    <p><mat-checkbox formControlName="mushroom">Mushroom</mat-checkbox></p>
-</section>
-
+<form class="example-section" [formGroup]="toppings">
+  <h4>Select your toppings:</h4>
+  <p><mat-checkbox formControlName="abdominalPain">Abdominal Pain</mat-checkbox></p>
+  <p><mat-checkbox formControlName="anxiety">Anxiety</mat-checkbox></p>
+  <p><mat-checkbox formControlName="backPain">Back Pain</mat-checkbox></p>
+  <p><mat-checkbox formControlName="burningEyes">Burning eyes</mat-checkbox></p>
+  <p><mat-checkbox formControlName="burningInTheThroat">Burning in the throat</mat-checkbox></p>
+  <p><mat-checkbox formControlName="cheekSwelling">Cheek Swelling</mat-checkbox></p>
+  <p><mat-checkbox formControlName="chestPain">Chest Pain</mat-checkbox></p>
+  <p><mat-checkbox formControlName="chestTightness">Chest Tightness</mat-checkbox></p>
+  <p><mat-checkbox formControlName="chills">Chills</mat-checkbox></p>
+  <p><mat-checkbox formControlName="coldSweats">Cold Sweats</mat-checkbox></p>
+  <p><mat-checkbox formControlName="cough">Cough</mat-checkbox></p>
+  <p><mat-checkbox formControlName="dizziness">Dizziness</mat-checkbox></p>
+  <p><mat-checkbox formControlName="droopingEyelid">Drooping Eyelid</mat-checkbox></p>
+  <p><mat-checkbox formControlName="dryEyes">Dry Eyes</mat-checkbox></p>
+  <p><mat-checkbox formControlName="dryEyes">Dry Eyes</mat-checkbox></p>
+  <p><mat-checkbox formControlName="dryEyes">Dry Eyes</mat-checkbox></p>
+  <p><mat-checkbox formControlName="dryEyes">Dry Eyes</mat-checkbox></p>
+  <p><mat-checkbox formControlName="dryEyes">Dry Eyes</mat-checkbox></p>
+  <p><mat-checkbox formControlName="dryEyes">Dry Eyes</mat-checkbox></p>
+  <p><mat-checkbox formControlName="dryEyes">Dry Eyes</mat-checkbox></p>
+  <p><mat-checkbox formControlName="dryEyes">Dry Eyes</mat-checkbox></p>
+  <p><mat-checkbox formControlName="dryEyes">Dry Eyes</mat-checkbox></p>
+  <p><mat-checkbox formControlName="dryEyes">Dry Eyes</mat-checkbox></p>
+  <p><mat-checkbox formControlName="dryEyes">Dry Eyes</mat-checkbox></p>
+</form>
 
 
 <mat-form-field appearance="fill">
@@ -15,4 +34,11 @@
     <mat-select [formControl]="top" multiple>
       <mat-option *ngFor="let sym of symtoms" [value]="sym">{{sym}}</mat-option>
     </mat-select>
+</mat-form-field>
+
+<mat-form-field ngDefaultControl appearance="outline" formControlName="practice" ngDefaultControl multiple>
+  <label for="praInput">Practice</label>
+  <select matNativeControl id="praInput"   required>
+    <option *ngFor="let p of symtoms" [value]="p.value" >{{p.viewValue}}</option>
+  </select>
 </mat-form-field>

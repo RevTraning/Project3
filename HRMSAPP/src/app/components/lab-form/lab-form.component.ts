@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import {FloatLabelType} from '@angular/material/form-field';
 
 interface symtom {
   value: string;
@@ -11,11 +12,44 @@ interface symtom {
   styleUrls: ['./lab-form.component.css']
 })
 export class LabFormComponent implements OnInit {
+ 
+
   toppings = this._formBuilder.group({
-    pepperoni: false,
-    extracheese: false,
-    mushroom: false,
+    abdominalPain: false,
+    anxiety: false,
+    backPain: false,
+    burningEyes: false,
+    burningInTheThroat: false,
+    cheekSwelling: false,
+    chestPain: false,
+    chestTightness: false,
+    chills: false,
+    coldSweats: false,
+    cough: false,
+    dizziness: false,
+    droopingEyelid: false,
+    dryEyes: false,
+    earache: false,
+    earlySatiety: false,
+    eyePain: false,
+    eyeRedness: false,
+    fastDeepenedBreathing: false,
+    feelingOfForeignBodyInTheEye: false,
+    fever: false,
+    goingBlackBeforeTheEyes: false,
+    headache: false,
+    heartburn: false,
+    hiccups: false,
+    hotFlushes: false,
+    increasedThirst: false,
+    itchingEyes: false,
+    itchingInTheNose: false,
+    lipSwelling: false,
+
+    
+
   });
+
   top = new FormControl('');
   toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   constructor(private _formBuilder: FormBuilder) {}
@@ -27,5 +61,7 @@ export class LabFormComponent implements OnInit {
     {value: 'Female', viewValue: 'Female'},
     {value: 'Other', viewValue: 'Other'}
   ];
+  displayedColumns: string[] = ['id', 'coursesName', 'dateOf', 'dateSub', 'location','description' , 'cost','gradingFormat', 'typeOfEvent', 'WorkJust', 'timeOffWork', 'superAppr', 'headAppr', 'coordiAppr', 'passingGrad', 'emplID'];
+  dataSource = this.symtoms;
 
 }
