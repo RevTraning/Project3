@@ -20,7 +20,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.modelmapper.convention.MatchingStrategies;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.modelmapper.ModelMapper;
+
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -38,37 +42,40 @@ class ApptFormControllerTest {
     ApptFormRepo formRep;
     @InjectMocks
     ApptFormService formSer = new ApptFormService(formRep);
-//    @InjectMocks
-//    HttpServletResponse hSerLet;
     ApptFormController formCon = new ApptFormController(formSer);
+    private static final ModelMapper modelMapper = new ModelMapper();
 
     ApptForm testForm;
     Patient testPat;
     Doctor testDoc;
     ApptForm testUpdateForm;
+    ApptForm testFormReq;
     ApptFormDTO testFormTO;
 
     @BeforeEach
     void setUp() throws Exception {
-        this.testForm = new ApptForm(1, 65845165, 1, 1, 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint", "formDocComments", "formDocExam", "formDocAssess", "formDocTreat", "formDocPresc");
-        this.testUpdateForm = new ApptForm(1, 65845165, 1, 1, 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint", "formDocComments", "formDocExam", "formDocAssess", "formDocTreat", "formDocPresc" );
-        this.testFormTO = new ApptFormDTO(651618188, 1, 1, 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint" );
         this.testPat = new Patient(1, "patName", "patEmail@mail.org", "patPassword", 15111551, "patGender", "patEthnicity", "patMedications");
         this.testDoc = new Doctor(1, "docName", "docPassword", "docEmail@mail.org", 120312851, "12345", "docPractice" );
+        this.testForm = new ApptForm(1, 65845165, 1, 1, 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint", "formDocComments", "formDocExam", "formDocAssess", "formDocTreat", "formDocPresc");
+        this.testUpdateForm = new ApptForm(1, 65845165, 1, 1, 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint", "formDocComments", "formDocExam", "formDocAssess", "formDocTreat", "formDocPresc" );
+        this.testFormReq = new ApptForm(0, 651618188, 1, 1, 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint", null, null, null, null, null);
+        this.testFormTO = new ApptFormDTO(651618188, 1, 1, 651618200, 50.5, 100.5, "formPatHabits", "formPatComplaint" );
+
     }
 
     @AfterEach
     void tearDown() throws Exception {
-        //Clean up after the form
         this.testForm = null;
         this.testUpdateForm = null;
+        this.testFormReq = null;
         this.testFormTO = null;
         this.testPat = null;
         this.testDoc = null;
-//        this.hSerLet = null;
     }
 
-
+    //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    //<><><><><> Tests which are commented out aren't necessary for full batteries <><><><><>
+    //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
 
 //    @Test
@@ -83,37 +90,37 @@ class ApptFormControllerTest {
 //    }
 
     @Test
-    void addApptFormSUCCESS() {
-        //this.formCon.addApptForm(testFormTO);
+    void addApptFormModelMapper() {
 
+        System.out.println("Controller formAdd test T.O. " + this.formCon.addApptForm(testFormTO));
 
-        try {
-            this.formCon.addApptForm(testFormTO);
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        ApptForm apptForm = modelMapper.map(testFormTO, ApptForm.class);
+        ApptForm expected = testFormReq;
+        System.out.println("Printing ApptForm: " + apptForm); //Model Mapper Output
+        System.out.println("Expected Form: " + testFormReq); //Expected form Output
+        assertEquals(expected, apptForm);
     }
     @Test
-    void addApptFormFAILURE() {
-        //Fails due to unique constraint for Appointment Date in database
+    void addApptFormFAILURE_DupDate() {
+
+        System.out.println("Controller formAdd test response object: " + this.formCon.addApptForm(testFormTO));
         try {
             this.formCon.addApptForm(testFormTO);
-            this.formCon.addApptForm(testFormTO);
-        } catch (Exception e)  {
+            this.formCon.addApptForm((testFormTO)); //second should produce error
+        } catch (Exception e) {
             assertEquals(Exception.class, e.getClass());
         }
     }
 
+//    @Test
+//    void findApptFormById() {
+//        System.out.println("Testing findById: " + testForm.getFormId());
+//        System.out.println(this.formCon.findApptFormById(testForm.getFormId()));
+//        given(this.formSer.getById(testForm.getFormId()).willReturn(Optional.of(this.testForm)));
+//    }
     @Test
-    void findApptFormByIdSUCCESS() {
-        try {
-            this.formCon.findApptFormById(testForm.getdId());
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
-    }
-    @Test
-    void findApptFormByIdFAILURE() {
+    void findApptFormByIdFAILURE_NotFound() {
         try {
             this.formCon.findApptFormById(-1);
         } catch (Exception e)  {
@@ -121,16 +128,17 @@ class ApptFormControllerTest {
         }
     }
 
+//    @Test
+//    void updateApptFormSUCCESS() {
+//        try {
+//            this.formCon.updateApptForm(testUpdateForm, testForm.getdId());
+//        } catch (Exception e)  {
+//            assertEquals(UserNotFoundException.class, e.getClass());
+//        }
+//    }
+
     @Test
-    void updateApptFormSUCCESS() {
-        try {
-            this.formCon.updateApptForm(testUpdateForm, testForm.getdId());
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
-    }
-    @Test
-    void updateApptFormFAILURE() {
+    void updateApptFormFAILURE_ExceptNotFound() {
         try {
             this.formCon.updateApptForm(testUpdateForm, -1);
         } catch (Exception e)  {
@@ -138,14 +146,14 @@ class ApptFormControllerTest {
         }
     }
 
-    @Test
-    void removeApptFormSUCCESS() {
-        try {
-            this.formCon.removeApptForm(testForm.getdId());
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
-    }
+//    @Test
+//    void removeApptFormSUCCESS() {
+//        try {
+//            this.formCon.removeApptForm(testForm.getdId());
+//        } catch (Exception e)  {
+//            assertEquals(UserNotFoundException.class, e.getClass());
+//        }
+//    }
     @Test
     void removeApptFormFAILURE() {
         try {

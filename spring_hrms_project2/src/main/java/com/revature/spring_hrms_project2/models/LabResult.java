@@ -21,7 +21,7 @@ import javax.persistence.*;
         @Column(name = "labResultsId")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int labResultId;
-        ApptForm formId;
+        int formId;
         int pId;
         int dId;
 
@@ -48,9 +48,9 @@ import javax.persistence.*;
 
         public void setLabResultId(int labResultId) {this.labResultId = labResultId;}
 
-        public ApptForm getFormId() {return formId;}
+        public int getFormId() {return formId;}
 
-        public void setFormId(ApptForm formId) {this.formId = formId;}
+        public void setFormId(int formId) {this.formId = formId;}
 
         public int getpId() {return pId;}
 
