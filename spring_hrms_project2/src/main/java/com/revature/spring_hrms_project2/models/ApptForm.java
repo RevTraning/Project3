@@ -22,49 +22,23 @@ import javax.persistence.*;
         @Column(name = "formId")
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int formId;
-
         private long dateCreated;
-       // @OneToMany(mappedBy="pId", fetch=FetchType.LAZY)
-        @ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY )
-        @JoinColumn(name = "pId")
-        private Patient pId;
-       @ManyToOne(cascade = CascadeType.ALL, fetch=FetchType.LAZY)
-        @JoinColumn(name = "dId")
-        private Doctor dId;
-
-
-
-
-/*
-        private Patient patientName;
-        private Patient patientDateOfBirth;
-        private Patient patientEthnicity;
-        private Patient patientGender;
-        private Patient patientMedications;
-*/
-
+        int pId;
+        int dId;
         @Column(unique = true)
         private long dateAppointment;
-
         private double patientHeight;
-
         private double patientWeight;
         @Length(min = 2)
         private String patientHabits;
         @Length(min = 2)
         private String patientChiefComplaint;
-
-
         @Length(min = 2)
         private String doctorInitialComments;
         @Length(min = 2)
         private String doctorExaminationData;
-
-
         @Length(min = 2)
         private String doctorAssessment;
-
-
         @Length(min = 2)
         private String doctorTreatment;
         @Length(min = 2)
@@ -87,21 +61,13 @@ import javax.persistence.*;
         this.dateCreated = dateCreated;
     }
 
-    public Patient getpId() {
-        return pId;
-    }
+    public int getpId() {return pId;}
 
-    public void setpId(Patient pId) {
-        this.pId = pId;
-    }
+    public void setpId(int pId) {this.pId = pId;}
 
-    public Doctor getdId() {
-        return dId;
-    }
+    public int getdId() {return dId;}
 
-    public void setdId(Doctor dId) {
-        this.dId = dId;
-    }
+    public void setdId(int dId) {this.dId = dId;}
 
     public long getDateAppointment() {
         return dateAppointment;
