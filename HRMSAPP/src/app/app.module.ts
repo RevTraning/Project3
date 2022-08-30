@@ -46,6 +46,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AppointmentInProgressComponent } from './components/appointment-in-progress/appointment-in-progress.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -99,10 +100,8 @@ import { AppointmentInProgressComponent } from './components/appointment-in-prog
     MatTabsModule,
     MatSidenavModule,
     NgbModule,
-    MatProgressSpinnerModule
-  
-    
-    
+    MatProgressSpinnerModule,
+    MatCheckboxModule
     
   ],
 
