@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import {FloatLabelType} from '@angular/material/form-field';
+import { SymptomCheckerAPIService } from 'src/app/services/symptom-checker-api.service';
 
 interface symtom {
   value: string;
@@ -15,10 +16,10 @@ export class LabFormComponent implements OnInit {
  
 
   symtoms = this._formBuilder.group({
-    abdominalPain: false,
-    anxiety: false,
-    backPain: false,
-    burningEyes: false,
+    abdominalPain: 0,
+    anxiety:0,
+    backPain: 104,
+    burningEyes: 75,
     burningInTheThroat: false,
     cheekSwelling: false,
     chestPain: false,
@@ -79,28 +80,28 @@ export class LabFormComponent implements OnInit {
     weightGain: false,
     wheezing: false,
   });
-
-  // switch () {
-  //   case value:
-      
-  //     break;
-  
-  //   default:
-  //     break;
-  // }
-
-  // top = new FormControl('');
-  // toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private labser: SymptomCheckerAPIService) {}
   ngOnInit(): void {
+
   }
-  // symtoms: symtom[] = [
-  //   {value: 'Other', viewValue: 'Choose'},
-  //   {value: 'Male', viewValue: 'Male'},
-  //   {value: 'Female', viewValue: 'Female'},
-  //   {value: 'Other', viewValue: 'Other'}
-  // ];
-  // displayedColumns: string[] = ['id', 'coursesName', 'dateOf', 'dateSub', 'location','description' , 'cost','gradingFormat', 'typeOfEvent', 'WorkJust', 'timeOffWork', 'superAppr', 'headAppr', 'coordiAppr', 'passingGrad', 'emplID'];
-  // dataSource = this.symtoms;
+  symArr: number[] = [];
+  convertToId(checkedName: number){
+    switch (checkedName) {
+      case 1: this.symArr.push(10);
+        break
+
+      case 2: this.symArr.push(238);
+        break
+    
+      default:
+        break;
+    }
+  }
+
+  getDy(){
+    this.labser.getSym(this.symArr);
+  }
+
+  
 
 }

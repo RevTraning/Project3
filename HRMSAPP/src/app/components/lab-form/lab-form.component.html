@@ -3,8 +3,8 @@
 <form class="example-section" [formGroup]="symtoms">
   <h4>Select Your Symtoms:</h4>
   <p>
-    <mat-checkbox formControlName="abdominalPain">Abdominal Pain</mat-checkbox>
-    <mat-checkbox formControlName="anxiety">Anxiety</mat-checkbox>
+    <mat-checkbox formControlName="abdominalPain" (change)="convertToId(1)">Abdominal Pain</mat-checkbox>
+    <mat-checkbox formControlName="anxiety" (change)="convertToId(2)">Anxiety</mat-checkbox>
     <mat-checkbox formControlName="backPain">Back Pain</mat-checkbox>
     <mat-checkbox formControlName="burningEyes">Burning eyes</mat-checkbox>
   </p>
@@ -99,4 +99,10 @@
     <mat-checkbox formControlName="weightGain">Weight Gain</mat-checkbox>
     <mat-checkbox formControlName="wheezing">Wheezing</mat-checkbox>
   </p>
+  <button mat-button (click)="getDy()" >Submit</button>
 </form>
+
+<section class="example-section" [formGroup]="symtoms">
+  <h4>You chose:</h4>
+  {{symtoms.value | json}}
+</section>
