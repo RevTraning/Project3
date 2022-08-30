@@ -18,7 +18,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.modelmapper.ModelMapper;
+
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,15 +31,7 @@ import static org.mockito.Mockito.verify;
 
 import java.util.Optional;
 
-/**
- * This is a Test Suite - a grouping of unit tests for the methods
- * within one class.
- *
- * The @ExtendWith annotation is used to load a JUnit 5 extension.
- * JUnit defines an extension API, which allows a third-party vendor
- * like Mockito to hook into the life cycle of running test classes and
- * add additional functionality.
- */
+
 @ExtendWith(MockitoExtension.class)
 class PatientControllerTest {
 
@@ -44,30 +39,27 @@ class PatientControllerTest {
     PatientRepo patRep;
     @InjectMocks
     PatientService patSer = new PatientService(patRep);
-    //    @InjectMocks
-//    HttpServletResponse hSerLet;
     PatientController patCon = new PatientController(patSer);
 
     Patient testPat;
     Patient testUpdatePat;
     PatientDTO testPatTO;
     Credentials testCreds;
+    ModelMapper modelMapper = new ModelMapper();
 
     @BeforeEach
     void setUp() throws Exception {
-        this.testPat = new Patient(1, "patName", "patEmail@mail.org", "patPassword", 15111551, "patGender", "patEthnicity", "patMedications");
-        this.testUpdatePat = new Patient(1, "UPDATEPAT", "patEmail@mail.org", "patPassword", 15111551, "patGender", "patEthnicity", "patMedications");
+        this.testPat = new Patient(0, "patName", "patEmail@mail.org", "patPassword", 15111551, "patGender", "patEthnicity", "patMedications");
+        this.testUpdatePat = new Patient(0, "UPDATEPAT", "patEmail@mail.org", "patPassword", 15111551, "patGender", "patEthnicity", "patMedications");
         this.testPatTO = new PatientDTO("patName", "patPassword", "patEmail@mail.org", "patEthnicity", "patGender", "patMedications", 15111551);
 
     }
 
     @AfterEach
     void tearDown() throws Exception {
-        //Clean up after the pat
         this.testPat = null;
         this.testUpdatePat = null;
         this.testCreds = null;
-//        this.hSerLet = null;
     }
 
 
@@ -105,12 +97,13 @@ class PatientControllerTest {
     }
 
     @Test
-    void addPatientSUCCESS() {
-        try {
-            this.patCon.addPatient(testPatTO);
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
+    void addPatientModelMapper() {
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        Patient locPat = modelMapper.map(testPatTO, Patient.class);
+
+        Patient expected = testPat;
+        assertEquals(locPat, expected);
+
     }
     @Test
     void addPatientFAILURE() {

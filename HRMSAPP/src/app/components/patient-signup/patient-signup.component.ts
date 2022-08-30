@@ -71,21 +71,27 @@ export class PatientSignupComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  DOB: number = this.date.utcDate.getTime();//= this.date.getTime();
+  //DOB: number = this.date.utcDate.getTime();//= this.date.getTime();
 
 
   newPatient: Patient;
   addPatient(){
+    let DOB=new Date().getTime()
     let newPat: Patient = new Patient(
       this.firstFormGroup.controls.email.value, 
       this.firstFormGroup.controls.password.value, 
       this.firstFormGroup.controls.name.value, 
-      this.DOB, 
+      DOB, 
       this.secondFormGroup.controls.ethnicity.value, 
       this.secondFormGroup.controls.gender.value,
       this.secondFormGroup.controls.medication.value
       );
     console.log(newPat);
+    console.log("new pat dob")
+    console.log(this.date.utcDate)
+    console.log("the date form the callender")
+    console.log(this.date.fromDate)
+    console.log(this.date.fromDateC)
     this.patHttp.addPatient(newPat).subscribe(returnP => this.newPatient = returnP);
     this.router.navigate(["login"]);
   }

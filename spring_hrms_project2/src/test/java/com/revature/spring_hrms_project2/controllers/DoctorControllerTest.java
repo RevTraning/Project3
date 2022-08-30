@@ -21,22 +21,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpServletResponse;
-
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import java.util.Optional;
 
-/**
- * This is a Test Suite - a grouping of unit tests for the methods
- * within one class.
- *
- * The @ExtendWith annotation is used to load a JUnit 5 extension.
- * JUnit defines an extension API, which allows a third-party vendor
- * like Mockito to hook into the life cycle of running test classes and
- * add additional functionality.
- */
+
 @ExtendWith(MockitoExtension.class)
 class DoctorControllerTest {
 
@@ -58,17 +49,18 @@ class DoctorControllerTest {
         this.testDoc = new Doctor(1, "docName", "docPassword", "docEmail@mail.org", 120312851, "12345", "docPractice" );
         this.testUpdateDoc = new Doctor(1, "UPDATED_DOC", "docPassword", "docEmail@mail.org", 120312851, "12345", "docPractice" );
         this.testDocTO = new DoctorDTO("docName", "docPassword", "docEmail@mail.org", "12345", "docPractice", 120312851);
-
     }
 
     @AfterEach
     void tearDown() throws Exception {
-        //Clean up after the doc
         this.testDoc = null;
         this.testUpdateDoc = null;
         this.testCreds = null;
-//        this.hSerLet = null;
     }
+
+    //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+    //<><><><><> Tests which are commented out aren't necessary for full batteries <><><><><>
+    //<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
 
 
     @Test
@@ -96,82 +88,17 @@ class DoctorControllerTest {
     }
 
     @Test
-    void getDoctor() {
-        try {
-            this.docCon.getDoctor(testDoc.getEmail());
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
+    void getByID_SUCCESS() {
+        int id = 1;
+        given(this.docRep.findById(id)).willReturn(Optional.of(this.testDoc));
+
+        Doctor expected = this.testDoc;
+        Doctor actual = this.docSer.getById(id);
+
+        assertEquals(expected, actual);
+        verify(this.docRep, times(1)).findById(id);
     }
 
-    @Test
-    void addDoctorSUCCESS() {
-        try {
-            this.docCon.addDoctor(testDocTO);
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
-    }
-    @Test
-    void addDoctorFAILURE() {
-        //Fails due to unique constraint for email in database
-        try {
-            this.docCon.addDoctor(testDocTO);
-            this.docCon.addDoctor(testDocTO);
-        } catch (Exception e)  {
-            assertEquals(Exception.class, e.getClass());
-        }
-    }
 
-    @Test
-    void findDoctorByIdSUCCESS() {
-        try {
-            this.docCon.findDoctorById(testDoc.getdId());
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
-    }
-    @Test
-    void findDoctorByIdFAILURE() {
-        try {
-            this.docCon.findDoctorById(-1);
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
-    }
-
-    @Test
-    void updateDoctorSUCCESS() {
-        try {
-            this.docCon.updateDoctor(testUpdateDoc, testDoc.getdId());
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
-    }
-    @Test
-    void updateDoctorFAILURE() {
-        try {
-            this.docCon.updateDoctor(testUpdateDoc, -1);
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
-    }
-
-    @Test
-    void removeDoctorSUCCESS() {
-        try {
-            this.docCon.removeDoctor(testDoc.getdId());
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
-    }
-    @Test
-    void removeDoctorFAILURE() {
-        try {
-            this.docCon.removeDoctor(-1);
-        } catch (Exception e)  {
-            assertEquals(UserNotFoundException.class, e.getClass());
-        }
-    }
 
 }
