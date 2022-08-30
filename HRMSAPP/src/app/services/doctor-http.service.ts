@@ -21,7 +21,7 @@ export class DoctorHttpService {
     let bodyD: any = 
     
     {
-      "dateOfBirth":1, //update back-end to use long instead of int
+      "dateOfBirth":doctor.dateOfBirth, //update back-end to use long instead of int
       "email":doctor.email,
       "licenseN":doctor.licenseN,
       "practice":doctor.practice,
@@ -47,7 +47,7 @@ export class DoctorHttpService {
 
   getDoctorById(docId:number): Observable<Doctor>{
     let queryParams = new HttpParams();
-    return this.http.get<Doctor>(`${this.url}patient/${docId}`)
+    return this.http.get<Doctor>(`${this.url}doctor/${docId}`)
   }
 
 

@@ -14,7 +14,7 @@ interface symtom {
 export class LabFormComponent implements OnInit {
  
 
-  toppings = this._formBuilder.group({
+  symtoms = this._formBuilder.group({
     abdominalPain: false,
     anxiety: false,
     backPain: false,
@@ -45,23 +45,62 @@ export class LabFormComponent implements OnInit {
     itchingEyes: false,
     itchingInTheNose: false,
     lipSwelling: false,
-
-    
-
+    memoryGap: false,
+    menstruationDisorder: false,
+    missedPeriod: false,
+    nausea: false,
+    neckPain: false,
+    nervousness: false,
+    nightCough: false,
+    painInTheLimbs: false,
+    painOnSwallowing: false,
+    palpitations: false,
+    paralysis: false,
+    reducedAppetite: false,
+    runnyNose: false,
+    shortnessOfBreath: false,
+    skinRash: false,
+    sleeplessness: false,
+    sneezing: false,
+    soreThroat: false,
+    sputum: false,
+    stomachBurning: false,
+    stuffyNose: false,
+    sweating: false,
+    swollenGlandsInTheArmpits: false,
+    swollenGlandsOnTheNeck: false,
+    tears: false,
+    tiredness: false,
+    tremorAtRest: false,
+    unconsciousnessShort: false,
+    vomiting: false,
+    vomitingBlood: false,
+    weakness: false,
+    weightGain: false,
+    wheezing: false,
   });
 
-  top = new FormControl('');
-  toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
+  // switch () {
+  //   case value:
+      
+  //     break;
+  
+  //   default:
+  //     break;
+  // }
+
+  // top = new FormControl('');
+  // toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
   constructor(private _formBuilder: FormBuilder) {}
   ngOnInit(): void {
   }
-  symtoms: symtom[] = [
-    {value: 'Other', viewValue: 'Choose'},
-    {value: 'Male', viewValue: 'Male'},
-    {value: 'Female', viewValue: 'Female'},
-    {value: 'Other', viewValue: 'Other'}
-  ];
-  displayedColumns: string[] = ['id', 'coursesName', 'dateOf', 'dateSub', 'location','description' , 'cost','gradingFormat', 'typeOfEvent', 'WorkJust', 'timeOffWork', 'superAppr', 'headAppr', 'coordiAppr', 'passingGrad', 'emplID'];
-  dataSource = this.symtoms;
+  // symtoms: symtom[] = [
+  //   {value: 'Other', viewValue: 'Choose'},
+  //   {value: 'Male', viewValue: 'Male'},
+  //   {value: 'Female', viewValue: 'Female'},
+  //   {value: 'Other', viewValue: 'Other'}
+  // ];
+  // displayedColumns: string[] = ['id', 'coursesName', 'dateOf', 'dateSub', 'location','description' , 'cost','gradingFormat', 'typeOfEvent', 'WorkJust', 'timeOffWork', 'superAppr', 'headAppr', 'coordiAppr', 'passingGrad', 'emplID'];
+  // dataSource = this.symtoms;
 
 }
