@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { Observable, queueScheduler } from 'rxjs';
+import { buffer, Observable, queueScheduler } from 'rxjs';
 import { LabResults } from '../models/labResults';
 import { LoginService } from './login.service';
 
@@ -20,6 +20,7 @@ getSym(sym: any): Observable<LabResults[]>{
 	queryParams = queryParams.append("format",'json');
 	let httpOptions = {
 		headers: new HttpHeaders({
+			'Authorization': 'Basic ' + btoa('rivanarsdel@gmail.com:Wa45YzSc8e7D9GsPf'),
 			'Content-Type' : 'application/json',
 			'X-RapidAPI-Key': '60df3e7da8msh1aa6f035af42e71p1cd8eajsnf2619a4e38eb',
 		    'X-RapidAPI-Host': 'priaid-symptom-checker-v1.p.rapidapi.com'
