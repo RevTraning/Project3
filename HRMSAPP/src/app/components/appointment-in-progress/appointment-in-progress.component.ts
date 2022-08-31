@@ -37,6 +37,11 @@ export class AppointmentInProgressComponent implements OnInit {
   habit: string=" hi";
   height:number=90;
   weight:number=30;
+  iComments:string
+  dAssessment:string
+  DExamanition:string
+  DTreatment:string
+  prescription:string
  
 
 
@@ -56,27 +61,40 @@ export class AppointmentInProgressComponent implements OnInit {
 
   allApptForms(){
     this.apptFormHttp.getAllFormsforDoctor(this.loginServ.currentUserId).subscribe((res)=>{
-      console.log(res)
+      //console.log(res)
       this.formsList=res
     })
 
   }
 
   indexWorkingForm(){
-    //console.log(typeof(this.formChoice))
-    console.log(typeof(this.formsList[0].formID))
-    let index=this.formsList.findIndex((form)=>form.formID==this.formChoice)
-    //console.log(index)
+    console.log(this.formsList)
+    let index=this.formsList.findIndex(form=>form.formId==this.formChoice)
+    console.log(index)
     return this.formsList[index]
   }
 
   showFields(){
-    let activeForm=this.indexWorkingForm();
-    this.formChoice
+    this.workingForm=this.indexWorkingForm();
+    console.log(this.workingForm)
     //console.log(activeForm)
-    this.habit=activeForm.patientHabits;
-    this.weight=activeForm.patientWeight;
-    this.height=activeForm.patientHeight;
+    this.habit=this.workingForm.patientHabits;
+    this.weight=this.workingForm.patientWeight;
+    this.height=this.workingForm.patientHeight;
+
+  }
+
+  updateForm(){
+
+    this.workingForm.doctorAssessment=this.dAssessment
+    this.workingForm.doctorExaminationData=this.DExamanition
+    this.workingForm.doctorInitialComments=this.iComments
+    this.workingForm.doctorPrescription=this.prescription
+    this.workingForm.doctorTreatment=this.DTreatment
+    console.log('before submitting update')
+    console.log(this.workingForm)
+
+    this.apptFormHttp.updateApptForm(this.workingForm)
 
   }
 

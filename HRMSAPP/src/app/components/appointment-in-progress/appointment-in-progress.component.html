@@ -46,10 +46,37 @@
           <li>patient weight: {{weight}}</li>
           <li>patient height: {{ height}}</li>
 
-          
-         
          </ul>
         </div>
+
+       <div class="mb-3">
+         <label for="" class="form-label">Enter doctor initial comments</label>
+         <textarea class="form-control" name="" id="" rows="3" [(ngModel)]="iComments"></textarea>
+       </div>
+
+       <div class="mb-3">
+         <label for="" class="form-label">Enter doctor assessment</label>
+         <textarea class="form-control" name="" id="" rows="3"  [(ngModel)]="dAssessment"></textarea>
+       </div>
+
+       <div class="mb-3">
+         <label for="" class="form-label">Enter doctor examination data</label>
+         <textarea class="form-control" name="" id="" rows="3"  [(ngModel)]="DExamanition"></textarea>
+       </div>
+
+       <div class="mb-3">
+         <label for="" class="form-label">Enter doctor treatment</label>
+         <textarea class="form-control" name="" id="" rows="3" [(ngModel)]="DTreatment"></textarea>
+       </div>
+
+       <div class="mb-3">
+         <label for="" class="form-label">Enter perscription</label>
+         <textarea class="form-control" name="" id="" rows="3" [(ngModel)]="prescription"></textarea>
+       </div>
+
+       <button type="button" class="btn btn-primary" (click)="updateForm()">Button</button>
+
+
        
       </div>
     </div>
