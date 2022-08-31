@@ -34,7 +34,7 @@ export class ViewAppotemntsByDateComponent implements OnInit {
   apptformList: ApptForm[] = []; 
   displayAllDocForms() {
     let docID = this.loginS.currentUserId;
-      this.formService.getAllFormsBetweenDates(this.min,this.max).subscribe(
+      this.formService.getAllFormsBetweenDates(Number(this.min),Number(this.max)).subscribe(
         (response) => {       
           this.populateApptTable(response);    
       }
