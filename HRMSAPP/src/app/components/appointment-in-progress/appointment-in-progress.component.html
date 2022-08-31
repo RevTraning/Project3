@@ -50,24 +50,30 @@
         </div>
 
        <div class="mb-3">
+        <h1><label for="" class="form-label">Subjective</label></h1>
          <label for="" class="form-label">Enter doctor initial comments</label>
          <textarea class="form-control" name="" id="" rows="3" [(ngModel)]="iComments"></textarea>
        </div>
 
        <div class="mb-3">
-         <label for="" class="form-label">Enter doctor assessment</label>
-         <textarea class="form-control" name="" id="" rows="3"  [(ngModel)]="dAssessment"></textarea>
-       </div>
-
-       <div class="mb-3">
-         <label for="" class="form-label">Enter doctor examination data</label>
+        <h1><label for="" class="form-label">Objective</label></h1>
+         <label for="" class="form-label">Examination Notes-- see bottom for "lab"</label>
          <textarea class="form-control" name="" id="" rows="3"  [(ngModel)]="DExamanition"></textarea>
        </div>
 
+       
+
        <div class="mb-3">
-         <label for="" class="form-label">Enter doctor treatment</label>
-         <textarea class="form-control" name="" id="" rows="3" [(ngModel)]="DTreatment"></textarea>
-       </div>
+        <h1><label for="" class="form-label">Assessment</label></h1>
+        <label for="" class="form-label">Enter doctor assessment</label>
+        <textarea class="form-control" name="" id="" rows="3"  [(ngModel)]="dAssessment"></textarea>
+      </div>
+
+      <div class="mb-3">
+        <h1><label for="" class="form-label">Plan</label></h1>
+        <label for="" class="form-label">Enter doctor treatment</label>
+        <textarea class="form-control" name="" id="" rows="3" [(ngModel)]="DTreatment"></textarea>
+      </div>
 
        <div class="mb-3">
          <label for="" class="form-label">Enter perscription</label>
@@ -83,9 +89,14 @@
 
 
     
-   
+    
   </div>
 </div>
+<hr>
+<div>  
+  <app-lab-form></app-lab-form>
+</div>
+
 
 
 

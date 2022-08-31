@@ -74,8 +74,9 @@ export class ViewAppotemntsComponent implements OnInit {
   }
 
   async populateApptTable(apptformList: any[]){
-    let count=0;
+    let count=0;    
     for(let i of apptformList) {
+      if(i.doctorTreatment == null){
       this.pushTable[count]={
         dateAppointment: i.dateAppointment, 
         Time: i.dateCreated, 
@@ -86,6 +87,7 @@ export class ViewAppotemntsComponent implements OnInit {
 
       //Debug Block
     }
+  }
     this.dataSource=this.pushTable
   }
   

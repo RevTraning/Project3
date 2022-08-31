@@ -98,11 +98,8 @@ export class AppointmentInProgressComponent implements OnInit {
       console.log("the response is")
       console.log(res)
     })
-
-  }
-
-
-
-  
+     
+    this.router.navigate(["profile"])
+  } 
 
 }

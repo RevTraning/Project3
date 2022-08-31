@@ -1,6 +1,6 @@
-<p>lab-form works!</p>
-
-<form class="example-section" [formGroup]="symtoms">
+<form class="symptomChecks" [formGroup]="symtoms">
+  <hr>
+  <h1>Symptom Checker Tool</h1>
   <h4>Select Your Symtoms:</h4>
   <p>
     <mat-checkbox formControlName="abdominalPain" (change)="this.onChange(1)">Abdominal Pain</mat-checkbox>
@@ -8,31 +8,35 @@
     <mat-checkbox formControlName="backPain" (change)="this.onChange(3)">Back Pain</mat-checkbox>
     <mat-checkbox formControlName="burningEyes"(change)="this.onChange(4)">Burning eyes</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="burningInTheThroat"(change)="this.onChange(5)">Burning in the throat</mat-checkbox>
     <mat-checkbox formControlName="cheekSwelling"(change)="this.onChange(6)">Cheek Swelling</mat-checkbox>
     <mat-checkbox formControlName="chestPain"(change)="this.onChange(7)">Chest Pain</mat-checkbox>
     <mat-checkbox formControlName="chestTightness"(change)="this.onChange(8)">Chest Tightness</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="chills"(change)="this.onChange(9)">Chills</mat-checkbox>
     <mat-checkbox formControlName="coldSweats"(change)="this.onChange(10)">Cold Sweats</mat-checkbox>
     <mat-checkbox formControlName="cough"(change)="this.onChange(11)">Cough</mat-checkbox>
     <mat-checkbox formControlName="dizziness"(change)="this.onChange(12)">Dizziness</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="droopingEyelid"(change)="this.onChange(13)">Drooping Eyelid</mat-checkbox>
     <mat-checkbox formControlName="dryEyes"(change)="this.onChange(14)">Dry Eyes</mat-checkbox>
     <mat-checkbox formControlName="earache"(change)="this.onChange(15)">Earache</mat-checkbox>
     <mat-checkbox formControlName="earlySatiety"(change)="this.onChange(16)">Early Satiety</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="eyePain"(change)="this.onChange(17)">Eye Pain</mat-checkbox>
     <mat-checkbox formControlName="eyeRedness"(change)="this.onChange(18)">Eye Redness</mat-checkbox>
     <mat-checkbox formControlName="fastDeepenedBreathing"(change)="this.onChange(19)">Fast Deepened Breathing</mat-checkbox>
     <mat-checkbox formControlName="feelingOfForeignBodyInTheEye"(change)="this.onChange(20)">Feeling Of Foreign Body In The Eye</mat-checkbox>
   </p>
-
+  <hr>
   <p>
     <mat-checkbox formControlName="fever"(change)="this.onChange(21)">Fever</mat-checkbox>
     <mat-checkbox formControlName="goingBlackBeforeTheEyes"(change)="this.onChange(22)">Going Black Be fore The Eyes</mat-checkbox>
@@ -40,68 +44,122 @@
     <mat-checkbox formControlName="heartburn"(change)="this.onChange(24)">Heartburn</mat-checkbox>
     
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="dizziness"(change)="this.onChange(25)">Hiccups</mat-checkbox>
     <mat-checkbox formControlName="hotFlushes"(change)="this.onChange(26)">Hot Flushes</mat-checkbox>
     <mat-checkbox formControlName="increasedThirst"(change)="this.onChange(27)">Increased Thirst</mat-checkbox>
     <mat-checkbox formControlName="itchingEyes"(change)="this.onChange(28)">Itching Eyes</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="itchingInTheNose"(change)="this.onChange(29)">Itching In The Nose</mat-checkbox> 
     <mat-checkbox formControlName="lipSwelling"(change)="this.onChange(30)">Lip Swelling</mat-checkbox> 
     <mat-checkbox formControlName="memoryGap"(change)="this.onChange(31)">Memory Gap</mat-checkbox> 
     <mat-checkbox formControlName="menstruationDisorder"(change)="this.onChange(32)">Menstruation Disorder</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="missedPeriod"(change)="this.onChange(33)">Missed Period</mat-checkbox>
     <mat-checkbox formControlName="nausea"(change)="this.onChange(34)">Nausea</mat-checkbox>
     <mat-checkbox formControlName="neckPain"(change)="this.onChange(35)">Neck Pain</mat-checkbox>
     <mat-checkbox formControlName="nervousness"(change)="this.onChange(36)">Nervousness</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="nightCough"(change)="this.onChange(37)">Night Cough</mat-checkbox>
     <mat-checkbox formControlName="painInTheLimbs"(change)="this.onChange(38)">Pain In The Limbs</mat-checkbox>
     <mat-checkbox formControlName="painOnSwallowing"(change)="this.onChange(39)">Pain On Swallowing</mat-checkbox>
     <mat-checkbox formControlName="palpitations"(change)="this.onChange(40)">Palpitations</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="paralysis"(change)="this.onChange(41)">Paralysis</mat-checkbox>
     <mat-checkbox formControlName="reducedAppetite"(change)="this.onChange(42)">Reduced Appetite</mat-checkbox>
     <mat-checkbox formControlName="runnyNose"(change)="this.onChange(43)">Runny Nose</mat-checkbox>
     <mat-checkbox formControlName="shortnessOfBreath"(change)="this.onChange(44)">Shortness Of Breath</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="skinRash"(change)="this.onChange(45)">Skin Rash</mat-checkbox>
     <mat-checkbox formControlName="sleeplessness"(change)="this.onChange(46)">Sleeplessness</mat-checkbox>
     <mat-checkbox formControlName="sneezing"(change)="this.onChange(47)">Sneezing</mat-checkbox>
     <mat-checkbox formControlName="soreThroat"(change)="this.onChange(48)">Sore Throat</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="sputum"(change)="this.onChange(49)">Sputum</mat-checkbox>
     <mat-checkbox formControlName="stomachBurning"(change)="this.onChange(50)">Stomach Burning</mat-checkbox>
     <mat-checkbox formControlName="stuffyNose"(change)="this.onChange(51)">Stuffy Nose</mat-checkbox>
     <mat-checkbox formControlName="sweating"(change)="this.onChange(52)">Sweating</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="swollenGlandsInTheArmpits"(change)="this.onChange(53)">Swollen Glands In The Armpits</mat-checkbox>
     <mat-checkbox formControlName="swollenGlandsOnTheNeck"(change)="this.onChange(54)">Swollen Glands On The Neck</mat-checkbox>
     <mat-checkbox formControlName="tears"(change)="this.onChange(55)">Tears</mat-checkbox>
     <mat-checkbox formControlName="tiredness"(change)="this.onChange(56)">Tiredness</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="tremorAtRest"(change)="this.onChange(57)">Tremor At Rest</mat-checkbox>
     <mat-checkbox formControlName="unconsciousnessShort"(change)="this.onChange(58)">Unconsciousness Short</mat-checkbox>
     <mat-checkbox formControlName="vomiting"(change)="this.onChange(59)">Vomiting</mat-checkbox>
     <mat-checkbox formControlName="vomitingBlood"(change)="this.onChange(60)">Vomiting Blood</mat-checkbox>
   </p>
+  <hr>
   <p>
     <mat-checkbox formControlName="weakness"(change)="this.onChange(61)">Weakness</mat-checkbox>
     <mat-checkbox formControlName="weightGain"(change)="this.onChange(62)">Weight Gain</mat-checkbox>
     <mat-checkbox formControlName="wheezing"(change)="this.onChange(63)">Wheezing</mat-checkbox>
   </p>
 
-  <button mat-button (click)="getDy(symArr)">Submit</button>
+  <div class="labSubmit"><button  mat-button (click)="getSymptoms()" >Submit</button></div>
 </form>
+
+<div class="symptomChecksTable">
+  <h1>Potential Issues -- Populated After Submission</h1>
+
+  <table mat-table [dataSource]="dataSource" class="issue-table" >    
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Potential Issue </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="accuracy">
+      <th mat-header-cell *matHeaderCellDef> Accuracy </th>
+      <td mat-cell *matCellDef="let element"> {{element.accuracy}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="icd">
+      <th mat-header-cell *matHeaderCellDef> ICD </th>
+      <td mat-cell *matCellDef="let element"> {{element.icd}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="icdName">
+      <th mat-header-cell *matHeaderCellDef> ICD -- Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.icdName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="profName">
+      <th mat-header-cell *matHeaderCellDef> Prof Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.profName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="ranking">
+      <th mat-header-cell *matHeaderCellDef> Ranking </th>
+      <td mat-cell *matCellDef="let element"> {{element.ranking}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="specialist">
+      <th mat-header-cell *matHeaderCellDef> Reccomended Specialist </th>
+      <td mat-cell *matCellDef="let element"> {{element.specialist}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let rowData; columns: displayedColumns"></tr>
+</table>
+</div>
 
 
 

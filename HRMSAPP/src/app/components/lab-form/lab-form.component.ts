@@ -218,8 +218,24 @@ export class LabFormComponent implements OnInit {
 
 
   newLabSym: LabResults[];
+
+  getSymptoms(){
+    this.getDy(this.symArr);
+  }
+
   getDy(symArr){
-    return this.labserv.getSym(symArr).subscribe(returnA => this.newLabSym = returnA);
+    let date = 1995;
+    let gender = "male";
+    
+    this.issueTable = this.labserv.getSym(symArr, gender, date).subscribe(returnA => { this.newLabSym = returnA; this.populateIssueTable(returnA); });
+
+    
+
+    //debug block
+    //console.log("retrival : " + this.labserv.getSym(symArr, gender, date).subscribe(returnA => this.newLabSym = returnA));
+    //console.log(this.issueTable);
+    //console.log(this.newLabSym);
+
   }
 
 
@@ -228,13 +244,33 @@ export class LabFormComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder, private labserv: SymptomCheckerAPIService) {}
   ngOnInit(): void {
   }
-  // symtoms: symtom[] = [
-  //   {value: 'Other', viewValue: 'Choose'},
-  //   {value: 'Male', viewValue: 'Male'},
-  //   {value: 'Female', viewValue: 'Female'},
-  //   {value: 'Other', viewValue: 'Other'}
-  // ];
-  // displayedColumns: string[] = ['id', 'coursesName', 'dateOf', 'dateSub', 'location','description' , 'cost','gradingFormat', 'typeOfEvent', 'WorkJust', 'timeOffWork', 'superAppr', 'headAppr', 'coordiAppr', 'passingGrad', 'emplID'];
-  // dataSource = this.symtoms;
 
+  //Duped from viewAppts
+  issueTable: any=[];
+  pushTable:any[] = [];
+  dataSource:any[] = [];
+  populateIssueTable(newLabSym:any[]){
+    let count=0;
+    for(let i of newLabSym) {  
+         
+      this.pushTable[count]={
+        name:i.Issue.Name,
+        accuracy:i.Issue.Accuracy,
+        icd:i.Issue.Icd,
+        icdName:i.Issue.IcdName,
+        profName:i.Issue.ProfName,   
+        ranking:i.Issue.Ranking,     
+        specialist:i.Specialisation.Name
+      };
+      count++;
+      //Debug Block
+      
+    }
+    this.dataSource=this.pushTable;
+        
+    console.log(newLabSym); //debug
+    console.log(this.dataSource); //debug
+  }
+  displayedColumns: string[] = ['name', 'accuracy','icd', 'icdName', 'profName', 'ranking', 'specialist'];
+  
 }

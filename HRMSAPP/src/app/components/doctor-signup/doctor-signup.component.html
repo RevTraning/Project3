@@ -44,7 +44,12 @@
           </select>
         </mat-form-field>
 
-      <app-datepicker></app-datepicker>
+        <div class="mb-3">
+          <mat-form-field appearance="outline" formControlName="apptDate" ngDefaultControl>
+          <label for="" class="form-label">Your Birthday</label>
+          <input type="datetime-local" class="form-control" aria-describedby="helpId" placeholder="dd/mm/yyyy"  matInput id="apptDate">
+          <small id="helpId" class="form-text text-muted">Help text</small>
+        </mat-form-field></div>
   
         
         <div>
@@ -60,7 +65,7 @@
 
          <p>You are now ready to sumbit your form.</p>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button (click)="addDoctor()" routerLink="login">Submit</button>
+        <button mat-button (click)="addDoctor()">Submit</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
         
       </div>

@@ -11,12 +11,12 @@ export class SymptomCheckerAPIService {
 url: string = 'https://priaid-symptom-checker-v1.p.rapidapi.com';
   constructor(private http:HttpClient, private logserv: LoginService) { }
  
-getSym(sym: any): Observable<LabResults[]>{
+getSym(sym: any, gender:string, date:number): Observable<LabResults[]>{
 	let queryParams = new HttpParams();
     queryParams = queryParams.append("language",'en-gb');
     queryParams = queryParams.append("symptoms",`[${sym}]`);
-	queryParams = queryParams.append("year_of_birth",this.logserv.currentUserBy);
-	queryParams = queryParams.append("gender",this.logserv.currentUserG);
+	queryParams = queryParams.append("year_of_birth",date);
+	queryParams = queryParams.append("gender",gender);
 	queryParams = queryParams.append("format",'json');
 	let httpOptions = {
 		headers: new HttpHeaders({

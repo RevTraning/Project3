@@ -48,6 +48,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AppointmentInProgressComponent } from './components/appointment-in-progress/appointment-in-progress.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ViewAppotemntsByDateComponent } from './components/view-appotemnts-by-date/view-appotemnts-by-date.component';
+import { ViewAppointmentHistoryComponent } from './components/view-appointment-history/view-appointment-history.component';
 
 
 
@@ -74,7 +75,8 @@ import { ViewAppotemntsByDateComponent } from './components/view-appotemnts-by-d
     DatepickerComponent,
     DatepickerApComponent,
     AppointmentInProgressComponent,
-    ViewAppotemntsByDateComponent
+    ViewAppotemntsByDateComponent,
+    ViewAppointmentHistoryComponent
 
   ],
   imports: [

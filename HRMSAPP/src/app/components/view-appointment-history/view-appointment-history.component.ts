@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  ApptFormHttpService } from 'src/app/services/appt-form.service';
+import { ApptFormHttpService } from 'src/app/services/appt-form.service';
 import { ApptForm } from 'src/app/models/apptForm';
 import { Doctor } from 'src/app/models/doctor';
 import { DoctorHttpService } from 'src/app/services/doctor-http.service';
@@ -8,13 +8,6 @@ import { PatientHttpService } from 'src/app/services/patient-http.service';
 import { CookieService } from 'ngx-cookie-service';
 import { LoginService } from 'src/app/services/login.service';
 
-
-/*
-We could make this one page for both docs and patients
-essential information is appt time, doc name, pat name
-Do query from table of appt forms WHERE userID = someCred
-Question being how do we differentiate patients from doctors
-*/
 @Component({
   selector: 'app-view-appointment-history',
   templateUrl: './view-appointment-history.component.html',
@@ -88,4 +81,6 @@ export class ViewAppointmentHistoryComponent implements OnInit {
   displayedColumns: string[] = ['date', 'docName','patName', 'docAssessment'];
   
   dataSource = []; 
+
+
 }

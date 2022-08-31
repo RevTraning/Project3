@@ -1,3 +1,38 @@
-.example-section {
-    margin: 12px 0;
+.symptomChecks {
+    margin-top:50px;
+    margin-left: 700px;
+    margin-right: 700px;
+    padding-left: 50px;
+    background-color: rgb(48, 48, 48);
+    color:rgb(206, 187, 187);
+    border-radius:2%;
 }
+
+.symptomChecksTable{
+    margin-top:50px;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding-left: 50px;
+    background-color: rgb(48, 48, 48);
+    color:rgb(206, 187, 187);
+    border-radius:2%;
+}
+.issue-table{
+    width: 1800px;
+}
+
+mat-checkbox {
+    margin:12px 0;
+    padding-left: 130px;
+    text-align: right;
+    margin-right: 50 !important;    
+}
+
+.labSubmit {
+    background-color:rgb(63,80,181);
+    color:rgb(255,255,255);
+    margin:0 auto;
+    text-align: center;
+    width: 500px;
+}
+

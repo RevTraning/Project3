@@ -6,6 +6,7 @@ import { Doctor } from 'src/app/models/doctor';
 import { DoctorHttpService } from 'src/app/services/doctor-http.service';
 import { debounce } from 'rxjs';
 import { DatepickerComponent } from '../datepicker/datepicker.component';
+import { Router } from '@angular/router';
 
 interface practice{
   value: string;
@@ -48,30 +49,38 @@ export class DoctorSignupComponent implements OnInit {
     
   });
   secondFormGroup = this.formBuilder.group({
-    practice: ['practice', Validators.required]
+    practice: ['practice', Validators.required],
+    apptDate:['apptDate', Validators.required]
   });
 
 
-  constructor(private docHttp: DoctorHttpService, private formBuilder: FormBuilder, private cookie: CookieService , private date: DatepickerComponent) { }
+  constructor(
+    private docHttp: DoctorHttpService, 
+    private formBuilder: FormBuilder, 
+    private cookie: CookieService , 
+    private date: DatepickerComponent,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
   
   DOB: Date ;
-
-  UTCDateOfBirth: number = this.date.utcDate.getTime();
+  
   newDoctor: Doctor;
   addDoctor(){
+    let dateString=this.secondFormGroup.controls.apptDate.value;
+    let UTCDateOfBirth: number = Date.parse(dateString);
+    console.log("dateString: " + dateString + "utc: " + UTCDateOfBirth);
     let newDoc: Doctor = new Doctor(
       this.firstFormGroup.controls.email.value, 
       this.firstFormGroup.controls.password.value, 
       this.firstFormGroup.controls.name.value, 
-      this.UTCDateOfBirth, 
+      UTCDateOfBirth, 
       Number(this.firstFormGroup.controls.license.value), 
       this.secondFormGroup.controls.practice.value);
     console.log(newDoc);
     this.docHttp.addDoctor(newDoc).subscribe(returnD => this.newDoctor = returnD);
-
+    this.router.navigate(["login"]);
   }
 
 
