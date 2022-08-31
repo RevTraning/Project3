@@ -76,14 +76,22 @@ export class ApptFormHttpService {
   getAllFormsforPatient( patId:number): Observable<ApptForm[]> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("pId", patId)
-    return this.http.get<ApptForm[]>(`${this.url}apptForm`)
+    return this.http.get<ApptForm[]>(`${this.url}apptForm`,{params:queryParams})
+    
+  }
+
+  getAllFormsBetweenDates( min:number, max:number): Observable<ApptForm[]> {
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("dateMin", min);
+    queryParams = queryParams.append("dateMax", max);
+    return this.http.get<ApptForm[]>(`${this.url}apptForm`,{params:queryParams});
     
   }
 
   getAllFormsforDoctor( docId:number): Observable<ApptForm[]> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("dId", docId)
-    return this.http.get<ApptForm[]>(`${this.url}apptForm`)
+    return this.http.get<ApptForm[]>(`${this.url}apptForm`, {params:queryParams})
   }
 
   getAllForms(): Observable<ApptForm[]> {

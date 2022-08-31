@@ -88,5 +88,4 @@ export class ViewAppointmentHistoryComponent implements OnInit {
   displayedColumns: string[] = ['date', 'docName','patName', 'docAssessment'];
   
   dataSource = []; 
-
 }
