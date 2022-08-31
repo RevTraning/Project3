@@ -34,22 +34,14 @@ export class ViewAppotemntsByDateComponent implements OnInit {
   apptformList: ApptForm[] = []; 
   displayAllDocForms() {
     let docID = this.loginS.currentUserId;
-      this.formService.getAllFormsforDoctor(docID).subscribe(
+      this.formService.getAllFormsBetweenDates(this.min,this.max).subscribe(
         (response) => {       
           this.populateApptTable(response);    
       }
     );
   }
 
-  displayAllPatForms() {   
-    let patientID = this.loginS.currentUserId;
-      this.formService.getAllFormsforPatient(patientID).subscribe(
-      (response) => {
-        console.log(response); //debug
-        this.populateApptTable(response);
-      }
-    );
-  }
+  
 
   apptTable: any={};
   pushTable: any[] = [{date:25, Time:251, doctorName: "flex"}];
@@ -62,8 +54,7 @@ export class ViewAppotemntsByDateComponent implements OnInit {
   
   refreshTables() {
     let localVar = (window.localStorage.getItem("userFlag"));
-    if(localVar == "1") { this.displayAllDocForms()}
-    else if (localVar == '0') { this.displayAllPatForms() }
+    
   }
 
   async populateApptTable(apptformList: any[]){
