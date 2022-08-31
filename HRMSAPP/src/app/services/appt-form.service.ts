@@ -76,22 +76,16 @@ export class ApptFormHttpService {
   getAllFormsforPatient( patId:number): Observable<ApptForm[]> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("pId", patId)
-    return this.http.get<ApptForm[]>(`${this.url}apptForm`,{params:queryParams})
-    
-  }
-
-  getAllFormsBetweenDates( min:number, max:number): Observable<ApptForm[]> {
-    let queryParams = new HttpParams();
-    queryParams = queryParams.append("dateMin", min);
-    queryParams = queryParams.append("dateMax", max);
-    return this.http.get<ApptForm[]>(`${this.url}apptForm`,{params:queryParams});
+    return this.http.get<ApptForm[]>(`${this.url}apptForm`,{params:queryParams}
+    )
     
   }
 
   getAllFormsforDoctor( docId:number): Observable<ApptForm[]> {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("dId", docId)
-    return this.http.get<ApptForm[]>(`${this.url}apptForm`, {params:queryParams})
+    return this.http.get<ApptForm[]>(`${this.url}apptForm`,{params:queryParams}
+    )
   }
 
   getAllForms(): Observable<ApptForm[]> {
@@ -101,24 +95,26 @@ export class ApptFormHttpService {
   }
 
 
-  updateApptForm(apptForm: ApptForm): Observable<ApptForm>{
+  updateApptForm(apptForm: any): Observable<ApptForm>{
 
 
     console.log("in the sending request function the date is")
-    console.log(apptForm.dateAppointment)
+    console.log(apptForm)
+    let id=apptForm.formId
 
+    
     let bodyE: any = 
     //Order of operation for constructor?
     {
-      formID: apptForm.formID,
+      formID: apptForm.formId,
       dateCreated: apptForm.dateCreated,
       patientChiefComplaint:apptForm.patientChiefComplaint,
       patientHabits:apptForm.patientHabits,
       patientHeight:apptForm.patientHeight,
       patientWeight:apptForm.patientWeight,
       dateAppointment:apptForm.dateAppointment,
-      pId:apptForm.patientID,
-      dId:apptForm.docID,
+      pId:apptForm.pId,
+      dId:apptForm.dId,
       doctorInitialComments:apptForm.doctorInitialComments, 
       doctorExaminationData:apptForm.doctorExaminationData, 
       doctorAssessment: apptForm.doctorAssessment, 
@@ -126,8 +122,10 @@ export class ApptFormHttpService {
       doctorPrescription: apptForm.doctorPrescription      
     }
     let body: any = JSON.stringify(bodyE); 
+    console.log("the body looks like")
+    console.log(bodyE)
     
-    return this.http.put<ApptForm>(`${this.url}apptForm`,body, this.httpOptions);
+    return this.http.put<ApptForm>(`${this.url}apptForm/${id}`,body, this.httpOptions);
   }
 
 

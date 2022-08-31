@@ -94,7 +94,10 @@ export class AppointmentInProgressComponent implements OnInit {
     console.log('before submitting update')
     console.log(this.workingForm)
 
-    this.apptFormHttp.updateApptForm(this.workingForm)
+    this.apptFormHttp.updateApptForm(this.workingForm).subscribe((res)=>{
+      console.log("the response is")
+      console.log(res)
+    })
 
   }
 
