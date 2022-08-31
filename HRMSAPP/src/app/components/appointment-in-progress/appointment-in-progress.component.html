@@ -2,107 +2,63 @@
 <!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
 <!--<><><><><><><><><><>--Subjective Portion--<><><><><><><><><><><><>-->
 <!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
-<h1>Showing page</h1>
-<mat-stepper #stepper>
-  
-  <mat-step [stepControl]="firstFormGroup" errorMessage="Initial Comments Required">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel >Subjective</ng-template>
+<h1>in progress</h1>
 
-      <!--<><><><><><><><><><>--Populate from Patient--<><><><><><><><><><>-->
+<div class="table-responsive">
+  <table class="table table-primary">
+    <thead>
+      <tr>
+        <th scope="col">FormId</th>
+        <th scope="col">Patient Name</th>
+        <th scope="col">patient cheif complaint</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let forms of formsList">
+        <td scope="row">{{forms.formId}}</td>
+        <td>{{forms.patName}}</td>
+        <td>{{forms.patientChiefComplaint}}</td>
+      </tr>
+     
+    </tbody>
+  </table>
+</div>
 
-      <mat-form-field ngDefaultControl appearance="outline"  formControlName="apptSelect" ngDefaultControl>
-        <label for="aSInput">Select Form</label>
-        <select matNativeControl id="aSInput" required>
-          <option *ngFor="let d of apptForms" [value]="d.value" >{{d.viewValue}}</option>
-        </select>
-      </mat-form-field><br>
+<div class="card text-center">
+  <div class="card-body">
+    <div class="mb-3">
+      <label for="formChoice" class="form-label">enter the id of the form you are working on</label>
+      <input type="number" class="form-control" name="formChoice" id="formChoice" aria-describedby="helpId" 
+      [(ngModel)]="formChoice">
+      <small id="helpId" class="form-text text-muted">Help text</small><br>
+      <button type="button" class="btn btn-primary" (click)="showFields()">Button</button>
+    </div>
+    <br>
 
-      <!--<><><><><><><><><><>--Doc Initial Comments--<><><><><><><><><><>-->
-      <mat-form-field appearance="outline" formControlName="docInitComments" class="input-space" ngDefaultControl>
-        <label for="docInitComments1">Initial Comments</label>
-        <input matInput id="docInitComments1" placeholder="exaple@capsul.net"   required>
-        <mat-icon matSuffix>Initial Comments</mat-icon>
-      </mat-form-field><br>
+    <div class="card text-center" *ngIf="workingForm">
+    
+      <div class="card-body">
 
-      <div>
-        <button mat-button matStepperNext>Next</button>
+
+        <div class="mb-3">
+         <ul class="list-group">
+          <li>Patient Habits: {{habit}}</li>
+          <li>patient weight: {{weight}}</li>
+          <li>patient height: {{ height}}</li>
+
+          
+         
+         </ul>
+        </div>
+       
       </div>
-    </form>
-  </mat-step>
-
-
-<!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
-<!--<><><><><><><><><><>--Objective Portion--<><><><><><><><><><><><>-->
-<!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
-  <mat-step>
-    <mat-step [stepControl]="secondFormGroup" errorMessage="Exam notes required."></mat-step>
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel >Objective</ng-template>
-
-    <mat-form-field appearance="outline" formControlName="docExam" class="input-space" ngDefaultControl>
-      <label for="docExam1">Examination Data</label>
-      <input matInput id="docExam1" placeholder="exaple@capsul.net"   required>
-      <mat-icon matSuffix>Examination Data</mat-icon>
-    </mat-form-field><br>
-
-  <!--<><><><><><><><><><>--API Integration (Symptom Checker)--<><><><><><><><><><>-->
-    <mat-form-field appearance="outline" formControlName="APIsymptoms" class="input-space" ngDefaultControl>
-      <label for="APIsymptoms1">API Doot Scoot Boogie</label>
-      <input matInput id="APIsymptoms1" placeholder="exaple@capsul.net"   required>
-      <mat-icon matSuffix>API Doot Scoot Boogie</mat-icon>
-    </mat-form-field><br>
-
-    <div>
-      <button mat-button matStepperNext>Next</button>
     </div>
-    </form>
-  </mat-step>
-
-  <!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
-  <!--<><><><><><><><><><>--Assessment / Plan--<><><><><><><><><><><><>-->
-  <!--<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>-->
-
-  <mat-step>
-    <mat-step [stepControl]="thirdFormGroup" errorMessage="Assessment/Treatment Required"></mat-step>
-    <form [formGroup]="thirdFormGroup">
-    <ng-template matStepLabel>Assessment & Plan</ng-template>
-
-    <mat-form-field appearance="outline" formControlName="docAssessment" class="input-space" ngDefaultControl>
-      <label for="docAssessment1">Assessment / Diagnosis</label>
-      <input matInput id="docAssessment1" placeholder="exaple@capsul.net"   required>
-      <mat-icon matSuffix>Assessment / Diagnosis</mat-icon>
-    </mat-form-field><br>
-
-    <mat-form-field appearance="outline" formControlName="docTreatment" class="input-space" ngDefaultControl>
-      <label for="docTreatment1">Treatment Plan</label>
-      <input matInput id="docTreatment1" placeholder="exaple@capsul.net"   required>
-      <mat-icon matSuffix>Treatment Plan</mat-icon>
-    </mat-form-field><br>
-
-    <mat-form-field appearance="outline" formControlName="docPrescription" class="input-space" ngDefaultControl>
-      <label for="docPrescription1">Prescription</label>
-      <input matInput id="docPrescription1" placeholder="exaple@capsul.net"   required>
-      <mat-icon matSuffix>Prescription</mat-icon>
-    </mat-form-field><br>
-
-    <div>
-      <button mat-button matStepperNext>Next</button>
-    </div>
-    </form>
-  </mat-step>
 
 
-  <mat-step>
-    <ng-template matStepLabel>Submit Completed Form</ng-template>
+    
    
-    <div class="submit">
-       <p>Appointment Complete</p>
-      <button mat-button matStepperPrevious>Back</button>
-      <!-- <button mat-button (click)="addPatient()">Submit</button>
-      <button mat-button (click)="stepper.reset()">Reset</button> -->
-    </div>
-  </mat-step>
-</mat-stepper>
+  </div>
+</div>
+
 
 
