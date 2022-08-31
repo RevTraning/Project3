@@ -31,101 +31,13 @@ interface apptFormSelector {
   ],
 })
 export class AppointmentInProgressComponent implements OnInit {
-  hide = true;
-
-  //Display patient object information plus ApptForm Initialized Fields
-
-  patName: string;
-  patEmail: string;
-  patDOB: number;
-  patEthnicity: string;
-  patGender: string;
-  patMedications: string;
-
-  formApptDate: number;
-  patHeight: number;
-  patWeight: number;
-  patHabits: string;
-  patComplaint: string;
-
-  availApptForms:ApptForm[] = [];
-  currApptForm:ApptForm;
-  currPat: Patient;
-  currDoc: Doctor = JSON.parse(this.cookie.get(("user")));
-  docID = this.logser.currentUserId;
-
-  apptformList: ApptForm[] = [];
-  
-  
-
-  displayAllDocForms() {
-    //This function will need to call our HTTP Service for returning all movies.
-
-    this.apptFormHttp.getAllFormsforDoctor(this.logser.currentUserId).subscribe(
-      (response) => {
-        console.log(response);
-        this.apptformList = response;
-      }
-    );
-    //this.populateApptTable(this.apptformList);    
-  }
-
-  populateApptForm(){
-    for(let i of this.availApptForms) {
-      this.apptForms.push({value: i.formID, viewValue: String(i.dateAppointment)})
-    }
-
-  }
-
-
-  
-
-  apptForms: apptFormSelector[] = [
-    {value: -1, viewValue: "Choose"},
-  ];
-
-  firstFormGroup = this.formBuilder.group({
-
-    apptSelect: ['apptSelect', Validators.required],
-
-    // patName: ['patName', Validators.required],
-    // patEmail: ['patEmail', Validators.required], 
-    // patDOB: ['patDOB', Validators.required], 
-    // patEthnicity: ['patEthnicity', Validators.required], 
-    // patGender: ['patGender', Validators.required], 
-    // patMedications: ['patMedications', Validators.required], 
-
-    // formApptDate: ['formApptDate', Validators.required],
-    // patHeight: ['patHeight', Validators.required],
-    // patWeight: ['patWeight', Validators.required],
-    // patHabits: ['patHabits', Validators.required],
-    // patComplaint: ['patComplaint', Validators.required],
-
-    docInitComments: ['docInitComments', Validators.required]
-  });
-
-  
-
-
-  
-  secondFormGroup = this.formBuilder.group({
-    docExam: ['docExam', Validators.required],
-    //API Data
-    APIsymptoms: ['APIsymptoms', Validators.required],
-    //DOB get from patient
-    //Gender get from patient
-    // Name: ['APIname', Validators.required],
-    // Accuracy: ['APIaccuracy', Validators.required],
-    // Icd: ['APIicd', Validators.required],
-    // IcdName: ['APIicdName', Validators.required],
-    // ProfName: ['APIProfName', Validators.required]
-  });
-
-  thirdFormGroup = this.formBuilder.group({
-    docAssessment: ['docAssessment', Validators.required],
-    docTreatment: ['docTreatment', Validators.required],
-    docPrescription: ['docPrescription', Validators.required]
-  });
+  formsList: any[]=[]
+  formChoice:number;
+  workingForm: any;
+  habit: string=" hi";
+  height:number=90;
+  weight:number=30;
+ 
 
 
   constructor(
@@ -134,11 +46,41 @@ export class AppointmentInProgressComponent implements OnInit {
     private cookie: CookieService, 
     private router: Router,
     private apptFormHttp: ApptFormHttpService,
-    public  logser: LoginService
+    public  logser: LoginService,
+    private loginServ:LoginService
     ) { }
 
   ngOnInit(): void {
+    this.allApptForms()
   }
+
+  allApptForms(){
+    this.apptFormHttp.getAllFormsforDoctor(this.loginServ.currentUserId).subscribe((res)=>{
+      console.log(res)
+      this.formsList=res
+    })
+
+  }
+
+  indexWorkingForm(){
+    //console.log(typeof(this.formChoice))
+    console.log(typeof(this.formsList[0].formID))
+    let index=this.formsList.findIndex((form)=>form.formID==this.formChoice)
+    //console.log(index)
+    return this.formsList[index]
+  }
+
+  showFields(){
+    let activeForm=this.indexWorkingForm();
+    this.formChoice
+    //console.log(activeForm)
+    this.habit=activeForm.patientHabits;
+    this.weight=activeForm.patientWeight;
+    this.height=activeForm.patientHeight;
+
+  }
+
+
 
   
 
